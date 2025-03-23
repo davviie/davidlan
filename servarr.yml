@@ -1,0 +1,133 @@
+
+services:
+  overseerr:
+    image: linuxserver/overseerr:latest
+    container_name: overseerr
+    restart: unless-stopped
+    ports:
+      - "5055:5055"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/overseerr:/config
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    ports:
+      - "8989:8989"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/sonarr:/config
+      - /mnt/media/TV:/tv
+      - /mnt/torrents:/downloads
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    ports:
+      - "7878:7878"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/radarr:/config
+      - /mnt/media/movie:/movies
+      - /mnt/torrents:/downloads
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    ports:
+      - "9696:9696"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/prowlarr:/config
+
+  mylar:
+    image: linuxserver/mylar3:latest
+    container_name: mylar
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/mylar:/config
+      - /mnt/media/comics:/comics
+      - /mnt/torrents:/downloads
+
+  bazarr:
+    image: linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    ports:
+      - "6767:6767"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/bazarr:/config
+      - /mnt/media/TV Shows:/tv
+      - /mnt/media/movie:/movies
+
+  lazylibrarian:
+    image: linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian
+    restart: unless-stopped
+    ports:
+      - "5299:5299"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lazylibrarian:/config
+      - /mnt/media/books:/books
+      - /mnt/torrents:/downloads
+
+  lidarr:
+    image: linuxserver/lidarr:latest
+    container_name: lidarr
+    restart: unless-stopped
+    ports:
+      - "8686:8686"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lidarr:/config
+      - /mnt/media/music:/music
+      - /mnt/torrents:/downloads
+
+  whisparr:
+    image: hotio/whisparr:latest
+    container_name: whisparr
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/whisparr:/config
+      - /mnt/media/adult:/adult
+      - /mnt/torrents:/downloads
+
