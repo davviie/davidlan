@@ -1645,3 +1645,8 @@
 2025-03-23 05:35:30.3|Debug|ImportListSyncService|No import lists with automatic add enabled
 2025-03-23 05:40:33.0|Debug|ImportListSyncService|No import lists with automatic add enabled
 2025-03-23 05:45:33.1|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-23 05:49:33.1|Info|RssSyncService|Starting RSS Sync
+2025-03-23 05:49:33.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 05:49:33.1|Info|DownloadDecisionMaker|No results found
+2025-03-23 05:49:33.1|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 05:49:33.1|Debug|PendingReleaseService|Removing failed releases from pending
