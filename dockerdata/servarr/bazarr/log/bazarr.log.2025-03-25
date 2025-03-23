@@ -1,0 +1,4 @@
+2025-03-25 02:51:16|INFO    |waitress                        |BAZARR is started and waiting for requests on: http://***.***.***.***:6767|
+2025-03-25 02:51:16|INFO    |waitress                        |BAZARR is started and waiting for requests on: http://[::]:6767|
+2025-03-25 05:47:45|INFO    |waitress                        |BAZARR is started and waiting for requests on: http://***.***.***.***:6767|
+2025-03-25 05:47:45|INFO    |waitress                        |BAZARR is started and waiting for requests on: http://[::]:6767|

@@ -2839,3 +2839,262 @@
 2025-03-23 05:49:57.5|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-23 05:49:57.5|Info|DownloadDecisionMaker|No results found
 2025-03-23 05:49:57.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:04:57.6|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:04:57.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:04:57.6|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:04:57.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:19:57.6|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:19:57.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:19:57.6|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:19:57.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:34:57.7|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:34:57.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:34:57.7|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:34:57.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:49:57.8|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:49:57.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:49:57.8|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:49:57.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 07:04:58.2|Info|RssSyncService|Starting RSS Sync
+2025-03-23 07:04:58.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 07:04:58.2|Info|DownloadDecisionMaker|No results found
+2025-03-23 07:04:58.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 07:19:58.4|Info|RssSyncService|Starting RSS Sync
+2025-03-23 07:19:58.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 07:19:58.4|Info|DownloadDecisionMaker|No results found
+2025-03-23 07:19:58.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 20:47:51.8|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-23 20:47:52.7|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:47:55.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:48:09.9|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:48:17.0|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:17.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-23 20:48:18.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-23 20:48:18.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-23 20:48:20.1|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-23 20:48:20.1|Info|FluentMigrator.Runner.MigrationRunner|=> 2.0504319s
+2025-03-23 20:48:20.1|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-23 20:48:20.1|Info|FluentMigrator.Runner.MigrationRunner|=> 2.0629118s
+2025-03-23 20:48:20.9|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:20.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-23 20:48:20.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-23 20:48:20.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-23 20:48:21.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-23 20:48:21.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0547086s
+2025-03-23 20:48:21.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-23 20:48:21.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.055069s
+2025-03-23 20:48:29.6|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-23 20:48:40.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-23 20:48:40.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-23 20:48:40.3|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-23 20:48:41.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-23 20:49:10.7|Info|RssSyncService|Starting RSS Sync
+2025-03-23 20:49:10.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 20:49:10.8|Info|DownloadDecisionMaker|No results found
+2025-03-23 20:49:10.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 21:04:40.6|Info|RssSyncService|Starting RSS Sync
+2025-03-23 21:04:40.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 21:04:40.6|Info|DownloadDecisionMaker|No results found
+2025-03-23 21:04:40.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 21:19:40.7|Info|RssSyncService|Starting RSS Sync
+2025-03-23 21:19:40.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 21:19:40.7|Info|DownloadDecisionMaker|No results found
+2025-03-23 21:19:40.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 02:49:14.1|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-25 02:49:15.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:18.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:33.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:39.3|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:49:43.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 02:49:44.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 02:49:44.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 02:49:45.6|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 02:49:45.6|Info|FluentMigrator.Runner.MigrationRunner|=> 1.5679127s
+2025-03-25 02:49:45.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 02:49:45.7|Info|FluentMigrator.Runner.MigrationRunner|=> 1.6389622s
+2025-03-25 02:49:46.5|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:49:46.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 02:49:46.5|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 02:49:46.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 02:49:46.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 02:49:46.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0080942s
+2025-03-25 02:49:46.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 02:49:46.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0086s
+2025-03-25 02:49:56.7|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-25 02:50:04.7|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 02:50:04.7|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 02:50:04.8|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-25 02:50:06.6|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-25 02:50:34.5|Info|HousekeepingService|Running housecleaning tasks
+2025-03-25 02:50:35.7|Info|RssSyncService|Starting RSS Sync
+2025-03-25 02:50:35.7|Info|TrackGroupingService|Grouping 0 tracks
+2025-03-25 02:50:36.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 02:50:36.2|Info|DownloadDecisionMaker|No results found
+2025-03-25 02:50:36.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 02:50:36.5|Info|ImportApprovedTracks|Importing 0 tracks
+2025-03-25 02:50:37.3|Info|Database|Vacuuming Log database
+2025-03-25 02:50:37.3|Info|Database|Log database compressed
+2025-03-25 02:50:37.3|Info|Database|Vacuuming Main database
+2025-03-25 02:50:37.6|Info|Database|Main database compressed
+2025-03-25 03:06:06.0|Info|RssSyncService|Starting RSS Sync
+2025-03-25 03:06:06.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 03:06:06.0|Info|DownloadDecisionMaker|No results found
+2025-03-25 03:06:06.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 03:21:06.1|Info|RssSyncService|Starting RSS Sync
+2025-03-25 03:21:06.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 03:21:06.1|Info|DownloadDecisionMaker|No results found
+2025-03-25 03:21:06.1|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 05:46:04.4|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-25 05:46:05.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:07.2|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:18.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:24.1|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:26.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 05:46:26.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 05:46:27.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 05:46:28.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 05:46:28.8|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7915341s
+2025-03-25 05:46:28.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 05:46:28.8|Info|FluentMigrator.Runner.MigrationRunner|=> 1.8246641s
+2025-03-25 05:46:29.7|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:29.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 05:46:29.8|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 05:46:29.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 05:46:29.9|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 05:46:29.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0598012s
+2025-03-25 05:46:29.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 05:46:29.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0630226s
+2025-03-25 05:46:42.9|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-25 05:46:51.5|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 05:46:51.5|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 05:46:51.5|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-25 05:46:52.8|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-25 05:47:22.0|Info|RssSyncService|Starting RSS Sync
+2025-03-25 05:47:22.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 05:47:22.3|Info|DownloadDecisionMaker|No results found
+2025-03-25 05:47:22.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 06:02:51.8|Info|RssSyncService|Starting RSS Sync
+2025-03-25 06:02:51.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 06:02:51.8|Info|DownloadDecisionMaker|No results found
+2025-03-25 06:02:51.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 06:17:51.9|Info|RssSyncService|Starting RSS Sync
+2025-03-25 06:17:51.9|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 06:17:51.9|Info|DownloadDecisionMaker|No results found
+2025-03-25 06:17:51.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:23:06.0|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-27 01:23:09.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:11.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:26.6|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:33.5|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:35.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 01:23:35.6|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 01:23:35.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 01:23:37.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 01:23:37.6|Info|FluentMigrator.Runner.MigrationRunner|=> 1.9687128s
+2025-03-27 01:23:37.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 01:23:37.6|Info|FluentMigrator.Runner.MigrationRunner|=> 1.9782914s
+2025-03-27 01:23:37.9|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:37.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 01:23:37.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 01:23:37.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 01:23:38.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 01:23:38.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0082688s
+2025-03-27 01:23:38.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 01:23:38.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0106165s
+2025-03-27 01:23:52.1|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-27 01:24:03.1|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 01:24:03.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 01:24:03.2|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-27 01:24:05.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-27 01:24:33.7|Info|TrackGroupingService|Grouping 0 tracks
+2025-03-27 01:24:34.8|Info|ImportApprovedTracks|Importing 0 tracks
+2025-03-27 01:24:35.0|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:24:35.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:24:35.2|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:24:35.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:24:35.7|Info|HousekeepingService|Running housecleaning tasks
+2025-03-27 01:24:36.3|Info|Database|Vacuuming Log database
+2025-03-27 01:24:36.4|Info|Database|Log database compressed
+2025-03-27 01:24:36.4|Info|Database|Vacuuming Main database
+2025-03-27 01:24:36.7|Info|Database|Main database compressed
+2025-03-27 01:40:04.2|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:40:04.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:40:04.2|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:40:04.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:55:04.3|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:55:04.3|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:55:04.3|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:55:04.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 23:42:31.5|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-27 23:42:34.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:42:36.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:42:53.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:42:58.3|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:43:01.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 23:43:01.6|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 23:43:01.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 23:43:02.8|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 23:43:02.9|Info|FluentMigrator.Runner.MigrationRunner|=> 1.2943629s
+2025-03-27 23:43:02.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 23:43:02.9|Info|FluentMigrator.Runner.MigrationRunner|=> 1.3425997s
+2025-03-27 23:43:04.0|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:43:04.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 23:43:04.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 23:43:04.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 23:43:04.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 23:43:04.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0554349s
+2025-03-27 23:43:04.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 23:43:04.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0664078s
+2025-03-27 23:43:15.9|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-27 23:43:26.1|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 23:43:26.2|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 23:43:26.2|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-27 23:43:28.5|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-27 23:43:56.8|Info|RssSyncService|Starting RSS Sync
+2025-03-27 23:43:57.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 23:43:57.5|Info|DownloadDecisionMaker|No results found
+2025-03-27 23:43:57.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 23:59:26.3|Info|RssSyncService|Starting RSS Sync
+2025-03-27 23:59:26.3|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 23:59:26.3|Info|DownloadDecisionMaker|No results found
+2025-03-27 23:59:26.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 00:14:26.4|Info|RssSyncService|Starting RSS Sync
+2025-03-28 00:14:26.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 00:14:26.4|Info|DownloadDecisionMaker|No results found
+2025-03-28 00:14:26.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 06:47:25.8|Info|Bootstrap|Starting Lidarr - /app/lidarr/bin/Lidarr - Version 2.9.6.4552
+2025-03-28 06:47:31.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:34.6|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:47.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:55.4|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:47:58.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-28 06:47:58.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-28 06:47:58.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-28 06:48:01.9|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-28 06:48:02.0|Info|FluentMigrator.Runner.MigrationRunner|=> 3.0508399s
+2025-03-28 06:48:02.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-28 06:48:02.0|Info|FluentMigrator.Runner.MigrationRunner|=> 3.1146368s
+2025-03-28 06:48:03.4|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:48:03.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-28 06:48:04.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-28 06:48:04.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-28 06:48:04.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-28 06:48:04.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2288804s
+2025-03-28 06:48:04.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-28 06:48:04.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2322859s
+2025-03-28 06:48:14.5|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-28 06:48:23.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-28 06:48:23.4|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-28 06:48:23.4|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-28 06:48:25.8|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-28 06:48:53.8|Info|RssSyncService|Starting RSS Sync
+2025-03-28 06:48:54.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 06:48:54.2|Info|DownloadDecisionMaker|No results found
+2025-03-28 06:48:54.3|Info|HousekeepingService|Running housecleaning tasks
+2025-03-28 06:48:54.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 06:48:56.0|Info|TrackGroupingService|Grouping 0 tracks
+2025-03-28 06:48:56.3|Info|Database|Vacuuming Log database
+2025-03-28 06:48:56.3|Info|ImportApprovedTracks|Importing 0 tracks
+2025-03-28 06:48:56.4|Info|Database|Log database compressed
+2025-03-28 06:48:56.4|Info|Database|Vacuuming Main database
+2025-03-28 06:48:56.7|Info|Database|Main database compressed

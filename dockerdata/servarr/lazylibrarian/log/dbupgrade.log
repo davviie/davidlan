@@ -19,3 +19,6 @@ Sun Mar 23 05:18:56 2025 v85: Updating series,member,seriesauthors tables
 Sun Mar 23 05:18:56 2025 Changed: 20
 Sun Mar 23 05:18:56 2025: Cleaning Database
 Sun Mar 23 05:18:56 2025: Database updated to version 85
+Sun Mar 23 20:49:00 2025 v65: Adding Reading,Abandoned columns to users table
+Sun Mar 23 20:49:00 2025 v73: Adding gr_id to series table
+Sun Mar 23 20:49:00 2025 Changed: 2

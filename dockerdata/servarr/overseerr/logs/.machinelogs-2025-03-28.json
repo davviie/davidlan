@@ -1,0 +1,42 @@
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:00:00.016Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T00:00:00.035Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"4654b3e6-7bef-4ac9-95fe-c05b45c08f0a","timestamp":"2025-03-28T00:00:00.035Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T00:00:00.039Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:01:00.014Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:02:00.011Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:03:00.025Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:04:00.019Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Watchlist Sync","timestamp":"2025-03-28T00:04:08.149Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:05:00.017Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T00:05:00.019Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"03bc6a7b-6e7f-4d70-86fa-849e47f540a1","timestamp":"2025-03-28T00:05:00.019Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T00:05:00.020Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:06:00.020Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:07:00.018Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:08:00.016Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:09:00.007Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:10:00.011Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T00:10:00.013Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"cef73deb-52b9-4924-b8fa-0e6a82fd409b","timestamp":"2025-03-28T00:10:00.013Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T00:10:00.014Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:11:00.018Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:12:00.017Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:13:00.013Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:14:00.018Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T00:15:00.008Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T00:15:00.009Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"b8b7fb95-146f-458a-a23f-a7f2f33ffb5a","timestamp":"2025-03-28T00:15:00.010Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T00:15:00.011Z"}
+{"level":"info","message":"Commit Tag: v1.33.2","timestamp":"2025-03-28T06:48:35.160Z"}
+{"level":"info","message":"Starting Overseerr version 1.33.2","timestamp":"2025-03-28T06:48:45.621Z"}
+{"label":"Notifications","level":"info","message":"Registered notification agents","timestamp":"2025-03-28T06:49:06.832Z"}
+{"label":"Jobs","level":"info","message":"Scheduled jobs loaded","timestamp":"2025-03-28T06:49:06.987Z"}
+{"label":"Server","level":"info","message":"Server ready on port 5055","timestamp":"2025-03-28T06:49:08.267Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T06:50:00.025Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T06:50:00.045Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"b8f2044f-4533-4437-bc52-f1730e6eb563","timestamp":"2025-03-28T06:50:00.058Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T06:50:00.086Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T06:51:00.024Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T06:52:00.018Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T06:53:00.023Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T06:54:00.005Z"}

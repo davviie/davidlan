@@ -25,8 +25,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/sonarr:/config
-      - /mnt/media/TV:/tv
-      - /mnt/torrents:/downloads
+      - ./media/TV:/tv
+      - ./torrents:/downloads
 
   radarr:
     image: linuxserver/radarr:latest
@@ -40,8 +40,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/radarr:/config
-      - /mnt/media/movie:/movies
-      - /mnt/torrents:/downloads
+      - ./media/movie:/movies
+      - ./torrents:/downloads
 
   prowlarr:
     image: linuxserver/prowlarr:latest
@@ -68,8 +68,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/mylar:/config
-      - /mnt/media/comics:/comics
-      - /mnt/torrents:/downloads
+      - ./media/comics:/comics
+      - ./torrents:/downloads
 
   bazarr:
     image: linuxserver/bazarr:latest
@@ -83,8 +83,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/bazarr:/config
-      - /mnt/media/TV Shows:/tv
-      - /mnt/media/movie:/movies
+      - ./media/TV Shows:/tv
+      - ./media/movie:/movies
 
   lazylibrarian:
     image: linuxserver/lazylibrarian:latest
@@ -98,8 +98,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/lazylibrarian:/config
-      - /mnt/media/books:/books
-      - /mnt/torrents:/downloads
+      - ./media/books:/books
+      - ./torrents:/downloads
 
   lidarr:
     image: linuxserver/lidarr:latest
@@ -113,8 +113,8 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/lidarr:/config
-      - /mnt/media/music:/music
-      - /mnt/torrents:/downloads
+      - ./media/music:/music
+      - ./torrents:/downloads
 
   whisparr:
     image: hotio/whisparr:latest
@@ -128,6 +128,6 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/whisparr:/config
-      - /mnt/media/adult:/adult
-      - /mnt/torrents:/downloads
+      - ./media/adult:/adult
+      - ./torrents:/downloads
 

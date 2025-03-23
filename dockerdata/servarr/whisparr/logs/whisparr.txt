@@ -664,3 +664,169 @@
 2025-03-23 05:49:36.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-23 05:49:36.4|Info|DownloadDecisionMaker|No results found
 2025-03-23 05:49:36.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:04:36.6|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:04:36.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:04:36.6|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:04:36.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:19:36.7|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:19:36.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:19:36.7|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:19:36.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:34:36.8|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:34:36.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:34:36.8|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:34:36.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 06:49:37.0|Info|RssSyncService|Starting RSS Sync
+2025-03-23 06:49:37.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 06:49:37.0|Info|DownloadDecisionMaker|No results found
+2025-03-23 06:49:37.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 07:04:37.3|Info|RssSyncService|Starting RSS Sync
+2025-03-23 07:04:37.3|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 07:04:37.3|Info|DownloadDecisionMaker|No results found
+2025-03-23 07:04:37.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 07:19:37.4|Info|RssSyncService|Starting RSS Sync
+2025-03-23 07:19:37.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 07:19:37.4|Info|DownloadDecisionMaker|No results found
+2025-03-23 07:19:37.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 20:47:59.4|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-23 20:48:00.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:48:02.6|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:48:14.9|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-23 20:48:19.1|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:22.2|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:35.4|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-23 20:48:40.5|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-23 20:48:40.5|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-23 20:48:40.5|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-23 20:49:11.9|Info|RssSyncService|Starting RSS Sync
+2025-03-23 20:49:12.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 20:49:12.2|Info|DownloadDecisionMaker|No results found
+2025-03-23 20:49:12.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 21:04:42.2|Info|RssSyncService|Starting RSS Sync
+2025-03-23 21:04:42.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 21:04:42.2|Info|DownloadDecisionMaker|No results found
+2025-03-23 21:04:42.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-23 21:19:42.3|Info|RssSyncService|Starting RSS Sync
+2025-03-23 21:19:42.3|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-23 21:19:42.3|Info|DownloadDecisionMaker|No results found
+2025-03-23 21:19:42.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 02:49:22.5|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-25 02:49:27.7|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:29.1|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:43.1|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 02:49:47.9|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:49:51.0|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:50:02.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-25 02:50:08.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 02:50:08.0|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 02:50:08.0|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-25 02:50:39.0|Info|RssSyncService|Starting RSS Sync
+2025-03-25 02:50:39.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 02:50:40.0|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-03-25 02:50:40.3|Info|DownloadDecisionMaker|No results found
+2025-03-25 02:50:40.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 02:50:40.5|Info|HousekeepingService|Running housecleaning tasks
+2025-03-25 02:50:41.2|Info|Database|Vacuuming Log database
+2025-03-25 02:50:41.3|Info|Database|Log database compressed
+2025-03-25 02:50:41.3|Info|Database|Vacuuming Main database
+2025-03-25 02:50:41.4|Info|Database|Main database compressed
+2025-03-25 03:06:10.6|Info|RssSyncService|Starting RSS Sync
+2025-03-25 03:06:10.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 03:06:10.6|Info|DownloadDecisionMaker|No results found
+2025-03-25 03:06:10.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 03:21:10.7|Info|RssSyncService|Starting RSS Sync
+2025-03-25 03:21:10.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 03:21:10.7|Info|DownloadDecisionMaker|No results found
+2025-03-25 03:21:10.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 05:46:06.3|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-25 05:46:08.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:09.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:16.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-25 05:46:22.0|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:26.5|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:36.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-25 05:46:40.7|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 05:46:40.7|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 05:46:40.7|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-25 05:47:11.5|Info|RssSyncService|Starting RSS Sync
+2025-03-25 05:47:11.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 05:47:11.8|Info|DownloadDecisionMaker|No results found
+2025-03-25 05:47:11.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 06:02:41.9|Info|RssSyncService|Starting RSS Sync
+2025-03-25 06:02:41.9|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 06:02:41.9|Info|DownloadDecisionMaker|No results found
+2025-03-25 06:02:41.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-25 06:17:42.0|Info|RssSyncService|Starting RSS Sync
+2025-03-25 06:17:42.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-25 06:17:42.0|Info|DownloadDecisionMaker|No results found
+2025-03-25 06:17:42.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:23:14.3|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-27 01:23:15.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:17.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:28.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 01:23:33.6|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:37.1|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:50.7|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-27 01:23:56.7|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 01:23:56.7|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 01:23:56.7|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-27 01:24:27.1|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-03-27 01:24:29.0|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:24:29.3|Info|HousekeepingService|Running housecleaning tasks
+2025-03-27 01:24:29.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:24:29.5|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:24:29.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:24:30.0|Info|Database|Vacuuming Log database
+2025-03-27 01:24:30.1|Info|Database|Log database compressed
+2025-03-27 01:24:30.1|Info|Database|Vacuuming Main database
+2025-03-27 01:24:30.2|Info|Database|Main database compressed
+2025-03-27 01:39:59.4|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:39:59.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:39:59.4|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:39:59.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 01:54:59.5|Info|RssSyncService|Starting RSS Sync
+2025-03-27 01:54:59.5|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 01:54:59.5|Info|DownloadDecisionMaker|No results found
+2025-03-27 01:54:59.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 23:42:43.2|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-27 23:42:47.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:42:50.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:43:03.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-27 23:43:07.6|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:43:12.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:43:24.2|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-27 23:43:29.4|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 23:43:29.4|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 23:43:29.4|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-27 23:44:02.6|Info|RssSyncService|Starting RSS Sync
+2025-03-27 23:44:02.9|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 23:44:03.3|Info|DownloadDecisionMaker|No results found
+2025-03-27 23:44:03.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-27 23:59:03.8|Info|RssSyncService|Starting RSS Sync
+2025-03-27 23:59:03.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-27 23:59:03.8|Info|DownloadDecisionMaker|No results found
+2025-03-27 23:59:03.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 00:14:03.8|Info|RssSyncService|Starting RSS Sync
+2025-03-28 00:14:03.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 00:14:03.8|Info|DownloadDecisionMaker|No results found
+2025-03-28 00:14:03.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 06:47:27.1|Info|Bootstrap|Starting Whisparr - /app/bin/Whisparr - Version 2.0.0.891
+2025-03-28 06:47:30.9|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:33.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:41.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-28 06:47:47.2|Info|MigrationController|*** Migrating data source=/config/whisparr2.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:47:52.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:48:06.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:6969
+2025-03-28 06:48:12.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-28 06:48:12.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-28 06:48:12.3|Info|Microsoft.Hosting.Lifetime|Content root path: /app/bin
+2025-03-28 06:48:43.1|Info|RssSyncService|Starting RSS Sync
+2025-03-28 06:48:43.2|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-03-28 06:48:43.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 06:48:44.4|Info|DownloadDecisionMaker|No results found
+2025-03-28 06:48:45.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 06:48:45.4|Info|HousekeepingService|Running housecleaning tasks
+2025-03-28 06:48:45.9|Info|Database|Vacuuming Log database
+2025-03-28 06:48:46.0|Info|Database|Log database compressed
+2025-03-28 06:48:46.0|Info|Database|Vacuuming Main database
+2025-03-28 06:48:46.1|Info|Database|Main database compressed
