@@ -1,0 +1,43 @@
+services:
+  paperless:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless
+    restart: unless-stopped
+    ports:
+      - "5000:8000"
+    environment:
+      PAPERLESS_URL: "https://paperless.davidlan.xyz"
+      PAPERLESS_ADMIN_USER: "davidlan"
+      PAPERLESS_ADMIN_PASSWORD: "your_secure_password"
+      PAPERLESS_ADMIN_EMAIL: "mail@davidlan.xyz"
+      PAPERLESS_DBENGINE: "postgres"
+      PAPERLESS_OCR_LANGUAGE: "eng+fra+esp"
+      USERMAP_UID: 1000
+      USERMAP_GID: 1000
+    volumes:
+      - ./paperless/config:/config
+      - ./paperless/consume:/consume
+      - ./media/documents:/media
+      - ./paperless/data:/data
+      - ./paperless/database:/database
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    container_name: paperless_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: paperless
+      POSTGRES_USER: paperless
+      POSTGRES_PASSWORD: your_db_password
+    volumes:
+      - ./paperless/database:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: paperless_redis
+    restart: unless-stopped
+    volumes:
+      - ./paperless/redis:/data

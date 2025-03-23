@@ -1,86 +1,133 @@
-version: '3.8'
 
 services:
-  jellyfin:
-    image: jellyfin/jellyfin:latest
-    container_name: jellyfin
-    restart: always
+  overseerr:
+    image: linuxserver/overseerr:latest
+    container_name: overseerr
+    restart: unless-stopped
     ports:
-      - "8096:8096"  # HTTP port for web UI
-      - "8920:8920"  # HTTPS port for web UI (optional)
-    volumes:
-      - ./dockerdata/hosting/jellyfin:/config
-      - /mnt/media:/media
-      - /mnt/torrents:/downloads
+      - "5055:5055"
     environment:
       - PUID=1000
       - PGID=1000
-
-  plex:
-    image: plexinc/pms-docker:latest
-    container_name: plex
-    restart: always
-    ports:
-      - "32400:32400"  # Plex web UI
+      - TZ=Etc/UTC
     volumes:
-      - ./dockerdata/hosting/plex:/config
+      - ./dockerdata/servarr/overseerr:/config
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    ports:
+      - "8989:8989"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/sonarr:/config
+      - /mnt/media/TV:/tv
+      - /mnt/torrents:/downloads
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    ports:
+      - "7878:7878"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/radarr:/config
+      - /mnt/media/movie:/movies
+      - /mnt/torrents:/downloads
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    ports:
+      - "9696:9696"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/prowlarr:/config
+
+  mylar:
+    image: linuxserver/mylar3:latest
+    container_name: mylar
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/mylar:/config
+      - /mnt/media/comics:/comics
+      - /mnt/torrents:/downloads
+
+  bazarr:
+    image: linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    ports:
+      - "6767:6767"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/bazarr:/config
+      - /mnt/media/TV Shows:/tv
+      - /mnt/media/movie:/movies
+
+  lazylibrarian:
+    image: linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian
+    restart: unless-stopped
+    ports:
+      - "5299:5299"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lazylibrarian:/config
+      - /mnt/media/books:/books
+      - /mnt/torrents:/downloads
+
+  lidarr:
+    image: linuxserver/lidarr:latest
+    container_name: lidarr
+    restart: unless-stopped
+    ports:
+      - "8686:8686"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lidarr:/config
+      - /mnt/media/music:/music
+      - /mnt/torrents:/downloads
+
+  whisparr:
+    image: hotio/whisparr:latest
+    container_name: whisparr
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/whisparr:/config
       - /mnt/media/adult:/adult
       - /mnt/torrents:/downloads
-    environment:
-      - PLEX_UID=1000
-      - PLEX_GID=1000
-
-  audiobookshelf:
-    image: advplyr/audiobookshelf:latest
-    container_name: audiobookshelf
-    restart: always
-    ports:
-      - "13378:13378"  # Audiobookshelf web UI
-    volumes:
-      - ./dockerdata/hosting/audiobookshelf:/config
-      - /mnt/media/audiobooks:/audiobooks
-    environment:
-      - PUID=1000
-      - PGID=1000
-
-  stirling_pdf:
-    image: stirlingtools/stirling-pdf:latest
-    container_name: stirlingpdf
-    restart: always
-    ports:
-      - "8080:8080"  # Stirling PDF web UI
-    volumes:
-      - ./dockerdata/hosting/stirlingpdf:/config
-      - /mnt/media/documents:/pdfs
-    environment:
-      - PUID=1000
-      - PGID=1000
-
-  paperless-ngx:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
-    container_name: paperless-ngx
-    restart: always
-    ports:
-      - "6000:6000"  # Expose port 6000 for web interface
-    volumes:
-      - ./dockerdata/hosting/paperless-ngx/media:/usr/src/paperless/media
-      - ./dockerdata/hosting/paperless-ngx/data:/usr/src/paperless/data
-      - ./dockerdata/hosting/paperless-ngx/consume:/usr/src/paperless/consume
-      - ./dockerdata/hosting/paperless-ngx/config:/usr/src/paperless/config
-    environment:
-      - PAPERLESS_DBHOST=db
-      - PAPERLESS_DBNAME=paperless
-      - PAPERLESS_USER=paperless
-      - PAPERLESS_PASSWORD=your_secure_password_here
-
-  paperless_db:
-    image: postgres:13
-    container_name: paperless-ngx-db
-    restart: always
-    volumes:
-      - ./dockerdata/hosting/paperless-ngx/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=paperless
-      - POSTGRES_PASSWORD=your_secure_password_here
-      - POSTGRES_DB=paperless
 
