@@ -1,0 +1,86 @@
+version: '3.8'
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: always
+    ports:
+      - "8096:8096"  # HTTP port for web UI
+      - "8920:8920"  # HTTPS port for web UI (optional)
+    volumes:
+      - ./dockerdata/hosting/jellyfin:/config
+      - /mnt/media:/media
+      - /mnt/torrents:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+  plex:
+    image: plexinc/pms-docker:latest
+    container_name: plex
+    restart: always
+    ports:
+      - "32400:32400"  # Plex web UI
+    volumes:
+      - ./dockerdata/hosting/plex:/config
+      - /mnt/media/adult:/adult
+      - /mnt/torrents:/downloads
+    environment:
+      - PLEX_UID=1000
+      - PLEX_GID=1000
+
+  audiobookshelf:
+    image: advplyr/audiobookshelf:latest
+    container_name: audiobookshelf
+    restart: always
+    ports:
+      - "13378:13378"  # Audiobookshelf web UI
+    volumes:
+      - ./dockerdata/hosting/audiobookshelf:/config
+      - /mnt/media/audiobooks:/audiobooks
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+  stirling_pdf:
+    image: stirlingtools/stirling-pdf:latest
+    container_name: stirlingpdf
+    restart: always
+    ports:
+      - "8080:8080"  # Stirling PDF web UI
+    volumes:
+      - ./dockerdata/hosting/stirlingpdf:/config
+      - /mnt/media/documents:/pdfs
+    environment:
+      - PUID=1000
+      - PGID=1000
+
+  paperless-ngx:
+    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-ngx
+    restart: always
+    ports:
+      - "6000:6000"  # Expose port 6000 for web interface
+    volumes:
+      - ./dockerdata/hosting/paperless-ngx/media:/usr/src/paperless/media
+      - ./dockerdata/hosting/paperless-ngx/data:/usr/src/paperless/data
+      - ./dockerdata/hosting/paperless-ngx/consume:/usr/src/paperless/consume
+      - ./dockerdata/hosting/paperless-ngx/config:/usr/src/paperless/config
+    environment:
+      - PAPERLESS_DBHOST=db
+      - PAPERLESS_DBNAME=paperless
+      - PAPERLESS_USER=paperless
+      - PAPERLESS_PASSWORD=your_secure_password_here
+
+  paperless_db:
+    image: postgres:13
+    container_name: paperless-ngx-db
+    restart: always
+    volumes:
+      - ./dockerdata/hosting/paperless-ngx/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=paperless
+      - POSTGRES_PASSWORD=your_secure_password_here
+      - POSTGRES_DB=paperless
+
