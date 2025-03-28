@@ -69,3 +69,6 @@
 {"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-03-28T07:10:00.022Z"}
 {"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"949d2dc8-97b5-4601-8a67-ccd1a4e01e39","timestamp":"2025-03-28T07:10:00.022Z"}
 {"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-03-28T07:10:00.026Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T07:11:00.015Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T07:12:00.020Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-28T07:13:00.024Z"}
