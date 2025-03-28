@@ -2233,3 +2233,4 @@
 2025-03-28 07:04:28.5|Info|DownloadDecisionMaker|No results found
 2025-03-28 07:04:28.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-28 07:04:28.6|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-28 07:08:58.6|Debug|ImportListSyncService|No import lists with automatic add enabled
