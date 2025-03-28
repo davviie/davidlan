@@ -40,3 +40,25 @@
 2025-03-28T06:52:00.018Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-03-28T06:53:00.023Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-03-28T06:54:00.005Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T06:55:00.024Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T06:55:00.030Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-28T06:55:00.030Z [info][Plex Scan]: Scan starting {"sessionId":"a6335163-5f8e-4548-9d51-8758d833e99e"}
+2025-03-28T06:55:00.032Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-28T06:56:00.016Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T06:57:00.040Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T06:58:00.028Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T06:59:00.021Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:00:00.021Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:00:00.025Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-28T07:00:00.026Z [info][Plex Scan]: Scan starting {"sessionId":"27aba69c-26ed-4dba-98d9-8791a569c9f0"}
+2025-03-28T07:00:00.030Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-28T07:01:00.023Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:02:00.022Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:03:00.017Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:04:00.024Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:05:00.014Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:05:00.016Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-28T07:05:00.016Z [info][Plex Scan]: Scan starting {"sessionId":"599292ed-2fbf-48ab-ac1d-ffaa75bcf3b4"}
+2025-03-28T07:05:00.018Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-28T07:06:00.024Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-28T07:07:00.009Z [debug][Jobs]: Starting scheduled job: Download Sync 

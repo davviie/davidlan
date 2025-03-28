@@ -1,7 +1,7 @@
 {
  "clientId": "8775476a-7a06-47a6-9533-fee8d4f1dafe",
- "vapidPrivate": "",
- "vapidPublic": "",
+ "vapidPrivate": "0xpqX8N-mN3cSz7HF8SL0F3kf8otHHoip-V0PWmhz04",
+ "vapidPublic": "BJzOf6w5ciVhGpPeAxXOg4m-uPQww--H2gBoKiOcYqAgEpO6Rxp3JS-7EriJMlT9TPE9pnDO_Ak8D2sgGj-2n1E",
  "main": {
   "apiKey": "MTc0MjcwNzE2MTYxNTcwMjgwMjc1LWEzZjItNDJhNi04MWM1LTMxZjAxMTY3YWZjNg==",
   "applicationTitle": "Overseerr",
