@@ -1049,3 +1049,23 @@ Mar 28, 2025 07:17:29.983 [131640743439160] DEBUG - Request: [[::1]:56530 (Loopb
 Mar 28, 2025 07:17:29.983 [131640768604984] DEBUG - Completed: [[::1]:56530] 200 GET /identity (2 live) #442 0ms 417 bytes (pipelined: 1)
 Mar 28, 2025 07:17:35.066 [131640743439160] DEBUG - Request: [[::1]:60058 (Loopback)] GET /identity (2 live) #445
 Mar 28, 2025 07:17:35.066 [131640772799288] DEBUG - Completed: [[::1]:60058] 200 GET /identity (2 live) #445 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:17:40.168 [131640743439160] DEBUG - Request: [[::1]:60068 (Loopback)] GET /identity (2 live) #448
+Mar 28, 2025 07:17:40.170 [131640772799288] DEBUG - Completed: [[::1]:60068] 200 GET /identity (2 live) #448 1ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:17:45.395 [131640743439160] DEBUG - Request: [[::1]:59104 (Loopback)] GET /identity (2 live) #44b
+Mar 28, 2025 07:17:45.395 [131640768604984] DEBUG - Completed: [[::1]:59104] 200 GET /identity (2 live) #44b 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:17:50.469 [131640743439160] DEBUG - Request: [[::1]:59120 (Loopback)] GET /identity (2 live) #44e
+Mar 28, 2025 07:17:50.470 [131640768604984] DEBUG - Completed: [[::1]:59120] 200 GET /identity (2 live) #44e 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:17:55.529 [131640743439160] DEBUG - Request: [[::1]:57470 (Loopback)] GET /identity (2 live) #451
+Mar 28, 2025 07:17:55.530 [131640772799288] DEBUG - Completed: [[::1]:57470] 200 GET /identity (2 live) #451 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:18:00.585 [131640743439160] DEBUG - Request: [[::1]:57482 (Loopback)] GET /identity (2 live) #454
+Mar 28, 2025 07:18:00.586 [131640772799288] DEBUG - Completed: [[::1]:57482] 200 GET /identity (2 live) #454 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:18:05.643 [131640743439160] DEBUG - Request: [[::1]:39274 (Loopback)] GET /identity (2 live) #457
+Mar 28, 2025 07:18:05.643 [131640772799288] DEBUG - Completed: [[::1]:39274] 200 GET /identity (2 live) #457 0ms 417 bytes (pipelined: 1)
+Mar 28, 2025 07:18:09.617 [131640659553080] DEBUG - [HCl#22] HTTP requesting GET https://plex.tv/api/v2/features?X-Plex-Token=
+Mar 28, 2025 07:18:09.857 [131640751827768] DEBUG - [HttpClient/HCl#22] HTTP/1.1 (0.2s) 200 response from GET https://plex.tv/api/v2/features?X-Plex-Token=
+Mar 28, 2025 07:18:09.858 [131640659553080] DEBUG - [HCl#23] HTTP requesting GET https://plex.tv/api/v2/server/users/features
+Mar 28, 2025 07:18:09.932 [131640751827768] DEBUG - [HttpClient/HCl#23] HTTP/1.1 (0.1s) 401 response from GET https://plex.tv/api/v2/server/users/features (reused)
+Mar 28, 2025 07:18:09.932 [131640756022072] ERROR - MyPlex: Error 401 requesting JSON from: https://plex.tv/api/v2/server/users/features
+Mar 28, 2025 07:18:09.932 [131640659553080] WARN - FeatureManager: Couldn't get features. Trying again soon.
+Mar 28, 2025 07:18:10.743 [131640743439160] DEBUG - Request: [[::1]:39278 (Loopback)] GET /identity (1 live) #45a
+Mar 28, 2025 07:18:10.744 [131640768604984] DEBUG - Completed: [[::1]:39278] 200 GET /identity (2 live) #45a 1ms 417 bytes (pipelined: 1)
