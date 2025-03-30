@@ -17,7 +17,7 @@ docker-compose.override.yml
 *.tmp                        # Temporary files
 *.swp                        # Swap files created by editors
 
-# Ignore IDE-specific filesgit pull origin main
+# Ignore IDE-specific files
 .vscode/                     # Visual Studio Code settings
 .idea/                       # JetBrains IDE settings
 

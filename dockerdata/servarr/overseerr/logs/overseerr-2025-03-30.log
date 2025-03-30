@@ -443,3 +443,17 @@
 2025-03-30T10:26:00.007Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-03-30T10:27:00.012Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-03-30T10:28:00.018Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:29:00.022Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:30:00.006Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:30:00.009Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-30T10:30:00.010Z [info][Plex Scan]: Scan starting {"sessionId":"15b0fbfe-bd72-48cf-a0ee-09f6664046e4"}
+2025-03-30T10:30:00.011Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-30T10:31:00.013Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:32:00.018Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:33:00.011Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:34:00.010Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:35:00.020Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T10:35:00.023Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-30T10:35:00.023Z [info][Plex Scan]: Scan starting {"sessionId":"f7f7b238-f587-402b-bb28-eee700f111fc"}
+2025-03-30T10:35:00.025Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-30T10:36:00.012Z [debug][Jobs]: Starting scheduled job: Download Sync 

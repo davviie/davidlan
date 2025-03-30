@@ -184,3 +184,4 @@ HTTPError: HTTP Error 404: Not Found
 2025-03-30 09:35:02,434 (75bd98e19b38) :  DEBUG (peerservice:233) - Updating existing server 72a4c32d306e (86237ceaf0dd4f14af393347c1370a88ca6e5a21)
 2025-03-30 09:35:02,435 (75bd98e19b38) :  DEBUG (networking:144) - Requesting 'http://127.0.0.1:32400/library/sections'
 2025-03-30 09:35:02,440 (75bd98e19b38) :  DEBUG (networking:144) - Requesting 'http://127.0.0.1:32400/channels/all'
+2025-03-30 10:33:01,534 (75bd98db0b38) :  DEBUG (runtime:1156) - Starting timed thread named 'invalidation_timer'
