@@ -2241,3 +2241,133 @@
 2025-03-28 07:19:28.6|Info|DownloadDecisionMaker|No results found
 2025-03-28 07:19:28.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-28 07:19:28.6|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-28 07:23:58.6|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:28:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:33:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:34:28.7|Info|RssSyncService|Starting RSS Sync
+2025-03-28 07:34:28.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 07:34:28.7|Info|DownloadDecisionMaker|No results found
+2025-03-28 07:34:28.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 07:34:28.7|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-28 07:38:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:43:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:48:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-28 07:49:28.7|Info|RssSyncService|Starting RSS Sync
+2025-03-28 07:49:28.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 07:49:28.7|Info|DownloadDecisionMaker|No results found
+2025-03-28 07:49:28.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 07:49:28.7|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-28 07:53:58.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 05:59:28.8|Debug|ProcessProvider|Found 0 processes with the name: Sonarr.Console
+2025-03-30 05:59:30.6|Debug|ProcessProvider|Found 1 processes with the name: Sonarr
+2025-03-30 05:59:30.6|Debug|ProcessProvider| - [138] Sonarr
+2025-03-30 05:59:31.6|Info|MigrationController|*** Migrating data source=/config/sonarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:33.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:34.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:34.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:36.4|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1985771s
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.2773887s
+2025-03-30 05:59:39.2|Debug|MigrationController|Took: 00:00:07.5544823
+2025-03-30 05:59:39.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:40.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:40.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:40.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:40.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0592321s
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0915683s
+2025-03-30 05:59:40.7|Debug|MigrationController|Took: 00:00:01.4018309
+2025-03-30 05:59:56.9|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8989
+2025-03-30 06:00:01.7|Debug|Sonarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-30 06:00:02.4|Debug|QualityDefinitionService|Setting up default quality config
+2025-03-30 06:00:04.7|Debug|NotificationFactory|Initializing Providers. Count 25
+2025-03-30 06:00:05.6|Debug|IndexerFactory|Initializing Providers. Count 10
+2025-03-30 06:00:05.6|Debug|ImportListFactory|Initializing Providers. Count 11
+2025-03-30 06:00:05.7|Debug|MetadataFactory|Initializing Providers. Count 5
+2025-03-30 06:00:06.0|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Content root path: /app/sonarr/bin
+2025-03-30 06:00:08.0|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 06:00:39.5|Info|RssSyncService|Starting RSS Sync
+2025-03-30 06:00:42.3|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-03-30 06:00:41.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 06:00:43.6|Info|DownloadDecisionMaker|No results found
+2025-03-30 06:00:43.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 06:00:44.1|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 06:00:44.2|Debug|InstallUpdateService|Checking for updates
+2025-03-30 06:00:44.3|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 06:00:44.5|Info|SceneMappingService|Updating Scene mappings
+2025-03-30 06:00:44.6|Debug|XemProxy|Fetching alternate names
+2025-03-30 06:00:45.5|Info|BackupService|Starting Backup
+2025-03-30 06:00:45.9|Debug|BackupService|Cleaning up backup files older than 28 days
+2025-03-30 06:00:46.0|Debug|InstallUpdateService|No update available
+2025-03-30 06:00:46.1|Debug|BackupService|Finished cleaning up old backup files
+2025-03-30 06:00:46.1|Debug|BackupService|Backing up config.xml
+2025-03-30 06:00:46.3|Debug|DiskTransferService|Copy [/config/config.xml] > [/run/sonarr-temp/sonarr_backup/config.xml]
+2025-03-30 06:00:48.5|Debug|BackupService|Backing up database
+2025-03-30 06:00:50.2|Info|HousekeepingService|Running housecleaning tasks
+2025-03-30 06:00:50.2|Debug|HousekeepingService|Starting CleanupAbsolutePathMetadataFiles
+2025-03-30 06:00:50.3|Debug|BackupService|Creating backup zip
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Completed CleanupAbsolutePathMetadataFiles
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Starting CleanupAdditionalNamingSpecs
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Completed CleanupAdditionalNamingSpecs
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-30 06:00:50.4|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-30 06:00:50.5|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-30 06:00:50.5|Debug|HousekeepingService|Starting CleanupDownloadClientUnavailablePendingReleases
+2025-03-30 06:00:50.6|Debug|ArchiveService|Creating archive /config/Backups/scheduled/sonarr_backup_v4.0.14.2939_2025.03.30_06.00.45.zip
+2025-03-30 06:00:51.0|Debug|HousekeepingService|Completed CleanupDownloadClientUnavailablePendingReleases
+2025-03-30 06:00:51.0|Debug|HousekeepingService|Starting CleanupDuplicateMetadataFiles
+2025-03-30 06:00:51.1|Debug|HousekeepingService|Completed CleanupDuplicateMetadataFiles
+2025-03-30 06:00:51.1|Debug|HousekeepingService|Starting CleanupOrphanedBlocklist
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Completed CleanupOrphanedBlocklist
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Starting CleanupOrphanedEpisodeFiles
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Completed CleanupOrphanedEpisodeFiles
+2025-03-30 06:00:51.2|Debug|HousekeepingService|Starting CleanupOrphanedEpisodes
+2025-03-30 06:00:51.3|Debug|HousekeepingService|Completed CleanupOrphanedEpisodes
+2025-03-30 06:00:51.3|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-30 06:00:51.3|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-30 06:00:51.3|Debug|HousekeepingService|Starting CleanupOrphanedImportListStatus
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Completed CleanupOrphanedImportListStatus
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Starting CleanupOrphanedMetadataFiles
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Completed CleanupOrphanedMetadataFiles
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-30 06:00:51.4|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-30 06:00:51.5|Debug|HousekeepingService|Starting CleanupOrphanedPendingReleases
+2025-03-30 06:00:51.5|Debug|HousekeepingService|Completed CleanupOrphanedPendingReleases
+2025-03-30 06:00:51.5|Debug|HousekeepingService|Starting CleanupQualityProfileFormatItems
+2025-03-30 06:00:51.8|Debug|HousekeepingService|Completed CleanupQualityProfileFormatItems
+2025-03-30 06:00:51.8|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-30 06:00:51.8|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-30 06:00:51.8|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-30 06:00:52.2|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-30 06:00:52.2|Debug|HousekeepingService|Starting DeleteBadMediaCovers
+2025-03-30 06:00:52.3|Debug|HousekeepingService|Completed DeleteBadMediaCovers
+2025-03-30 06:00:52.3|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:52.4|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:52.4|Debug|HousekeepingService|Starting FixFutureImportListStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Completed FixFutureImportListStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-30 06:00:52.5|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-30 06:00:55.8|Debug|BackupService|Backup zip created
+2025-03-30 06:00:56.0|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-30 06:00:56.0|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-30 06:00:56.1|Info|Database|Vacuuming Log database
+2025-03-30 06:00:56.1|Info|Database|Log database compressed
+2025-03-30 06:00:56.1|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-30 06:00:56.1|Debug|HousekeepingService|Starting UpdateCleanTitleForSeries
+2025-03-30 06:00:56.1|Debug|HousekeepingService|Completed UpdateCleanTitleForSeries
+2025-03-30 06:00:56.1|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-30 06:00:56.1|Info|Database|Vacuuming Main database
+2025-03-30 06:00:56.9|Info|Database|Main database compressed

@@ -4293,3 +4293,282 @@ disk I/O error
    at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
 
 
+2025-03-28 07:24:58.5|Error|CommandExecutor|Error occurred while executing task ProcessMonitoredDownloads
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.Datastore.BasicRepository`1.SetFields(TModel model, Expression`1[] properties) in ./Radarr.Core/Datastore/BasicRepository.cs:line 335
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Update(CommandModel command, CommandStatus status, String message) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 259
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Fail(CommandModel command, String message, Exception e) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 214
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 113
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
+
+
+2025-03-28 07:24:58.5|Error|EventAggregator|TaskManager failed while processing [CommandExecutedEvent]
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1161
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in /_/Dapper/SqlMapper.cs:line 801
+   at NzbDrone.Core.Datastore.SqlMapperExtensions.Query[T](IDatabase db, String sql, Object param) in ./Radarr.Core/Datastore/Extensions/SqlMapperExtensions.cs:line 17
+   at NzbDrone.Core.Datastore.BasicRepository`1.Query(SqlBuilder builder) in ./Radarr.Core/Datastore/BasicRepository.cs:line 72
+   at NzbDrone.Core.Jobs.TaskManager.Handle(CommandExecutedEvent message)
+   at NzbDrone.Core.Messaging.Events.EventAggregator.PublishEvent[TEvent](TEvent event)
+SQL: 
+==== Begin Query Trace ====
+
+QUERY TEXT:
+SELECT "ScheduledTasks".*
+ FROM "ScheduledTasks"       
+
+PARAMETERS:
+
+==== End Query Trace ====
+
+
+
+2025-03-28 07:25:28.5|Error|CommandExecutor|Error occurred while executing task RefreshMonitoredDownloads
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.ExecuteReaderImpl(IDbConnection cnn, CommandDefinition& command, CommandBehavior commandBehavior, IDbCommand& cmd) in /_/Dapper/SqlMapper.cs:line 2993
+   at NzbDrone.Core.ThingiProvider.ProviderRepository`1.Query(SqlBuilder builder) in ./Radarr.Core/ThingiProvider/ProviderRepository.cs:line 46
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.Active() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 185
+   at NzbDrone.Core.Download.DownloadClientFactory.Active() in ./Radarr.Core/Download/DownloadClientFactory.cs:line 35
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.GetAvailableProviders() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 91
+   at NzbDrone.Core.Download.DownloadClientFactory.DownloadHandlingEnabled(Boolean filterBlockedClients) in ./Radarr.Core/Download/DownloadClientFactory.cs:line 47
+   at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.Refresh() in ./Radarr.Core/Download/TrackedDownloads/DownloadMonitoringService.cs:line 66
+   at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.Execute(RefreshMonitoredDownloadsCommand message) in ./Radarr.Core/Download/TrackedDownloads/DownloadMonitoringService.cs:line 159
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 113
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
+
+
+2025-03-28 07:26:58.5|Error|CommandExecutor|Error occurred while executing task ProcessMonitoredDownloads
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.Datastore.BasicRepository`1.SetFields(TModel model, Expression`1[] properties) in ./Radarr.Core/Datastore/BasicRepository.cs:line 335
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 113
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
+
+
+2025-03-28 07:28:28.5|Error|TaskExtensions|Task Error
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.ThingiProvider.ProviderRepository`1.Query(SqlBuilder builder) in ./Radarr.Core/ThingiProvider/ProviderRepository.cs:line 43
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.Active() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 185
+   at NzbDrone.Core.Notifications.NotificationFactory.Active() in ./Radarr.Core/Notifications/NotificationFactory.cs:line 40
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.GetAvailableProviders() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 91
+   at NzbDrone.Core.Notifications.NotificationService.ProcessQueue() in ./Radarr.Core/Notifications/NotificationService.cs:line 435
+   at NzbDrone.Core.Notifications.NotificationService.HandleAsync(DownloadsProcessedEvent message) in ./Radarr.Core/Notifications/NotificationService.cs:line 420
+   at NzbDrone.Core.Messaging.Events.EventAggregator.<>c__DisplayClass6_2`1.<PublishEvent>b__2() in ./Radarr.Core/Messaging/Events/EventAggregator.cs:line 120
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+
+2025-03-28 07:28:28.5|Error|EventAggregator|TaskManager failed while processing [CommandExecutedEvent]
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.Datastore.SqlMapperExtensions.Query[T](IDatabase db, String sql, Object param) in ./Radarr.Core/Datastore/Extensions/SqlMapperExtensions.cs:line 12
+   at NzbDrone.Core.Datastore.BasicRepository`1.Query(SqlBuilder builder) in ./Radarr.Core/Datastore/BasicRepository.cs:line 72
+   at NzbDrone.Core.Jobs.TaskManager.Handle(CommandExecutedEvent message)
+   at NzbDrone.Core.Messaging.Events.EventAggregator.PublishEvent[TEvent](TEvent event)
+
+
+2025-03-28 07:28:28.5|Error|CommandExecutor|Error occurred while executing task RefreshMonitoredDownloads
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.Datastore.BasicRepository`1.SetFields(TModel model, Expression`1[] properties) in ./Radarr.Core/Datastore/BasicRepository.cs:line 335
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Update(CommandModel command, CommandStatus status, String message) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 259
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Complete(CommandModel command, String message) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 207
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 113
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
+
+
+2025-03-28 07:29:28.5|Error|TaskExtensions|Task Error
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1125
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 140
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Radarr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+
+2025-03-28 07:29:58.5|Error|TaskExtensions|Task Error
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1125
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 140
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Radarr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+
+2025-03-28 07:30:28.5|Error|TaskExtensions|Task Error
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1125
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Radarr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Radarr.Core/Messaging/Commands/CommandQueueManager.cs:line 140
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Radarr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+
+2025-03-28 07:30:58.5|Error|CommandExecutor|Error occurred while executing task RefreshMonitoredDownloads
+
+[v5.20.2.9777] code = IoErr (10), message = System.Data.SQLite.SQLiteException (0x800007FF): disk I/O error
+disk I/O error
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteConnection.Open()
+   at NzbDrone.Core.Datastore.DbFactory.<>c__DisplayClass9_0.<Create>b__0() in ./Radarr.Core/Datastore/DbFactory.cs:line 105
+   at NzbDrone.Core.ThingiProvider.ProviderRepository`1.Query(SqlBuilder builder) in ./Radarr.Core/ThingiProvider/ProviderRepository.cs:line 43
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.Active() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 185
+   at NzbDrone.Core.Download.DownloadClientFactory.Active() in ./Radarr.Core/Download/DownloadClientFactory.cs:line 35
+   at NzbDrone.Core.ThingiProvider.ProviderFactory`2.GetAvailableProviders() in ./Radarr.Core/ThingiProvider/ProviderFactory.cs:line 91
+   at NzbDrone.Core.Download.DownloadClientFactory.DownloadHandlingEnabled(Boolean filterBlockedClients) in ./Radarr.Core/Download/DownloadClientFactory.cs:line 47
+   at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.Refresh() in ./Radarr.Core/Download/TrackedDownloads/DownloadMonitoringService.cs:line 66
+   at NzbDrone.Core.Download.TrackedDownloads.DownloadMonitoringService.Execute(RefreshMonitoredDownloadsCommand message) in ./Radarr.Core/Download/TrackedDownloads/DownloadMonitoringService.cs:line 159
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 113
+   at System.Dynamic.UpdateDelegates.UpdateAndExecuteVoid3[T0,T1,T2](CallSite site, T0 arg0, T1 arg1, T2 arg2)
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Radarr.Core/Messaging/Commands/CommandExecutor.cs:line 44
+
+
+2025-03-28 07:48:58.6|Info|RssSyncService|Starting RSS Sync
+2025-03-28 07:48:58.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 07:48:58.6|Info|DownloadDecisionMaker|No results found
+2025-03-28 07:48:58.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 05:58:59.5|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr - Version 5.20.2.9777
+2025-03-30 05:59:03.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:08.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:24.5|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:31.0|Info|MigrationController|*** Migrating data source=/config/radarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:32.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:33.1|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:33.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:34.9|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:35.0|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7692457s
+2025-03-30 05:59:35.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:35.1|Info|FluentMigrator.Runner.MigrationRunner|=> 1.8788656s
+2025-03-30 05:59:37.1|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:39.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:39.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:39.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:39.4|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:39.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1623795s
+2025-03-30 05:59:39.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:39.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.165183s
+2025-03-30 05:59:53.2|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:7878
+2025-03-30 06:00:03.2|Info|CommandExecutor|Starting 2 threads for tasks.
+2025-03-30 06:00:05.9|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 06:00:05.9|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 06:00:05.9|Info|Microsoft.Hosting.Lifetime|Content root path: /app/radarr/bin
+2025-03-30 06:00:08.1|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 06:00:43.7|Info|BackupService|Starting Backup
+2025-03-30 06:00:44.7|Info|HousekeepingService|Running housecleaning tasks
+2025-03-30 06:00:48.0|Info|RssSyncService|Starting RSS Sync
+2025-03-30 06:00:48.3|Info|Database|Vacuuming Log database
+2025-03-30 06:00:48.6|Info|Database|Log database compressed
+2025-03-30 06:00:48.6|Info|Database|Vacuuming Main database
+2025-03-30 06:00:48.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 06:00:49.2|Info|DownloadDecisionMaker|No results found
+2025-03-30 06:00:49.3|Info|Database|Main database compressed
+2025-03-30 06:00:49.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 06:00:50.2|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.

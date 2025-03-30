@@ -5497,3 +5497,48 @@
 2025-03-28 07:19:28.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-28 07:19:28.6|Info|DownloadDecisionMaker|No results found
 2025-03-28 07:19:28.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 07:34:28.7|Info|RssSyncService|Starting RSS Sync
+2025-03-28 07:34:28.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 07:34:28.7|Info|DownloadDecisionMaker|No results found
+2025-03-28 07:34:28.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-28 07:49:28.7|Info|RssSyncService|Starting RSS Sync
+2025-03-28 07:49:28.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-28 07:49:28.7|Info|DownloadDecisionMaker|No results found
+2025-03-28 07:49:28.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 05:58:58.3|Info|Bootstrap|Starting Sonarr - /app/sonarr/bin/Sonarr - Version 4.0.14.2939
+2025-03-30 05:59:00.2|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:05.1|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:23.0|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 05:59:31.6|Info|MigrationController|*** Migrating data source=/config/sonarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:33.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:34.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:34.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:36.4|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1985771s
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:36.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.2773887s
+2025-03-30 05:59:39.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:40.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:40.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:40.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:40.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0592321s
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:40.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0915683s
+2025-03-30 05:59:56.9|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8989
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 06:00:06.1|Info|Microsoft.Hosting.Lifetime|Content root path: /app/sonarr/bin
+2025-03-30 06:00:08.0|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 06:00:39.5|Info|RssSyncService|Starting RSS Sync
+2025-03-30 06:00:42.3|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-03-30 06:00:41.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 06:00:43.6|Info|DownloadDecisionMaker|No results found
+2025-03-30 06:00:44.1|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 06:00:44.5|Info|SceneMappingService|Updating Scene mappings
+2025-03-30 06:00:45.5|Info|BackupService|Starting Backup
+2025-03-30 06:00:50.2|Info|HousekeepingService|Running housecleaning tasks
+2025-03-30 06:00:56.1|Info|Database|Vacuuming Log database
+2025-03-30 06:00:56.1|Info|Database|Log database compressed
+2025-03-30 06:00:56.1|Info|Database|Vacuuming Main database
+2025-03-30 06:00:56.9|Info|Database|Main database compressed

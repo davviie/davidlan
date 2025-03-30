@@ -770,3 +770,91 @@
 2025-03-28 06:48:50.4|Info|Database|Vacuuming Main database
 2025-03-28 06:48:50.6|Info|Database|Main database compressed
 2025-03-28 06:48:51.5|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 05:59:28.8|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-30 05:59:29.2|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-30 05:59:29.3|Debug|ProcessProvider| - [141] Prowlarr
+2025-03-30 05:59:31.1|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:32.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:33.5|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:33.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:35.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:35.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.036763s
+2025-03-30 05:59:35.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:35.7|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1405639s
+2025-03-30 05:59:37.4|Debug|MigrationController|Took: 00:00:06.2312621
+2025-03-30 05:59:37.5|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:38.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:38.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:38.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:38.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:38.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2489115s
+2025-03-30 05:59:38.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:38.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2707138s
+2025-03-30 05:59:39.1|Debug|MigrationController|Took: 00:00:01.5470156
+2025-03-30 05:59:51.4|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-30 05:59:56.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-30 05:59:57.0|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-30 05:59:57.4|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-30 06:00:01.3|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-30 06:00:05.4|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 06:00:14.8|Debug|HttpClient|Downloading Completed. took 12s
+2025-03-30 06:00:17.8|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 06:00:17.8|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-30 06:00:17.9|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-30 06:00:17.9|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-30 06:00:18.0|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-30 06:00:31.9|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-30 06:00:32.3|Info|HousekeepingService|Running housecleaning tasks
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-30 06:00:32.6|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-30 06:00:32.6|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-03-30 06:00:32.7|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-03-30 06:00:32.7|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:32.9|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:32.9|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-30 06:00:33.1|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-30 06:00:33.1|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-30 06:00:34.2|Debug|HttpClient|Downloading Completed. took 2s
+2025-03-30 06:00:37.5|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 06:00:38.3|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-30 06:00:38.3|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-30 06:00:38.6|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-30 06:00:38.6|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-03-30 06:00:38.7|Info|HistoryService|Removing items older than 30 days from history
+2025-03-30 06:00:38.7|Debug|HistoryService|History has been cleaned up.
+2025-03-30 06:00:38.7|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-03-30 06:00:38.7|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:38.8|Debug|InstallUpdateService|Checking for updates
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-30 06:00:38.9|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-30 06:00:38.9|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-30 06:00:39.0|Info|BackupService|Starting Backup
+2025-03-30 06:00:39.2|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-30 06:00:39.5|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-30 06:00:39.5|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-30 06:00:39.8|Info|Database|Vacuuming Log database
+2025-03-30 06:00:39.8|Info|Database|Log database compressed
+2025-03-30 06:00:39.9|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-30 06:00:40.0|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-30 06:00:40.0|Debug|InstallUpdateService|No update available
+2025-03-30 06:00:40.0|Info|Database|Vacuuming Main database
+2025-03-30 06:00:40.1|Debug|BackupService|Cleaning up backup files older than 28 days
+2025-03-30 06:00:40.2|Debug|BackupService|Finished cleaning up old backup files
+2025-03-30 06:00:40.2|Debug|BackupService|Backing up config.xml
+2025-03-30 06:00:40.3|Info|Database|Main database compressed
+2025-03-30 06:00:40.4|Debug|DiskTransferService|Copy [/config/config.xml] > [/run/prowlarr-temp/prowlarr_backup/config.xml]
+2025-03-30 06:00:41.5|Debug|BackupService|Backing up database
+2025-03-30 06:00:41.9|Debug|BackupService|Creating backup zip
+2025-03-30 06:00:42.0|Debug|ArchiveService|Creating archive /config/Backups/scheduled/prowlarr_backup_v1.32.2.4987_2025.03.30_06.00.39.zip
+2025-03-30 06:00:43.5|Debug|BackupService|Backup zip created

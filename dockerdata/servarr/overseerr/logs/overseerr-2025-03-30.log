@@ -1,0 +1,7 @@
+2025-03-30T06:00:22.425Z [info]: Commit Tag: v1.33.2 
+2025-03-30T06:00:35.830Z [info]: Starting Overseerr version 1.33.2 
+2025-03-30T06:01:04.317Z [info][Notifications]: Registered notification agents 
+2025-03-30T06:01:04.471Z [info][Jobs]: Scheduled jobs loaded 
+2025-03-30T06:01:05.717Z [info][Server]: Server ready on port 5055 
+2025-03-30T06:02:00.030Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:03:00.021Z [debug][Jobs]: Starting scheduled job: Download Sync 

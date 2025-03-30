@@ -1,0 +1,7 @@
+{"level":"info","message":"Commit Tag: v1.33.2","timestamp":"2025-03-30T06:00:22.425Z"}
+{"level":"info","message":"Starting Overseerr version 1.33.2","timestamp":"2025-03-30T06:00:35.830Z"}
+{"label":"Notifications","level":"info","message":"Registered notification agents","timestamp":"2025-03-30T06:01:04.317Z"}
+{"label":"Jobs","level":"info","message":"Scheduled jobs loaded","timestamp":"2025-03-30T06:01:04.471Z"}
+{"label":"Server","level":"info","message":"Server ready on port 5055","timestamp":"2025-03-30T06:01:05.717Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-30T06:02:00.030Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-03-30T06:03:00.021Z"}
