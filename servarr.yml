@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   overseerr:
@@ -12,6 +13,12 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/overseerr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   sonarr:
     image: linuxserver/sonarr:latest
@@ -27,6 +34,12 @@ services:
       - ./dockerdata/servarr/sonarr:/config
       - ./media/TV:/tv
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   radarr:
     image: linuxserver/radarr:latest
@@ -42,6 +55,12 @@ services:
       - ./dockerdata/servarr/radarr:/config
       - ./media/movie:/movies
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   prowlarr:
     image: linuxserver/prowlarr:latest
@@ -55,6 +74,12 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./dockerdata/servarr/prowlarr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   mylar:
     image: linuxserver/mylar3:latest
@@ -70,6 +95,12 @@ services:
       - ./dockerdata/servarr/mylar:/config
       - ./media/comics:/comics
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   bazarr:
     image: linuxserver/bazarr:latest
@@ -85,6 +116,12 @@ services:
       - ./dockerdata/servarr/bazarr:/config
       - ./media/TV Shows:/tv
       - ./media/movie:/movies
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   lazylibrarian:
     image: linuxserver/lazylibrarian:latest
@@ -100,6 +137,12 @@ services:
       - ./dockerdata/servarr/lazylibrarian:/config
       - ./media/books:/books
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   lidarr:
     image: linuxserver/lidarr:latest
@@ -115,6 +158,12 @@ services:
       - ./dockerdata/servarr/lidarr:/config
       - ./media/music:/music
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
   whisparr:
     image: hotio/whisparr:latest
@@ -130,4 +179,10 @@ services:
       - ./dockerdata/servarr/whisparr:/config
       - ./media/adult:/adult
       - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
