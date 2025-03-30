@@ -15,7 +15,7 @@ services:
       - ./dockerdata/servarr/overseerr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -36,7 +36,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -57,7 +57,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -76,7 +76,7 @@ services:
       - ./dockerdata/servarr/prowlarr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -97,7 +97,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -118,7 +118,7 @@ services:
       - ./media/movie:/movies
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -139,7 +139,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -160,7 +160,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -181,7 +181,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"

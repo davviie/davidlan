@@ -480,3 +480,17 @@
 30-Mar-2025 09:00:25 - INFO    :: mylar.start.600 : MAIN : [WEEKLY] Checking for existance of Weekly Comic listing...
 30-Mar-2025 09:00:25 - INFO    :: mylar.start.659 : MAIN : Firing up the Background Schedulers now....
 30-Mar-2025 09:00:25 - INFO    :: mylar.start.664 : MAIN : Background Schedulers successfully started...
+30-Mar-2025 10:00:05 - INFO    :: mylar.run.27 : ThreadPoolExecutor-0_0 : [WEEKLY] Checking Weekly Pull-list for new releases/updates
+30-Mar-2025 10:00:05 - INFO    :: mylar.pullit.43 : ThreadPoolExecutor-0_0 : Weekly pull list present - checking if it's up-to-date..
+30-Mar-2025 10:00:05 - INFO    :: mylar.pullit.72 : ThreadPoolExecutor-0_0 : [PULL-LIST] Populating & Loading pull-list data directly from alternate website
+30-Mar-2025 10:00:05 - INFO    :: mylar.pullit.98 : ThreadPoolExecutor-0_0 : [PULL-LIST] Populating & Loading pull-list data directly from alternate website for specific week of 12, 2025
+30-Mar-2025 10:00:05 - INFO    :: mylar.locg.79 : ThreadPoolExecutor-0_0 : [WEEKLY-PULL] There are 116 issues for week 12, 2025
+30-Mar-2025 10:00:05 - INFO    :: mylar.locg.114 : ThreadPoolExecutor-0_0 : Re-creating pullist to ensure everything's fresh.
+30-Mar-2025 10:00:06 - INFO    :: mylar.locg.149 : ThreadPoolExecutor-0_0 : [PULL-LIST] Successfully populated pull-list into Mylar for week 12 of 2025
+30-Mar-2025 10:00:06 - INFO    :: mylar.pullit.106 : ThreadPoolExecutor-0_0 : [PULL-LIST] Weekly Pull List successfully loaded with 116 issues.
+30-Mar-2025 10:00:08 - INFO    :: mylar.pullit.98 : ThreadPoolExecutor-0_0 : [PULL-LIST] Populating & Loading pull-list data directly from alternate website for specific week of 13, 2025
+30-Mar-2025 10:00:08 - INFO    :: mylar.locg.79 : ThreadPoolExecutor-0_0 : [WEEKLY-PULL] There are 142 issues for week 13, 2025
+30-Mar-2025 10:00:08 - INFO    :: mylar.locg.114 : ThreadPoolExecutor-0_0 : Re-creating pullist to ensure everything's fresh.
+30-Mar-2025 10:00:09 - INFO    :: mylar.locg.149 : ThreadPoolExecutor-0_0 : [PULL-LIST] Successfully populated pull-list into Mylar for week 13 of 2025
+30-Mar-2025 10:00:09 - INFO    :: mylar.pullit.106 : ThreadPoolExecutor-0_0 : [PULL-LIST] Weekly Pull List successfully loaded with 142 issues.
+30-Mar-2025 10:00:09 - INFO    :: mylar.future_check.1648 : ThreadPoolExecutor-0_0 : No series have been marked as being on auto-watch.

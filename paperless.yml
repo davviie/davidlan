@@ -8,7 +8,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      PAPERLESS_URL: "https://paperless.davidlan.local"
+      PAPERLESS_URL: "https://paperless.${DOMAIN}"
       PAPERLESS_ADMIN_USER: "davidlan"
       PAPERLESS_ADMIN_PASSWORD: "your_secure_password"
       PAPERLESS_ADMIN_EMAIL: "mail@davidlan.xyz"
@@ -27,7 +27,7 @@ services:
       - redis
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"

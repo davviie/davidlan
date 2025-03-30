@@ -23,7 +23,7 @@ services:
       - "./traefik/letsencrypt:/letsencrypt"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.davidlan.local`)" # Replace with your domain
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)" # Replace with your domain
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls=true"
