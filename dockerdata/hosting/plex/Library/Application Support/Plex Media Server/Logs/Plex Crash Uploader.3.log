@@ -1,4 +1,4 @@
-Mar 27, 2025 01:23:07.220 [131098501958456] INFO - Crash Uploader - Platform: Linux ServerUUID: 86237ceaf0dd4f14af393347c1370a88ca6e5a21 UserId: NOUSERID Version: 1.41.5.9522-a96edc606
-Mar 27, 2025 01:23:07.220 [131098501958456] INFO - Pre-processed minidump directory: /config/Library/Application Support/Plex Media Server/Crash Reports/1.41.5.9522-a96edc606
-Mar 27, 2025 01:23:07.221 [131098501958456] INFO - Post-processed minidump directory: /tmp
-Mar 27, 2025 01:23:07.230 [131098529871880] INFO - Crash Uploader - Processing Complete.
+Mar 27, 2025 23:42:33.750 [136098303269688] INFO - Crash Uploader - Platform: Linux ServerUUID: 86237ceaf0dd4f14af393347c1370a88ca6e5a21 UserId: NOUSERID Version: 1.41.5.9522-a96edc606
+Mar 27, 2025 23:42:33.750 [136098303269688] INFO - Pre-processed minidump directory: /config/Library/Application Support/Plex Media Server/Crash Reports/1.41.5.9522-a96edc606
+Mar 27, 2025 23:42:33.750 [136098303269688] INFO - Post-processed minidump directory: /tmp
+Mar 27, 2025 23:42:33.770 [136098331183112] INFO - Crash Uploader - Processing Complete.

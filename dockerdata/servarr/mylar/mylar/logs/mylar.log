@@ -437,3 +437,46 @@
 30-Mar-2025 06:00:05 - INFO    :: mylar.locg.149 : ThreadPoolExecutor-0_0 : [PULL-LIST] Successfully populated pull-list into Mylar for week 13 of 2025
 30-Mar-2025 06:00:05 - INFO    :: mylar.pullit.106 : ThreadPoolExecutor-0_0 : [PULL-LIST] Weekly Pull List successfully loaded with 142 issues.
 30-Mar-2025 06:00:05 - INFO    :: mylar.future_check.1648 : ThreadPoolExecutor-0_0 : No series have been marked as being on auto-watch.
+30-Mar-2025 08:58:40 - INFO    :: mylar.main.580 : MAIN : Received signal: shutdown
+30-Mar-2025 08:58:43 - INFO    :: mylar.halt.1638 : MAIN : Shutting down the background schedulers...
+30-Mar-2025 08:58:45 - INFO    :: mylar.search_queue.3487 : SEARCH-QUEUE : [SEARCH-QUEUE] Cleaning up workers for shutdown
+30-Mar-2025 08:59:54 - INFO    :: mylar.configure.1290 : MainThread : [DOCKER-AWARE] Docker installation detected.
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1293 : MainThread : [DOCKER-AWARE] Setting default comic location path to /comics
+30-Mar-2025 08:59:55 - ERROR   :: mylar.configure.1309 : MainThread : No User Comicvine API key specified. I will not work very well due to api limits - http://api.comicvine.com/ and get your own free key.
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1362 : MainThread : Ignored Publishers: []
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1389 : MainThread : [MASS_PUBLISHERS] Auto-add for weekly publishers set to: []
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1413 : MainThread : [PROBLEM_DATES] Problem dates loaded: ['2021-07-14 04:00:34']
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1427 : MainThread : [COMICTAGGER] Version detected: 1.3.5
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1565 : MainThread : [DDL PRIORITY ORDER] DDL will attempt to use the following 3rd party sites in this specific download order: ['mega', 'mediafire', 'pixeldrain', 'main']
+30-Mar-2025 08:59:55 - INFO    :: mylar.configure.1574 : MainThread : [Search Tier Cutoff] Setting Tier-1 cutoff point to 14 days
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.264 : MainThread : Checking to see if the database has all tables....
+30-Mar-2025 08:59:55 - INFO    :: mylar.dbcheck.1589 : MainThread : Ensuring DB integrity - Removing all Erroneous Comics (ie. named None)
+30-Mar-2025 08:59:55 - INFO    :: mylar.dbcheck.1599 : MainThread : Correcting Null entries that make the main page break on startup.
+30-Mar-2025 08:59:55 - INFO    :: mylar.dbcheck.1610 : MainThread : [<class 'int'>]oldconfig_version: 14
+30-Mar-2025 08:59:55 - INFO    :: mylar.check_failed_update.172 : MainThread : checked is None
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.296 : MainThread : Successfully discovered local IP and locking it in as : 172.18.0.15
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.337 : MainThread : [DDL] External server configuration available to be loaded: False
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.377 : MainThread : [IMPRINT_LOADS] Loading Publisher imprints data from local file.
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.403 : MainThread : [IMPRINT_LOADS] Successfully loaded imprints for 6 publishers
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.405 : MainThread : Remapping the sorting to allow for new additions.
+30-Mar-2025 08:59:55 - INFO    :: mylar.ComicSort.781 : MainThread : Sucessfully ordered -1 series in your watchlist.
+30-Mar-2025 08:59:55 - INFO    :: mylar.validateAndCreateDirectory.1895 : MainThread : [DIRECTORY-CHECK] Found DATA directory: /config/mylar
+30-Mar-2025 08:59:55 - INFO    :: mylar.initialize.73 : MAIN : Starting Mylar on http://0.0.0.0:8090/
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.188 : MAIN : [DOCKER-AWARE] Docker installation detected.
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.209 : MAIN : i:  (HEAD -> master, tag: v0.8.2)
+
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.220 : MAIN : [LAST_RELEASE] Branch: master
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.225 : MAIN : [LAST_RELEASE] Version: v0.8.2
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.209 : MAIN : i: 1a8c6581c8fd9b8873b7bdd920e9b7d8f59a8f42
+
+30-Mar-2025 08:59:56 - INFO    :: mylar.getVersion.231 : MAIN : [LAST_RELEASE] Commit: 1a8c6581c8fd9b8873b7bdd920e9b7d8f59a8f42
+30-Mar-2025 08:59:58 - INFO    :: mylar.getVersion.266 : MAIN : Branch detected & set to : master
+30-Mar-2025 08:59:59 - INFO    :: mylar.versionload.469 : MAIN : Version information: master [1a8c6581c8fd9b8873b7bdd920e9b7d8f59a8f42]
+30-Mar-2025 09:00:24 - INFO    :: mylar.release_messages.276 : MAIN : release_messages: None
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.681 : MAIN : [SEARCH-QUEUE] Attempting to background load the search queue....
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.685 : MAIN : [SEARCH-QUEUE] Successfully started the Search Queuer...
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.681 : MAIN : [POST-PROCESS-QUEUE] Post Process queue enabled & monitoring for api requests....
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.685 : MAIN : [POST-PROCESS-QUEUE] Succesfully started Post-Processing Queuer....
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.600 : MAIN : [WEEKLY] Checking for existance of Weekly Comic listing...
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.659 : MAIN : Firing up the Background Schedulers now....
+30-Mar-2025 09:00:25 - INFO    :: mylar.start.664 : MAIN : Background Schedulers successfully started...

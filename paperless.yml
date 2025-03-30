@@ -4,7 +4,7 @@ services:
     container_name: paperless
     restart: unless-stopped
     ports:
-      - "5000:8000"
+      - "5000:5000"
     environment:
       PAPERLESS_URL: "https://paperless.davidlan.xyz"
       PAPERLESS_ADMIN_USER: "davidlan"

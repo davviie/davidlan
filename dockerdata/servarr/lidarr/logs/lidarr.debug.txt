@@ -1530,3 +1530,113 @@
 2025-03-30 08:46:15.5|Info|DownloadDecisionMaker|No results found
 2025-03-30 08:46:15.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 08:46:15.5|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:49:15.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:54:15.6|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:58:38.4|Info|Microsoft.Hosting.Lifetime|Application is shutting down...
+2025-03-30 08:58:40.9|Info|ConsoleApp|Exiting main.
+2025-03-30 08:59:32.4|Debug|ProcessProvider|Found 0 processes with the name: Lidarr.Console
+2025-03-30 08:59:32.5|Debug|ProcessProvider|Found 1 processes with the name: Lidarr
+2025-03-30 08:59:32.5|Debug|ProcessProvider| - [144] Lidarr
+2025-03-30 08:59:34.3|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 08:59:35.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 08:59:36.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 08:59:36.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 08:59:38.1|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 08:59:38.2|Info|FluentMigrator.Runner.MigrationRunner|=> 1.9908793s
+2025-03-30 08:59:38.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 08:59:38.2|Info|FluentMigrator.Runner.MigrationRunner|=> 2.0164124s
+2025-03-30 08:59:38.8|Debug|MigrationController|Took: 00:00:04.4903361
+2025-03-30 08:59:38.9|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 08:59:38.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 08:59:38.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 08:59:38.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 08:59:39.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 08:59:39.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.3091939s
+2025-03-30 08:59:39.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 08:59:39.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.3410941s
+2025-03-30 08:59:39.5|Debug|MigrationController|Took: 00:00:00.6511536
+2025-03-30 08:59:47.1|Debug|FingerprintingService|fpcalc version: 1.5.1
+2025-03-30 08:59:57.6|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-30 09:00:05.0|Debug|Lidarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-30 09:00:07.6|Debug|QualityDefinitionService|Setting up default quality config
+2025-03-30 09:00:11.4|Debug|NotificationFactory|Initializing Providers. Count 25
+2025-03-30 09:00:15.7|Debug|IndexerFactory|Initializing Providers. Count 10
+2025-03-30 09:00:15.8|Debug|ImportListFactory|Initializing Providers. Count 10
+2025-03-30 09:00:15.9|Debug|MetadataFactory|Initializing Providers. Count 3
+2025-03-30 09:00:16.4|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-30 09:00:16.7|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 09:00:17.5|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 09:00:17.5|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-30 09:00:24.6|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 09:00:25.8|Error|ServerSideNotificationService|Failed to retrieve notifications
+
+[v2.9.6.4552] System.Net.Http.HttpRequestException: Resource temporarily unavailable (lidarr.servarr.com:443)
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.attemptConnection(AddressFamily addressFamily, SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 329
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.onConnect(SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 315
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp2ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp2ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.AuthenticationHelper.SendWithAuthAsync(HttpRequestMessage request, Uri authUri, Boolean async, ICredentials credentials, Boolean preAuthenticate, Boolean isProxyAuth, Boolean doRequestAuth, HttpConnectionPool pool, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.GetResponseAsync(HttpRequest request, CookieContainer cookies) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 115
+   at NzbDrone.Common.Http.HttpClient.ExecuteRequestAsync(HttpRequest request, CookieContainer cookieContainer) in ./Lidarr.Common/Http/HttpClient.cs:line 157
+   at NzbDrone.Common.Http.HttpClient.ExecuteAsync(HttpRequest request) in ./Lidarr.Common/Http/HttpClient.cs:line 70
+   at NzbDrone.Common.Http.HttpClient.Execute(HttpRequest request) in ./Lidarr.Common/Http/HttpClient.cs:line 128
+   at NzbDrone.Core.HealthCheck.ServerSideNotificationService.RetrieveServerChecks() in ./Lidarr.Core/HealthCheck/ServerSideNotificationService.cs:line 61
+
+
+2025-03-30 09:00:37.7|Error|TaskExtensions|Task Error
+
+[v2.9.6.4552] System.Net.Http.HttpRequestException: Resource temporarily unavailable (lidarr.servarr.com:443)
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.attemptConnection(AddressFamily addressFamily, SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 329
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.onConnect(SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 315
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp2ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp2ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.AuthenticationHelper.SendWithAuthAsync(HttpRequestMessage request, Uri authUri, Boolean async, ICredentials credentials, Boolean preAuthenticate, Boolean isProxyAuth, Boolean doRequestAuth, HttpConnectionPool pool, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.GetResponseAsync(HttpRequest request, CookieContainer cookies) in ./Lidarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 115
+   at NzbDrone.Common.Http.HttpClient.ExecuteRequestAsync(HttpRequest request, CookieContainer cookieContainer) in ./Lidarr.Common/Http/HttpClient.cs:line 157
+   at NzbDrone.Common.Http.HttpClient.ExecuteAsync(HttpRequest request) in ./Lidarr.Common/Http/HttpClient.cs:line 70
+   at NzbDrone.Common.Http.HttpClient.Execute(HttpRequest request) in ./Lidarr.Common/Http/HttpClient.cs:line 128
+   at NzbDrone.Core.HealthCheck.Checks.SystemTimeCheck.Check() in ./Lidarr.Core/HealthCheck/Checks/SystemTimeCheck.cs:line 30
+   at NzbDrone.Core.HealthCheck.HealthCheckService.<ProcessHealthChecks>b__15_0(IProvideHealthCheck c) in ./Lidarr.Core/HealthCheck/HealthCheckService.cs:line 98
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at NzbDrone.Core.HealthCheck.HealthCheckService.ProcessHealthChecks() in ./Lidarr.Core/HealthCheck/HealthCheckService.cs:line 85
+   at NzbDrone.Core.HealthCheck.HealthCheckService.HandleAsync(ApplicationStartedEvent message) in ./Lidarr.Core/HealthCheck/HealthCheckService.cs:line 162
+   at NzbDrone.Core.Messaging.Events.EventAggregator.<>c__DisplayClass6_2`1.<PublishEvent>b__2() in ./Lidarr.Core/Messaging/Events/EventAggregator.cs:line 122
+   at System.Threading.Tasks.Task.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__272_0(Object obj)
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+
+2025-03-30 09:00:44.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 09:01:45.4|Info|RssSyncService|Starting RSS Sync
+2025-03-30 09:01:45.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 09:01:45.6|Info|DownloadDecisionMaker|No results found
+2025-03-30 09:01:45.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 09:01:45.6|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 09:05:45.6|Debug|ImportListSyncService|No import lists with automatic add enabled

@@ -5582,3 +5582,91 @@
 2025-03-30 08:31:45.9|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-30 08:31:45.9|Info|DownloadDecisionMaker|No results found
 2025-03-30 08:31:45.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:46:46.0|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:46:46.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:46:46.0|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:46:46.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:58:38.6|Info|Microsoft.Hosting.Lifetime|Application is shutting down...
+2025-03-30 08:58:40.4|Info|ConsoleApp|Exiting main.
+2025-03-30 08:59:09.5|Info|Bootstrap|Starting Sonarr - /app/sonarr/bin/Sonarr - Version 4.0.14.2939
+2025-03-30 08:59:10.4|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 08:59:12.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 08:59:24.3|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-30 08:59:31.4|Info|MigrationController|*** Migrating data source=/config/sonarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 08:59:32.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 08:59:32.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 08:59:32.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 08:59:35.9|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 08:59:36.0|Info|FluentMigrator.Runner.MigrationRunner|=> 3.0801418s
+2025-03-30 08:59:36.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 08:59:36.0|Info|FluentMigrator.Runner.MigrationRunner|=> 3.0961069s
+2025-03-30 08:59:37.4|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 08:59:38.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 08:59:38.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 08:59:38.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 08:59:38.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 08:59:38.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.324534s
+2025-03-30 08:59:38.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 08:59:38.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.3279178s
+2025-03-30 09:00:02.9|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8989
+2025-03-30 09:00:21.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 09:00:21.4|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 09:00:21.5|Info|Microsoft.Hosting.Lifetime|Content root path: /app/sonarr/bin
+2025-03-30 09:00:26.7|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 09:00:27.8|Error|ServerSideNotificationService|Failed to retrieve notifications
+
+[v4.0.14.2939] System.Net.Http.HttpRequestException: Resource temporarily unavailable (services.sonarr.tv:443)
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.attemptConnection(AddressFamily addressFamily, SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 327
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.onConnect(SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 313
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp2ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp2ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.AuthenticationHelper.SendWithAuthAsync(HttpRequestMessage request, Uri authUri, Boolean async, ICredentials credentials, Boolean preAuthenticate, Boolean isProxyAuth, Boolean doRequestAuth, HttpConnectionPool pool, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.GetResponseAsync(HttpRequest request, CookieContainer cookies) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 115
+   at NzbDrone.Common.Http.HttpClient.ExecuteRequestAsync(HttpRequest request, CookieContainer cookieContainer) in ./Sonarr.Common/Http/HttpClient.cs:line 157
+   at NzbDrone.Common.Http.HttpClient.ExecuteAsync(HttpRequest request) in ./Sonarr.Common/Http/HttpClient.cs:line 70
+   at NzbDrone.Common.Http.HttpClient.Execute(HttpRequest request) in ./Sonarr.Common/Http/HttpClient.cs:line 128
+   at NzbDrone.Core.HealthCheck.ServerSideNotificationService.Check() in ./Sonarr.Core/HealthCheck/ServerSideNotificationService.cs:line 45
+
+2025-03-30 09:00:38.4|Warn|SystemTimeCheck|Unable to verify system time
+
+[v4.0.14.2939] System.Net.Http.HttpRequestException: Resource temporarily unavailable (services.sonarr.tv:443)
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.attemptConnection(AddressFamily addressFamily, SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 327
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.onConnect(SocketsHttpConnectionContext context, CancellationToken cancellationToken) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 313
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp2ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp2ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.AuthenticationHelper.SendWithAuthAsync(HttpRequestMessage request, Uri authUri, Boolean async, ICredentials credentials, Boolean preAuthenticate, Boolean isProxyAuth, Boolean doRequestAuth, HttpConnectionPool pool, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   at NzbDrone.Common.Http.Dispatchers.ManagedHttpDispatcher.GetResponseAsync(HttpRequest request, CookieContainer cookies) in ./Sonarr.Common/Http/Dispatchers/ManagedHttpDispatcher.cs:line 115
+   at NzbDrone.Common.Http.HttpClient.ExecuteRequestAsync(HttpRequest request, CookieContainer cookieContainer) in ./Sonarr.Common/Http/HttpClient.cs:line 157
+   at NzbDrone.Common.Http.HttpClient.ExecuteAsync(HttpRequest request) in ./Sonarr.Common/Http/HttpClient.cs:line 70
+   at NzbDrone.Common.Http.HttpClient.Execute(HttpRequest request) in ./Sonarr.Common/Http/HttpClient.cs:line 128
+   at NzbDrone.Core.HealthCheck.Checks.SystemTimeCheck.Check() in ./Sonarr.Core/HealthCheck/Checks/SystemTimeCheck.cs:line 32
+
+2025-03-30 09:01:19.4|Info|SceneMappingService|Updating Scene mappings
+2025-03-30 09:01:50.2|Info|RssSyncService|Starting RSS Sync
+2025-03-30 09:01:50.5|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 09:01:50.5|Info|DownloadDecisionMaker|No results found
+2025-03-30 09:01:50.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0

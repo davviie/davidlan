@@ -39,4 +39,4 @@ services:
   #    - "traefik.http.routers.backend.entrypoints=websecure"
   #    - "traefik.http.routers.backend.tls=true"
   #    - "traefik.http.routers.backend.tls.certresolver=myresolver"
-  #    - "traefik.http.services.backend.loadbalancer.server.port=8080" # Replace with your backend port
+  #    - "traefik.http.services.backend.loadbalancer.server.port=8080" # Replace with your backend port  docker network ls  docker network ls
