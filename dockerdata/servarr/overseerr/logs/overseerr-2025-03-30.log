@@ -5,3 +5,26 @@
 2025-03-30T06:01:05.717Z [info][Server]: Server ready on port 5055 
 2025-03-30T06:02:00.030Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-03-30T06:03:00.021Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:04:00.010Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:05:00.027Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:05:00.033Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-30T06:05:00.035Z [info][Plex Scan]: Scan starting {"sessionId":"df660c20-0221-4c82-bf8f-0a65d6f6c5bf"}
+2025-03-30T06:05:00.043Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-30T06:06:00.028Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:07:00.036Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:08:00.027Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:09:00.007Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:10:00.023Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:10:00.030Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-30T06:10:00.031Z [info][Plex Scan]: Scan starting {"sessionId":"5134b038-1e2e-4280-a9b3-e8edd1880ae2"}
+2025-03-30T06:10:00.035Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-30T06:11:00.027Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:12:00.024Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:13:00.028Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:14:00.020Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:15:00.011Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:15:00.014Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-03-30T06:15:00.014Z [info][Plex Scan]: Scan starting {"sessionId":"647615cd-be35-4a11-a39a-071a8d313e66"}
+2025-03-30T06:15:00.019Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-03-30T06:16:00.027Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-03-30T06:17:00.017Z [debug][Jobs]: Starting scheduled job: Download Sync 

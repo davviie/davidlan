@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Set the working directory
-REPO_DIR="/davviie/ubuntu-server"
+# Dynamically set the working directory to the script's location
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 BRANCH="main"
 REMOTE="origin"
 
@@ -9,8 +9,7 @@ REMOTE="origin"
 cd "$REPO_DIR" || { echo "Repository not found!"; exit 1; }
 
 # Ensure the repository is clean
-git reset --hard
-git clean -fd
+git stash --include-untracked
 
 # Fetch latest changes from remote
 git fetch $REMOTE $BRANCH
