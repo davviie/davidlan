@@ -1679,3 +1679,5 @@
 2025-03-30 10:16:48.5|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 10:16:48.5|Debug|PendingReleaseService|Removing failed releases from pending
 2025-03-30 10:18:18.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:23:18.6|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:28:18.6|Debug|ImportListSyncService|No import lists with automatic add enabled
