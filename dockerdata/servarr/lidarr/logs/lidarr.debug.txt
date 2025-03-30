@@ -1507,3 +1507,20 @@
 2025-03-30 08:01:15.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 08:01:15.0|Debug|PendingReleaseService|Removing failed releases from pending
 2025-03-30 08:01:44.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:06:45.2|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:12:15.3|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:16:15.3|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:16:15.3|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:16:15.3|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:16:15.3|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:16:15.3|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:17:15.3|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:22:15.4|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:27:45.4|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:31:15.4|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:31:15.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:31:15.4|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:31:15.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:31:15.4|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:33:15.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:38:45.5|Debug|ImportListSyncService|No import lists with automatic add enabled

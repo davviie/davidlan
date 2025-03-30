@@ -23,20 +23,20 @@ services:
       - "./traefik/letsencrypt:/letsencrypt"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.example.com`)" # Replace with your domain
+      - "traefik.http.routers.traefik.rule=Host(`traefik.davidlan.xyz`)" # Replace with your domain
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
 
-  backend:
-    build: ./backend # Path to your Golang backend
-    container_name: golang-backend
-    restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`api.example.com`)" # Replace with your domain
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.tls.certresolver=myresolver"
-      - "traefik.http.services.backend.loadbalancer.server.port=8080" # Replace with your backend port
+  #backend:
+  #  build: ./backend # Path to your Golang backend
+  #  container_name: golang-backend
+  #  restart: unless-stopped
+  #  labels:
+  #    - "traefik.enable=true"
+  #    - "traefik.http.routers.backend.rule=Host(`api.example.com`)" # Replace with your domain
+  #    - "traefik.http.routers.backend.entrypoints=websecure"
+  #    - "traefik.http.routers.backend.tls=true"
+  #    - "traefik.http.routers.backend.tls.certresolver=myresolver"
+  #    - "traefik.http.services.backend.loadbalancer.server.port=8080" # Replace with your backend port

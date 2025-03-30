@@ -2435,3 +2435,20 @@
 2025-03-30 08:01:15.6|Info|DownloadDecisionMaker|No results found
 2025-03-30 08:01:15.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 08:01:15.6|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:06:15.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:11:45.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:16:15.8|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:16:15.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:16:15.9|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:16:15.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:16:15.9|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:16:45.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:21:45.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:27:15.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:31:45.9|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:31:45.9|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:31:45.9|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:31:45.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:31:45.9|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:32:15.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 08:37:15.9|Debug|ImportListSyncService|No import lists with automatic add enabled

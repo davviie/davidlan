@@ -2132,3 +2132,15 @@ disk I/O error
 2025-03-30 08:01:17.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 08:01:17.2|Debug|PendingReleaseService|Removing failed releases from pending
 2025-03-30 08:01:47.5|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:06:47.7|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:11:47.8|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:16:47.8|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:21:48.1|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:26:48.1|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:31:18.2|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:31:18.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:31:18.2|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:31:18.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:31:18.2|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 08:31:48.2|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 08:36:48.3|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
