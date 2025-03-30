@@ -1,0 +1,29 @@
+* [33ma170bba[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Resolved merge conflicts
+[31m|[m *   [33mbc9fdaf[m[33m ([m[1;35mrefs/stash[m[33m)[m WIP on main: 87c02c6 Auto-sync: Sun Mar 30 06:17:46 UTC 2025
+[31m|[m[31m/[m[33m|[m[34m\[m  
+[31m|[m [33m|[m * [33me703c93[m untracked files on main: 87c02c6 Auto-sync: Sun Mar 30 06:17:46 UTC 2025
+[31m|[m * [33mc6615cf[m index on main: 87c02c6 Auto-sync: Sun Mar 30 06:17:46 UTC 2025
+[31m|[m[31m/[m  
+* [33m87c02c6[m Auto-sync: Sun Mar 30 06:17:46 UTC 2025
+* [33m06bb26e[m commit message
+* [33m385950c[m wordds
+* [33m490f6a7[m asdf
+* [33m2743b36[m words#
+* [33m7644a08[m 1234
+* [33m4bb5102[m 12
+* [33mee9e89d[m 123
+* [33mc03fc79[m commit
+* [33m61d080d[m traefik commit
+* [33m582b228[m Commit traefik success
+* [33md08888d[m Traefik commit
+* [33m5174f49[m Update Compose files
+*   [33md7fda0d[m Merge branch 'main' of github.com:davviie/davidlan
+[35m|[m[36m\[m  
+[35m|[m * [33m13d87a7[m Ignore runtime data directories
+[35m|[m * [33me99a80e[m Add Paperless-ngx Docker Compose configuration
+[35m|[m * [33med61600[m Add hosts.yml for versioning
+[35m|[m * [33m535c56c[m Add Docker Compose file
+* [36m|[m [33m5366be3[m Initial commit
+* [36m|[m [33m3bb07f5[m Initial Docker Setup
+[36m|[m[36m/[m  
+* [33mb2f83c8[m Initial commit

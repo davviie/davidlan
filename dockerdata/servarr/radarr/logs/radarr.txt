@@ -4584,3 +4584,7 @@ disk I/O error
 2025-03-30 07:31:16.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-30 07:31:16.7|Info|DownloadDecisionMaker|No results found
 2025-03-30 07:31:16.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 08:01:17.1|Info|RssSyncService|Starting RSS Sync
+2025-03-30 08:01:17.1|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 08:01:17.2|Info|DownloadDecisionMaker|No results found
+2025-03-30 08:01:17.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
