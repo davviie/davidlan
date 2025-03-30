@@ -25,8 +25,3 @@
 
   echo "✅ Synchronization complete!"
 }
-
-# Sync each repository sequentially
-for repo in "${REPOS[@]}"; do
-  sync_repo "$repo"
-done
