@@ -1,8 +1,4 @@
 
-
-  # Navigate to the repository directory
-  cd "$repo_dir" || { echo "❌ Failed to enter directory $repo_dir"; return; }
-
   # Synchronize the current Git repository with the remote one
   echo "🔄 Fetching changes from the remote repository..."
   git fetch origin
