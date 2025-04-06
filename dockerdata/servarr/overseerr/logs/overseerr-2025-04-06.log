@@ -11,3 +11,4 @@
 2025-04-06T02:40:00.029Z [info][Plex Scan]: Scan starting {"sessionId":"9be152d9-9e3a-444c-a26b-7a3183ea4c66"}
 2025-04-06T02:40:00.089Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
 2025-04-06T02:41:00.012Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:42:00.008Z [debug][Jobs]: Starting scheduled job: Download Sync 
