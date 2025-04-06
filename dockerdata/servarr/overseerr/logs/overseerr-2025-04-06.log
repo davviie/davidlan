@@ -12,3 +12,4 @@
 2025-04-06T02:40:00.089Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
 2025-04-06T02:41:00.012Z [debug][Jobs]: Starting scheduled job: Download Sync 
 2025-04-06T02:42:00.008Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:43:00.007Z [debug][Jobs]: Starting scheduled job: Download Sync 
