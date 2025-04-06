@@ -1,0 +1,41 @@
+# Ignore Docker-related files and directories
+dockerdata/                  # Ignore the entire dockerdata directory
+*.log                        # Log files
+*.pid                        # PID files
+*.sock                       # Socket files
+
+# Ignore environment files
+.env                         # Environment variables file
+.env.*                       # Environment-specific files (e.g., .env.production)
+
+# Ignore backup or temporary files
+*.bak                        # Backup files
+*.tmp                        # Temporary files
+*.swp                        # Swap files created by editors
+
+# Ignore IDE-specific files
+.vscode/                     # Visual Studio Code settings
+.idea/                       # JetBrains IDE settings
+
+# Ignore system files
+.DS_Store                    # macOS system file
+Thumbs.db                    # Windows system file
+
+# Ignore node_modules if using Node.js
+node_modules/
+
+# Ignore Python virtual environments
+venv/
+
+# Ignore compiled files
+*.pyc                        # Python bytecode
+*.class                      # Java bytecode
+*.o                          # Compiled object files
+*.out                        # Compiled output files
+
+# Ignore build artifacts
+dist/
+build/
+
+# Ignore Traefik-related files
+traefik/letsencrypt/         # Traefik Let's Encrypt data
