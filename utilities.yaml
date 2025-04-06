@@ -31,18 +31,6 @@ services:
     command: tail -f /dev/null # Keeps the container running
     tty: true
 
-  # CasaOS - Personal Cloud OS
-  casaos:
-    image: ixxc/casaos:latest
-    container_name: casaos
-    restart: unless-stopped
-    ports:
-      - "88:80"   # CasaOS Web UI
-      - "444:443" # CasaOS HTTPS
-    volumes:
-      - ./casaos/config:/config
-      - ./casaos/data:/data
-
   # FileZilla - FTP Client
   filezilla:
     image: ghcr.io/linuxserver/filezilla:latest
