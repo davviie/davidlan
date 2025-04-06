@@ -1,0 +1,182 @@
+services:
+  overseerr:
+    image: linuxserver/overseerr:latest
+    container_name: overseerr
+    restart: unless-stopped
+    ports:
+      - "5055:5055"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/overseerr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  sonarr:
+    image: linuxserver/sonarr:latest
+    container_name: sonarr
+    restart: unless-stopped
+    ports:
+      - "8989:8989"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/sonarr:/config
+      - ./media/TV:/tv
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    restart: unless-stopped
+    ports:
+      - "7878:7878"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/radarr:/config
+      - ./media/movie:/movies
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  prowlarr:
+    image: linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: unless-stopped
+    ports:
+      - "9696:9696"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/prowlarr:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  mylar:
+    image: linuxserver/mylar3:latest
+    container_name: mylar
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    environment:
+      - PUID=1000
+      - PGID=1000 - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/mylar:/config
+      - ./media/comics:/comics
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  bazarr:
+    image: linuxserver/bazarr:latest
+    container_name: bazarr
+    restart: unless-stopped
+    ports:
+      - "6767:6767"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/bazarr:/config
+      - ./media/TV Shows:/tv
+      - ./media/movie:/movies
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  lazylibrarian:
+    image: linuxserver/lazylibrarian:latest
+    container_name: lazylibrarian
+    restart: unless-stopped
+    ports:
+      - "5299:5299"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lazylibrarian:/config
+      - ./media/books:/books
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  lidarr:
+    image: linuxserver/lidarr:latest
+    container_name: lidarr
+    restart: unless-stopped
+    ports: 
+    - "8686:8686"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./dockerdata/servarr/lidarr:/config
+      - ./media/music:/music
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+  whisparr:
+    image: hotio/whisparr:latest
+    container_name: whisparr
+    restart: unless-stopped
+    ports:
+      - "6969:6969"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC 
+    volumes:
+      - ./dockerdata/servarr/whisparr:/config
+      - ./media/adult:/adult
+      - ./torrents:/downloads
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
+      - "traefik.http.routers.{{ .Name }}.tls=true"
+      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
