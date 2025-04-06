@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  grocy:
+    image: linuxserver/grocy:latest
+    container_name: grocy
+    restart: unless-stopped
+    ports:
+      - "9283:80"
+    volumes:
+      - ./grocy-data:/config
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Etc/UTC
