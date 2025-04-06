@@ -1,5 +1,7 @@
 # Ignore Docker-related files and directories
 dockerdata/                  # Ignore the entire dockerdata directory
+paperless/                   # Ignore the entire paperless directory
+traefik/                  # Ignore the entire traefik directory
 *.log                        # Log files
 *.pid                        # PID files
 *.sock                       # Socket files
@@ -38,4 +40,5 @@ dist/
 build/
 
 # Ignore Traefik-related files
-traefik/letsencrypt/         # Traefik Let's Encrypt data
+traefik/letsencrypt/         # Traefik Let's Encrypt datatraefik/letsencrypt/acme.json
+traefik/letsencrypt/acme.json

@@ -1,0 +1,48 @@
+2025-04-06 22:51:44.3|Error|TaskExtensions|Task Error
+
+[v1.32.2.4987] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Config
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1142
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1161
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in /_/Dapper/SqlMapper.cs:line 801
+   at NzbDrone.Core.Datastore.SqlMapperExtensions.Query[T](IDatabase db, String sql, Object param) in ./Prowlarr.Core/Datastore/Extensions/SqlMapperExtensions.cs:line 17
+   at NzbDrone.Core.Datastore.BasicRepository`1.Query(SqlBuilder builder) in ./Prowlarr.Core/Datastore/BasicRepository.cs:line 72
+   at NzbDrone.Core.Configuration.ConfigService.EnsureCache() in ./Prowlarr.Core/Configuration/ConfigService.cs:line 269
+   at NzbDrone.Core.Configuration.ConfigService.GetValue(String key, Object defaultValue, Boolean persist)
+   at NzbDrone.Core.Configuration.ConfigService.get_UILanguage() in ./Prowlarr.Core/Configuration/ConfigService.cs:line 142
+   at NzbDrone.Core.Localization.LocalizationService.<GetLanguageIdentifier>b__11_0(LocalizationOption l) in ./Prowlarr.Core/Localization/LocalizationService.cs:line 134
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Func`2 predicate, Boolean& found)
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at NzbDrone.Core.Localization.LocalizationService.GetLanguageIdentifier() in ./Prowlarr.Core/Localization/LocalizationService.cs:line 134
+   at NzbDrone.Core.Localization.LocalizationService.GetLanguageFileName() in ./Prowlarr.Core/Localization/LocalizationService.cs:line 153
+   at NzbDrone.Core.Localization.LocalizationService.GetLocalizedString(String phrase, Dictionary`2 tokens) in ./Prowlarr.Core/Localization/LocalizationService.cs:line 63
+   at NzbDrone.Core.Localization.LocalizationService.GetLocalizedString(String phrase) in ./Prowlarr.Core/Localization/LocalizationService.cs:line 58
+   at NzbDrone.Core.HealthCheck.Checks.IndexerCheck.Check() in ./Prowlarr.Core/HealthCheck/Checks/IndexerCheck.cs:line 30
+   at NzbDrone.Core.HealthCheck.HealthCheckService.<ProcessHealthChecks>b__15_0(IProvideHealthCheck c) in ./Prowlarr.Core/HealthCheck/HealthCheckService.cs:line 97
+   at System.Linq.Enumerable.SelectListIterator`2.ToList()
+   at NzbDrone.Core.HealthCheck.HealthCheckService.ProcessHealthChecks() in ./Prowlarr.Core/HealthCheck/HealthCheckService.cs:line 85
+   at NzbDrone.Core.HealthCheck.HealthCheckService.HandleAsync(IEvent message) in ./Prowlarr.Core/HealthCheck/HealthCheckService.cs:line 187
+   at NzbDrone.Core.Messaging.Events.EventAggregator.<>c__DisplayClass6_1`1.<PublishEvent>b__1() in ./Prowlarr.Core/Messaging/Events/EventAggregator.cs:line 108
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+SQL: 
+==== Begin Query Trace ====
+
+QUERY TEXT:
+SELECT "Config".*
+ FROM "Config"       
+
+PARAMETERS:
+
+==== End Query Trace ====
+
+
+
