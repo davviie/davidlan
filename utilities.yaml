@@ -1,0 +1,115 @@
+version: "3.9"
+
+services:
+  # Portainer - Docker Management UI
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9000:9000" # Portainer Web UI
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./portainer/data:/data
+
+  # Watchtower - Automatic Updates for Containers
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: unless-stopped
+    environment:
+      - WATCHTOWER_CLEANUP=true # Remove old images
+      - WATCHTOWER_POLL_INTERVAL=3600 # Check every hour
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  # Alpine - Lightweight Linux Container
+  alpine:
+    image: alpine:latest
+    container_name: alpine
+    restart: unless-stopped
+    command: tail -f /dev/null # Keeps the container running
+    tty: true
+
+  # CasaOS - Personal Cloud OS
+  casaos:
+    image: linuxserver/casaos:latest
+    container_name: casaos
+    restart: unless-stopped
+    ports:
+      - "88:80"   # CasaOS Web UI
+      - "444:443" # CasaOS HTTPS
+    volumes:
+      - ./casaos/config:/config
+      - ./casaos/data:/data
+
+  # FileZilla - FTP Client
+  filezilla:
+    image: ghcr.io/linuxserver/filezilla:latest
+    container_name: filezilla
+    restart: unless-stopped
+    ports:
+      - "3000:3000" # FileZilla Web UI
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./filezilla/config:/config
+      - ./filezilla/data:/data
+
+  # Netdata - System Monitoring
+  netdata:
+    image: netdata/netdata:latest
+    container_name: netdata
+    restart: unless-stopped
+    ports:
+      - "19999:19999" # Netdata Web UI
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./netdata/config:/etc/netdata
+      - ./netdata/lib:/var/lib/netdata
+      - ./netdata/cache:/var/cache/netdata
+
+  # Nginx - Reverse Proxy
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"  # HTTP
+      - "8443:443" # HTTPS
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
+
+  # Speedtest - Internet Speed Monitoring
+  speedtest:
+    image: ghcr.io/linuxserver/speedtest:latest
+    container_name: speedtest
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    ports:
+      - "8765:8765" # Speedtest Web UI
+    volumes:
+      - ./speedtest/config:/config
+
+  # Uptime Kuma - Monitoring and Status Page
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001" # Uptime Kuma Web UI
+    volumes:
+      - ./uptime-kuma/data:/app/data
