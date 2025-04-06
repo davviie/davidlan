@@ -90,20 +90,6 @@ services:
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/logs:/var/log/nginx
 
-  # Speedtest - Internet Speed Monitoring
-  speedtest:
-    image: ghcr.io/linuxserver/speedtest:latest
-    container_name: speedtest
-    restart: unless-stopped
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    ports:
-      - "8765:8765" # Speedtest Web UI
-    volumes:
-      - ./speedtest/config:/config
-
   # Uptime Kuma - Monitoring and Status Page
   uptime-kuma:
     image: louislam/uptime-kuma:latest
@@ -113,3 +99,44 @@ services:
       - "3001:3001" # Uptime Kuma Web UI
     volumes:
       - ./uptime-kuma/data:/app/data
+
+  # Vaultwarden - Self-Hosted Password Manager
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    ports:
+      - "8083:80" # Vaultwarden Web UI
+    volumes:
+      - ./vaultwarden/data:/data
+    environment:
+      - ADMIN_TOKEN=your_admin_token # Replace with a secure admin token
+      - WEBSOCKET_ENABLED=true
+
+  # Heimdall - Application Dashboard
+  heimdall:
+    image: linuxserver/heimdall:latest
+    container_name: heimdall
+    restart: unless-stopped
+    ports:
+      - "3002:80" # Heimdall Web UI
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./heimdall/config:/config
+
+  # Homepage - Customizable Start Page
+  homepage:
+    image: ghcr.io/benphelps/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    ports:
+      - "3003:3000" # Homepage Web UI
+    volumes:
+      - ./homepage/config:/app/config
+      - ./homepage/data:/app/data
+    environment:
+      - TZ=Etc/UTC
+      - HOMEPAGE_PORT=3000
