@@ -33,7 +33,7 @@ services:
 
   # CasaOS - Personal Cloud OS
   casaos:
-    image: linuxserver/casaos:latest
+    image: ixxc/casaos:latest
     container_name: casaos
     restart: unless-stopped
     ports:
