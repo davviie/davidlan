@@ -6,24 +6,19 @@
     "auditLog": "/config/logs/.f0e4fe86813d1630f95770821cc17ce3b75ba976-audit.json",
     "files": [
         {
-            "date": 1742870964039,
-            "name": "/config/logs/overseerr-2025-03-25.log",
-            "hash": "3632150eb0cfa49a611e9741fb27f7073173214991312ba883a88dbb0b484871"
-        },
-        {
-            "date": 1743038592214,
-            "name": "/config/logs/overseerr-2025-03-27.log",
-            "hash": "08e5671c081d2401d83cf225502ad8c37f5cfdd1b20b1200b68d021e41acac8d"
-        },
-        {
-            "date": 1743120000017,
-            "name": "/config/logs/overseerr-2025-03-28.log",
-            "hash": "bcc18130ea13efdcd64b7d2aa46bd39a27b924c69bf7cbd194aebf3852e137f7"
-        },
-        {
             "date": 1743314348782,
             "name": "/config/logs/overseerr-2025-03-30.log",
             "hash": "0b45f091f8ab9fda873fb0928022c1e1478c464828fa951d9ba08e5993671f3b"
+        },
+        {
+            "date": 1743387994235,
+            "name": "/config/logs/overseerr-2025-03-31.log",
+            "hash": "de9f6ceddb5b4796dd9d3547b6cea0e57c9f650788a700feae130ac93b0144fc"
+        },
+        {
+            "date": 1743906877955,
+            "name": "/config/logs/overseerr-2025-04-06.log",
+            "hash": "50dde6951b8bd4488c13e590b748ca32302b4ad792a56da22072032caca66c51"
         }
     ],
     "hashType": "sha256"

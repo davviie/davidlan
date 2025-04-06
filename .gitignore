@@ -4,6 +4,10 @@ dockerdata/**/cache/         # Cache directories for Docker services
 dockerdata/**/tmp/           # Temporary files for Docker services
 dockerdata/**/config.json    # Sensitive configuration files
 dockerdata/**/secrets/       # Secrets or sensitive data
+media/
+paperless/
+torrents/
+traefik*
 
 # Ignore Docker Compose override files
 docker-compose.override.yml

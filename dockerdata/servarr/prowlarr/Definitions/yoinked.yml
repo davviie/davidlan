@@ -15,6 +15,7 @@ caps:
     - {id: 3, cat: Audio, desc: "Music"}
     - {id: 4, cat: Books, desc: "Book"}
     - {id: 5, cat: Audio/Audiobook, desc: "AudioBook"}
+    - {id: 6, cat: Console, desc: "Games"}
 
   modes:
     search: [q]
@@ -184,4 +185,4 @@ search:
       text: "{{ if .Result._featured }}2{{ else }}{{ .Result.uploadvolumefactor_double_upload }}{{ end }}"
     minimumratio:
       text: 0.5
-# json UNIT3D 9.0.1
+# json UNIT3D 9.0.3

@@ -1,0 +1,13 @@
+{"level":"info","message":"Commit Tag: v1.33.2","timestamp":"2025-04-06T02:35:46.943Z"}
+{"level":"info","message":"Starting Overseerr version 1.33.2","timestamp":"2025-04-06T02:35:54.321Z"}
+{"label":"Notifications","level":"info","message":"Registered notification agents","timestamp":"2025-04-06T02:36:09.455Z"}
+{"label":"Jobs","level":"info","message":"Scheduled jobs loaded","timestamp":"2025-04-06T02:36:09.617Z"}
+{"label":"Server","level":"info","message":"Server ready on port 5055","timestamp":"2025-04-06T02:36:11.070Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-04-06T02:37:00.031Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-04-06T02:38:00.460Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-04-06T02:39:00.279Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-04-06T02:40:00.019Z"}
+{"label":"Jobs","level":"info","message":"Starting scheduled job: Plex Recently Added Scan","timestamp":"2025-04-06T02:40:00.026Z"}
+{"label":"Plex Scan","level":"info","message":"Scan starting","sessionId":"9be152d9-9e3a-444c-a26b-7a3183ea4c66","timestamp":"2025-04-06T02:40:00.029Z"}
+{"label":"Plex Scan","level":"warn","message":"No admin configured. Plex scan skipped.","timestamp":"2025-04-06T02:40:00.089Z"}
+{"label":"Jobs","level":"debug","message":"Starting scheduled job: Download Sync","timestamp":"2025-04-06T02:41:00.012Z"}

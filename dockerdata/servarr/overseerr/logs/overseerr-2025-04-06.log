@@ -1,0 +1,13 @@
+2025-04-06T02:35:46.943Z [info]: Commit Tag: v1.33.2 
+2025-04-06T02:35:54.321Z [info]: Starting Overseerr version 1.33.2 
+2025-04-06T02:36:09.455Z [info][Notifications]: Registered notification agents 
+2025-04-06T02:36:09.617Z [info][Jobs]: Scheduled jobs loaded 
+2025-04-06T02:36:11.070Z [info][Server]: Server ready on port 5055 
+2025-04-06T02:37:00.031Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:38:00.460Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:39:00.279Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:40:00.019Z [debug][Jobs]: Starting scheduled job: Download Sync 
+2025-04-06T02:40:00.026Z [info][Jobs]: Starting scheduled job: Plex Recently Added Scan 
+2025-04-06T02:40:00.029Z [info][Plex Scan]: Scan starting {"sessionId":"9be152d9-9e3a-444c-a26b-7a3183ea4c66"}
+2025-04-06T02:40:00.089Z [warn][Plex Scan]: No admin configured. Plex scan skipped. 
+2025-04-06T02:41:00.012Z [debug][Jobs]: Starting scheduled job: Download Sync 

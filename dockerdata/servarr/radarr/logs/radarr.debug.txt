@@ -2277,3 +2277,187 @@ disk I/O error
 2025-03-30 10:31:51.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 10:31:51.7|Debug|PendingReleaseService|Removing failed releases from pending
 2025-03-30 10:36:21.7|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 10:41:21.8|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 10:46:21.8|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 10:51:21.9|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 10:56:21.9|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 11:01:21.9|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 11:01:51.9|Info|RssSyncService|Starting RSS Sync
+2025-03-30 11:01:52.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 11:01:52.0|Info|DownloadDecisionMaker|No results found
+2025-03-30 11:01:52.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 11:01:52.0|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 11:06:22.0|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 11:11:22.0|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-30 11:16:22.0|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:26:56.7|Debug|ProcessProvider|Found 0 processes with the name: Radarr.Console
+2025-03-31 02:26:58.1|Debug|ProcessProvider|Found 1 processes with the name: Radarr
+2025-03-31 02:26:58.1|Debug|ProcessProvider| - [139] Radarr
+2025-03-31 02:26:59.9|Info|MigrationController|*** Migrating data source=/config/radarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:02.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:03.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:03.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:05.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:05.2|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7231813s
+2025-03-31 02:27:05.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:05.3|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7951447s
+2025-03-31 02:27:07.5|Debug|MigrationController|Took: 00:00:07.6068649
+2025-03-31 02:27:07.7|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:07.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:07.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:08.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0648166s
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.065258s
+2025-03-31 02:27:08.3|Debug|MigrationController|Took: 00:00:00.6110363
+2025-03-31 02:27:24.8|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:7878
+2025-03-31 02:27:29.9|Debug|QualityDefinitionService|Setting up default quality config
+2025-03-31 02:27:31.4|Debug|Radarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-31 02:27:33.8|Debug|NotificationFactory|Initializing Providers. Count 26
+2025-03-31 02:27:34.0|Info|CommandExecutor|Starting 2 threads for tasks.
+2025-03-31 02:27:35.1|Debug|IndexerFactory|Initializing Providers. Count 9
+2025-03-31 02:27:35.1|Debug|ImportListFactory|Initializing Providers. Count 19
+2025-03-31 02:27:35.1|Debug|MetadataFactory|Initializing Providers. Count 5
+2025-03-31 02:27:35.3|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Content root path: /app/radarr/bin
+2025-03-31 02:27:36.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-31 02:28:05.1|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:28:05.1|Info|RssSyncService|Starting RSS Sync
+2025-03-31 02:28:05.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-31 02:28:05.3|Info|DownloadDecisionMaker|No results found
+2025-03-31 02:28:05.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-31 02:28:05.4|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-31 02:28:05.8|Debug|InstallUpdateService|Checking for updates
+2025-03-31 02:28:06.1|Debug|InstallUpdateService|Auto-update not enabled, not installing available update.
+2025-03-31 02:33:05.3|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:38:35.4|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:43:35.4|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:48:35.4|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-03-31 02:53:35.5|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-04-06 02:34:15.5|Debug|ProcessProvider|Found 0 processes with the name: Radarr.Console
+2025-04-06 02:34:15.6|Debug|ProcessProvider|Found 1 processes with the name: Radarr
+2025-04-06 02:34:15.6|Debug|ProcessProvider| - [139] Radarr
+2025-04-06 02:34:16.2|Info|MigrationController|*** Migrating data source=/config/radarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:17.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:18.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:18.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:20.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|=> 2.0732777s
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1790216s
+2025-04-06 02:34:21.0|Debug|MigrationController|Took: 00:00:04.7188274
+2025-04-06 02:34:21.0|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:21.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:21.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:21.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:21.8|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.7991152s
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.8040233s
+2025-04-06 02:34:22.0|Debug|MigrationController|Took: 00:00:01.0307901
+2025-04-06 02:34:35.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:7878
+2025-04-06 02:34:42.6|Debug|Radarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-04-06 02:34:43.0|Debug|QualityDefinitionService|Setting up default quality config
+2025-04-06 02:34:47.5|Debug|NotificationFactory|Initializing Providers. Count 26
+2025-04-06 02:34:47.8|Info|CommandExecutor|Starting 2 threads for tasks.
+2025-04-06 02:34:49.4|Debug|IndexerFactory|Initializing Providers. Count 9
+2025-04-06 02:34:49.4|Debug|ImportListFactory|Initializing Providers. Count 19
+2025-04-06 02:34:49.4|Debug|MetadataFactory|Initializing Providers. Count 5
+2025-04-06 02:34:49.9|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-04-06 02:34:50.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-04-06 02:34:50.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-04-06 02:34:50.1|Info|Microsoft.Hosting.Lifetime|Content root path: /app/radarr/bin
+2025-04-06 02:34:53.0|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-04-06 02:35:20.2|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning
+2025-04-06 02:35:20.5|Info|RssSyncService|Starting RSS Sync
+2025-04-06 02:35:21.5|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-04-06 02:35:22.4|Info|DownloadDecisionMaker|No results found
+2025-04-06 02:35:23.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-04-06 02:35:24.2|Debug|PendingReleaseService|Removing failed releases from pending
+2025-04-06 02:35:28.2|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-04-06 02:35:30.7|Debug|InstallUpdateService|Checking for updates
+2025-04-06 02:35:30.8|Info|HousekeepingService|Running housecleaning tasks
+2025-04-06 02:35:30.8|Debug|HousekeepingService|Starting CleanupAbsolutePathMetadataFiles
+2025-04-06 02:35:30.8|Debug|HousekeepingService|Completed CleanupAbsolutePathMetadataFiles
+2025-04-06 02:35:30.8|Debug|HousekeepingService|Starting CleanupAdditionalNamingSpecs
+2025-04-06 02:35:30.8|Debug|HousekeepingService|Completed CleanupAdditionalNamingSpecs
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-04-06 02:35:30.9|Debug|InstallUpdateService|Auto-update not enabled, not installing available update.
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Starting CleanupDownloadClientUnavailablePendingReleases
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Completed CleanupDownloadClientUnavailablePendingReleases
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Starting CleanupDuplicateMetadataFiles
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Completed CleanupDuplicateMetadataFiles
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Starting CleanupDuplicateMovieTranslations
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Completed CleanupDuplicateMovieTranslations
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Starting CleanupOrphanedAlternativeTitles
+2025-04-06 02:35:31.3|Debug|HousekeepingService|Completed CleanupOrphanedAlternativeTitles
+2025-04-06 02:35:31.3|Debug|HousekeepingService|Starting CleanupOrphanedBlocklist
+2025-04-06 02:35:31.3|Debug|HousekeepingService|Completed CleanupOrphanedBlocklist
+2025-04-06 02:35:31.3|Debug|HousekeepingService|Starting CleanupOrphanedCollections
+2025-04-06 02:35:31.3|Debug|HousekeepingService|Completed CleanupOrphanedCollections
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Starting CleanupOrphanedCredits
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Completed CleanupOrphanedCredits
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Starting CleanupOrphanedExtraFiles
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Completed CleanupOrphanedExtraFiles
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Starting CleanupOrphanedImportListMovies
+2025-04-06 02:35:31.6|Debug|HousekeepingService|Completed CleanupOrphanedImportListMovies
+2025-04-06 02:35:31.6|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-04-06 02:35:31.6|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-04-06 02:35:31.6|Debug|HousekeepingService|Starting CleanupOrphanedMetadataFiles
+2025-04-06 02:35:31.7|Debug|HousekeepingService|Completed CleanupOrphanedMetadataFiles
+2025-04-06 02:35:31.7|Debug|HousekeepingService|Starting CleanupOrphanedMovieFiles
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Completed CleanupOrphanedMovieFiles
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Starting CleanupOrphanedMovieMetadata
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Completed CleanupOrphanedMovieMetadata
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Starting CleanupOrphanedMovieMovieFileIds
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Completed CleanupOrphanedMovieMovieFileIds
+2025-04-06 02:35:31.8|Debug|HousekeepingService|Starting CleanupOrphanedMovies
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Completed CleanupOrphanedMovies
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Starting CleanupOrphanedMovieTranslations
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Completed CleanupOrphanedMovieTranslations
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Starting CleanupOrphanedPendingReleases
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Completed CleanupOrphanedPendingReleases
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Starting CleanupOrphanedSubtitleFiles
+2025-04-06 02:35:32.0|Debug|HousekeepingService|Completed CleanupOrphanedSubtitleFiles
+2025-04-06 02:35:32.0|Debug|HousekeepingService|Starting CleanupQualityProfileFormatItems
+2025-04-06 02:35:32.2|Debug|HousekeepingService|Completed CleanupQualityProfileFormatItems
+2025-04-06 02:35:32.2|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-04-06 02:35:32.3|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-04-06 02:35:32.3|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Starting DeleteBadMediaCovers
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Completed DeleteBadMediaCovers
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:32.8|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:32.8|Debug|HousekeepingService|Starting FixFutureImportListStatusTimes
+2025-04-06 02:35:32.8|Debug|HousekeepingService|Completed FixFutureImportListStatusTimes
+2025-04-06 02:35:32.8|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-04-06 02:35:33.0|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-04-06 02:35:33.0|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-04-06 02:35:33.1|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-04-06 02:35:33.1|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-04-06 02:35:33.2|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-04-06 02:35:33.2|Debug|HousekeepingService|Starting FixWronglyMatchedMovieFiles
+2025-04-06 02:35:33.2|Debug|HousekeepingService|Completed FixWronglyMatchedMovieFiles
+2025-04-06 02:35:33.2|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-04-06 02:35:35.7|Info|Database|Vacuuming Log database
+2025-04-06 02:35:35.8|Info|Database|Log database compressed
+2025-04-06 02:35:35.8|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-04-06 02:35:35.8|Debug|HousekeepingService|Starting UpdateCleanTitleForMovies
+2025-04-06 02:35:35.9|Debug|HousekeepingService|Completed UpdateCleanTitleForMovies
+2025-04-06 02:35:35.9|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-04-06 02:35:35.9|Info|Database|Vacuuming Main database
+2025-04-06 02:35:36.7|Info|Database|Main database compressed
+2025-04-06 02:40:23.1|Debug|ImportListSyncService|No enabled import lists, skipping sync and cleaning

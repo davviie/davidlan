@@ -4690,3 +4690,73 @@ disk I/O error
 2025-03-30 10:31:51.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
 2025-03-30 10:31:51.7|Info|DownloadDecisionMaker|No results found
 2025-03-30 10:31:51.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 11:01:51.9|Info|RssSyncService|Starting RSS Sync
+2025-03-30 11:01:52.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 11:01:52.0|Info|DownloadDecisionMaker|No results found
+2025-03-30 11:01:52.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-31 02:26:23.8|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr - Version 5.20.2.9777
+2025-03-31 02:26:26.7|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-31 02:26:29.8|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-31 02:26:48.7|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-03-31 02:26:59.9|Info|MigrationController|*** Migrating data source=/config/radarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:02.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:03.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:03.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:05.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:05.2|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7231813s
+2025-03-31 02:27:05.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:05.3|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7951447s
+2025-03-31 02:27:07.7|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:07.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:07.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:08.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0648166s
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.065258s
+2025-03-31 02:27:24.8|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:7878
+2025-03-31 02:27:34.0|Info|CommandExecutor|Starting 2 threads for tasks.
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-31 02:27:35.3|Info|Microsoft.Hosting.Lifetime|Content root path: /app/radarr/bin
+2025-03-31 02:27:36.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-31 02:28:05.1|Info|RssSyncService|Starting RSS Sync
+2025-03-31 02:28:05.2|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-31 02:28:05.3|Info|DownloadDecisionMaker|No results found
+2025-03-31 02:28:05.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-04-06 02:34:02.9|Info|Bootstrap|Starting Radarr - /app/radarr/bin/Radarr - Version 5.20.2.9777
+2025-04-06 02:34:04.1|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-04-06 02:34:04.9|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-04-06 02:34:12.9|Info|AppFolderInfo|Data directory is being overridden to [/config]
+2025-04-06 02:34:16.2|Info|MigrationController|*** Migrating data source=/config/radarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:17.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:18.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:18.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:20.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|=> 2.0732777s
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:20.4|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1790216s
+2025-04-06 02:34:21.0|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:21.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:21.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:21.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:21.8|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.7991152s
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.8040233s
+2025-04-06 02:34:35.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:7878
+2025-04-06 02:34:47.8|Info|CommandExecutor|Starting 2 threads for tasks.
+2025-04-06 02:34:50.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-04-06 02:34:50.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-04-06 02:34:50.1|Info|Microsoft.Hosting.Lifetime|Content root path: /app/radarr/bin
+2025-04-06 02:34:53.0|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-04-06 02:35:20.5|Info|RssSyncService|Starting RSS Sync
+2025-04-06 02:35:21.5|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-04-06 02:35:22.4|Info|DownloadDecisionMaker|No results found
+2025-04-06 02:35:23.9|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-04-06 02:35:28.2|Info|RecycleBinProvider|Recycle Bin has not been configured, cannot cleanup.
+2025-04-06 02:35:30.8|Info|HousekeepingService|Running housecleaning tasks
+2025-04-06 02:35:35.7|Info|Database|Vacuuming Log database
+2025-04-06 02:35:35.8|Info|Database|Log database compressed
+2025-04-06 02:35:35.9|Info|Database|Vacuuming Main database
+2025-04-06 02:35:36.7|Info|Database|Main database compressed

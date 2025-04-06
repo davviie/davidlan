@@ -1687,3 +1687,203 @@
 2025-03-30 10:31:48.6|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
 2025-03-30 10:31:48.6|Debug|PendingReleaseService|Removing failed releases from pending
 2025-03-30 10:33:18.6|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:38:18.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:43:18.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:46:48.7|Info|RssSyncService|Starting RSS Sync
+2025-03-30 10:46:48.7|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 10:46:48.7|Info|DownloadDecisionMaker|No results found
+2025-03-30 10:46:48.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 10:46:48.7|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 10:48:18.7|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:53:18.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 10:58:18.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 11:01:48.8|Info|RssSyncService|Starting RSS Sync
+2025-03-30 11:01:48.8|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 11:01:48.8|Info|DownloadDecisionMaker|No results found
+2025-03-30 11:01:48.8|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 11:01:48.8|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 11:03:18.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 11:08:48.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 11:13:48.9|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-30 11:16:49.0|Info|RssSyncService|Starting RSS Sync
+2025-03-30 11:16:49.0|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-30 11:16:49.0|Info|DownloadDecisionMaker|No results found
+2025-03-30 11:16:49.0|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-30 11:16:49.0|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-30 11:18:49.0|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:27:02.6|Debug|ProcessProvider|Found 0 processes with the name: Lidarr.Console
+2025-03-31 02:27:02.9|Debug|ProcessProvider|Found 1 processes with the name: Lidarr
+2025-03-31 02:27:02.9|Debug|ProcessProvider| - [140] Lidarr
+2025-03-31 02:27:06.9|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:09.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:10.6|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:10.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:14.1|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:14.1|Info|FluentMigrator.Runner.MigrationRunner|=> 3.4749689s
+2025-03-31 02:27:14.1|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:14.1|Info|FluentMigrator.Runner.MigrationRunner|=> 3.519885s
+2025-03-31 02:27:14.8|Debug|MigrationController|Took: 00:00:07.9041270
+2025-03-31 02:27:14.8|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:14.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:14.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:14.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:15.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:15.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.6304076s
+2025-03-31 02:27:15.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:15.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.6306615s
+2025-03-31 02:27:16.3|Debug|MigrationController|Took: 00:00:01.5104671
+2025-03-31 02:27:23.5|Debug|FingerprintingService|fpcalc version: 1.5.1
+2025-03-31 02:27:29.5|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-03-31 02:27:34.8|Debug|Lidarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-31 02:27:35.7|Debug|QualityDefinitionService|Setting up default quality config
+2025-03-31 02:27:38.8|Debug|NotificationFactory|Initializing Providers. Count 25
+2025-03-31 02:27:41.5|Debug|IndexerFactory|Initializing Providers. Count 10
+2025-03-31 02:27:42.0|Debug|ImportListFactory|Initializing Providers. Count 10
+2025-03-31 02:27:42.0|Debug|MetadataFactory|Initializing Providers. Count 3
+2025-03-31 02:27:42.3|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-31 02:27:42.4|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-31 02:27:42.4|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-31 02:27:42.5|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-03-31 02:27:44.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-31 02:28:10.2|Debug|InstallUpdateService|Checking for updates
+2025-03-31 02:28:10.2|Debug|InstallUpdateService|Auto-update not enabled, not installing available update.
+2025-03-31 02:28:10.3|Info|RssSyncService|Starting RSS Sync
+2025-03-31 02:28:10.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-31 02:28:10.7|Info|DownloadDecisionMaker|No results found
+2025-03-31 02:28:10.7|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-31 02:28:10.7|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-31 02:28:11.8|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:33:40.3|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:38:40.4|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:43:40.4|Info|RssSyncService|Starting RSS Sync
+2025-03-31 02:43:40.4|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-03-31 02:43:40.4|Info|DownloadDecisionMaker|No results found
+2025-03-31 02:43:40.4|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:43:40.4|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-03-31 02:43:40.4|Debug|PendingReleaseService|Removing failed releases from pending
+2025-03-31 02:48:40.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-03-31 02:53:40.5|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-04-06 02:34:15.0|Debug|ProcessProvider|Found 0 processes with the name: Lidarr.Console
+2025-04-06 02:34:15.4|Debug|ProcessProvider|Found 1 processes with the name: Lidarr
+2025-04-06 02:34:15.4|Debug|ProcessProvider| - [139] Lidarr
+2025-04-06 02:34:17.2|Info|MigrationController|*** Migrating data source=/config/lidarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:19.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:19.7|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:19.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:21.4|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:21.5|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7253213s
+2025-04-06 02:34:21.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:21.9|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1244082s
+2025-04-06 02:34:22.6|Debug|MigrationController|Took: 00:00:05.4371472
+2025-04-06 02:34:22.7|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:22.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:22.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:22.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:34:23.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:34:23.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.3612865s
+2025-04-06 02:34:23.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:34:23.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.3679448s
+2025-04-06 02:34:23.7|Debug|MigrationController|Took: 00:00:00.9952245
+2025-04-06 02:34:31.0|Debug|FingerprintingService|fpcalc version: 1.5.1
+2025-04-06 02:34:39.3|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:8686
+2025-04-06 02:34:44.9|Debug|Lidarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-04-06 02:34:47.2|Debug|QualityDefinitionService|Setting up default quality config
+2025-04-06 02:34:51.3|Debug|NotificationFactory|Initializing Providers. Count 25
+2025-04-06 02:34:52.7|Debug|IndexerFactory|Initializing Providers. Count 10
+2025-04-06 02:34:52.7|Debug|ImportListFactory|Initializing Providers. Count 10
+2025-04-06 02:34:52.8|Debug|MetadataFactory|Initializing Providers. Count 3
+2025-04-06 02:34:53.0|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-04-06 02:34:53.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-04-06 02:34:53.1|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-04-06 02:34:53.1|Info|Microsoft.Hosting.Lifetime|Content root path: /app/lidarr/bin
+2025-04-06 02:34:58.2|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-04-06 02:35:23.4|Debug|InstallUpdateService|Checking for updates
+2025-04-06 02:35:23.5|Debug|InstallUpdateService|Auto-update not enabled, not installing available update.
+2025-04-06 02:35:26.0|Info|RssSyncService|Starting RSS Sync
+2025-04-06 02:35:26.6|Warn|FetchAndParseRssService|No available indexers. check your configuration.
+2025-04-06 02:35:26.8|Info|HousekeepingService|Running housecleaning tasks
+2025-04-06 02:35:26.8|Debug|HousekeepingService|Starting CleanupAbsolutePathMetadataFiles
+2025-04-06 02:35:27.0|Info|DownloadDecisionMaker|No results found
+2025-04-06 02:35:27.2|Info|RssSyncService|RSS Sync Completed. Reports found: 0, Reports grabbed: 0
+2025-04-06 02:35:27.5|Debug|HousekeepingService|Completed CleanupAbsolutePathMetadataFiles
+2025-04-06 02:35:27.6|Debug|HousekeepingService|Starting CleanupAdditionalNamingSpecs
+2025-04-06 02:35:27.6|Debug|ImportListSyncService|No import lists with automatic add enabled
+2025-04-06 02:35:27.7|Debug|PendingReleaseService|Removing failed releases from pending
+2025-04-06 02:35:27.9|Debug|HousekeepingService|Completed CleanupAdditionalNamingSpecs
+2025-04-06 02:35:27.9|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-04-06 02:35:28.0|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-04-06 02:35:28.0|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-04-06 02:35:29.4|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-04-06 02:35:29.4|Debug|HousekeepingService|Starting CleanupDownloadClientUnavailablePendingReleases
+2025-04-06 02:35:30.6|Debug|HousekeepingService|Completed CleanupDownloadClientUnavailablePendingReleases
+2025-04-06 02:35:30.7|Debug|HousekeepingService|Starting CleanupDuplicateMetadataFiles
+2025-04-06 02:35:30.8|Debug|HousekeepingService|Completed CleanupDuplicateMetadataFiles
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Starting CleanupOrphanedAlbums
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Completed CleanupOrphanedAlbums
+2025-04-06 02:35:30.9|Debug|HousekeepingService|Starting CleanupOrphanedArtistMetadata
+2025-04-06 02:35:31.0|Debug|HousekeepingService|Completed CleanupOrphanedArtistMetadata
+2025-04-06 02:35:31.0|Debug|HousekeepingService|Starting CleanupOrphanedBlocklist
+2025-04-06 02:35:31.1|Debug|HousekeepingService|Completed CleanupOrphanedBlocklist
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:31.2|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Starting CleanupOrphanedImportListStatus
+2025-04-06 02:35:31.4|Debug|HousekeepingService|Completed CleanupOrphanedImportListStatus
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-04-06 02:35:31.5|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-04-06 02:35:31.6|Debug|HousekeepingService|Starting CleanupOrphanedMetadataFiles
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Completed CleanupOrphanedMetadataFiles
+2025-04-06 02:35:31.9|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-04-06 02:35:32.1|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-04-06 02:35:32.1|Debug|HousekeepingService|Starting CleanupOrphanedPendingReleases
+2025-04-06 02:35:32.2|Debug|HousekeepingService|Completed CleanupOrphanedPendingReleases
+2025-04-06 02:35:32.2|Debug|HousekeepingService|Starting CleanupOrphanedReleases
+2025-04-06 02:35:32.3|Debug|HousekeepingService|Completed CleanupOrphanedReleases
+2025-04-06 02:35:32.3|Debug|HousekeepingService|Starting CleanupOrphanedTrackFiles
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Completed CleanupOrphanedTrackFiles
+2025-04-06 02:35:32.6|Debug|HousekeepingService|Starting CleanupOrphanedTracks
+2025-04-06 02:35:32.7|Debug|HousekeepingService|Completed CleanupOrphanedTracks
+2025-04-06 02:35:32.7|Debug|HousekeepingService|Starting CleanupQualityProfileFormatItems
+2025-04-06 02:35:33.2|Debug|MediaFileService|Filtering 0 files for unchanged files
+2025-04-06 02:35:33.4|Debug|ImportDecisionMaker|Analyzing 0/0 files.
+2025-04-06 02:35:33.5|Debug|HousekeepingService|Completed CleanupQualityProfileFormatItems
+2025-04-06 02:35:33.6|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-04-06 02:35:33.6|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-04-06 02:35:33.6|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-04-06 02:35:33.7|Debug|IdentificationService|Starting track identification
+2025-04-06 02:35:34.2|Info|TrackGroupingService|Grouping 0 tracks
+2025-04-06 02:35:34.5|Debug|IdentificationService|Sorted 0 tracks into 0 releases in 460ms
+2025-04-06 02:35:34.5|Debug|IdentificationService|Track identification for 0 tracks took 824ms
+2025-04-06 02:35:34.5|Debug|DiskScanService|Import decisions complete [00:00:01.9211114]
+2025-04-06 02:35:35.0|Info|ImportApprovedTracks|Importing 0 tracks
+2025-04-06 02:35:35.0|Debug|ImportApprovedTracks|Importing 0 files. replaceExisting: False
+2025-04-06 02:35:35.0|Debug|ImportApprovedTracks|Inserted new trackfiles in 17ms
+2025-04-06 02:35:35.1|Debug|ImportApprovedTracks|TrackFileIds updated, total 87ms
+2025-04-06 02:35:35.2|Debug|DiskScanService|Inserted 0 new unmatched trackfiles
+2025-04-06 02:35:35.2|Debug|DiskScanService|Updated info for 0 known files
+2025-04-06 02:35:35.2|Debug|DiskScanService|Track import complete for:
+ [00:00:00.6193351]
+2025-04-06 02:35:35.8|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-04-06 02:35:35.8|Debug|HousekeepingService|Starting DeleteBadMediaCovers
+2025-04-06 02:35:35.9|Debug|HousekeepingService|Completed DeleteBadMediaCovers
+2025-04-06 02:35:35.9|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:36.1|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:36.1|Debug|HousekeepingService|Starting FixFutureImportListStatusTimes
+2025-04-06 02:35:36.2|Debug|HousekeepingService|Completed FixFutureImportListStatusTimes
+2025-04-06 02:35:36.2|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-04-06 02:35:36.2|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-04-06 02:35:36.3|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-04-06 02:35:36.3|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-04-06 02:35:36.3|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-04-06 02:35:36.5|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-04-06 02:35:36.6|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-04-06 02:35:36.7|Info|Database|Vacuuming Log database
+2025-04-06 02:35:36.8|Info|Database|Log database compressed
+2025-04-06 02:35:36.8|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-04-06 02:35:36.8|Debug|HousekeepingService|Starting UpdateCleanTitleForArtist
+2025-04-06 02:35:36.8|Debug|HousekeepingService|Completed UpdateCleanTitleForArtist
+2025-04-06 02:35:36.8|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-04-06 02:35:36.8|Info|Database|Vacuuming Main database
+2025-04-06 02:35:37.3|Info|Database|Main database compressed
+2025-04-06 02:40:30.8|Debug|ImportListSyncService|No import lists with automatic add enabled
