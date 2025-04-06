@@ -1,0 +1,977 @@
+2025-03-23 05:19:04.1|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-23 05:19:04.2|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-23 05:19:04.2|Debug|ProcessProvider| - [144] Prowlarr
+2025-03-23 05:19:04.2|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 05:19:04.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-23 05:19:04.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-23 05:19:04.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-23 05:19:04.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-23 05:19:04.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0298787s
+2025-03-23 05:19:04.2|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-23 05:19:04.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0328534s
+2025-03-23 05:19:04.3|Info|FluentMigrator.Runner.MigrationRunner|VersionMigration migrating
+2025-03-23 05:19:04.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:04.4|Info|FluentMigrator.Runner.MigrationRunner|CreateTable VersionInfo
+2025-03-23 05:19:04.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "VersionInfo" ("Version" INTEGER NOT NULL)
+2025-03-23 05:19:04.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0211866s
+2025-03-23 05:19:04.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:04.5|Info|FluentMigrator.Runner.MigrationRunner|VersionMigration migrated
+2025-03-23 05:19:04.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.100407s
+2025-03-23 05:19:04.5|Info|FluentMigrator.Runner.MigrationRunner|VersionUniqueMigration migrating
+2025-03-23 05:19:04.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:04.5|Info|FluentMigrator.Runner.MigrationRunner|CreateIndex VersionInfo (Version)
+2025-03-23 05:19:04.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE UNIQUE INDEX "UC_Version" ON "VersionInfo" ("Version" ASC)
+2025-03-23 05:19:04.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0272631s
+2025-03-23 05:19:04.6|Info|FluentMigrator.Runner.MigrationRunner|AlterTable VersionInfo
+2025-03-23 05:19:04.6|Info|FluentMigrator.Runner.MigrationRunner|=> 4.8E-06s
+2025-03-23 05:19:04.6|Info|FluentMigrator.Runner.MigrationRunner|CreateColumn VersionInfo AppliedOn DateTime
+2025-03-23 05:19:04.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|ALTER TABLE "VersionInfo" ADD COLUMN "AppliedOn" DATETIME
+2025-03-23 05:19:04.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0226572s
+2025-03-23 05:19:04.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:04.7|Info|FluentMigrator.Runner.MigrationRunner|VersionUniqueMigration migrated
+2025-03-23 05:19:04.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0616571s
+2025-03-23 05:19:04.7|Info|FluentMigrator.Runner.MigrationRunner|VersionDescriptionMigration migrating
+2025-03-23 05:19:04.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:04.7|Info|FluentMigrator.Runner.MigrationRunner|AlterTable VersionInfo
+2025-03-23 05:19:04.8|Info|FluentMigrator.Runner.MigrationRunner|=> 3.1E-06s
+2025-03-23 05:19:04.8|Info|FluentMigrator.Runner.MigrationRunner|CreateColumn VersionInfo Description String
+2025-03-23 05:19:04.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|ALTER TABLE "VersionInfo" ADD COLUMN "Description" TEXT
+2025-03-23 05:19:04.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0161228s
+2025-03-23 05:19:04.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:04.8|Info|FluentMigrator.Runner.MigrationRunner|VersionDescriptionMigration migrated
+2025-03-23 05:19:04.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0559594s
+2025-03-23 05:19:04.9|Info|FluentMigrator.Runner.MigrationRunner|1: InitialSetup migrating
+2025-03-23 05:19:04.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:04.9|Info|InitialSetup|Starting migration of Log DB to 1
+2025-03-23 05:19:04.9|Info|FluentMigrator.Runner.MigrationRunner|CreateTable Logs
+2025-03-23 05:19:04.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "Logs" ("Id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "Message" TEXT NOT NULL, "Time" DATETIME NOT NULL, "Logger" TEXT NOT NULL, "Exception" TEXT, "ExceptionType" TEXT, "Level" TEXT NOT NULL)
+2025-03-23 05:19:05.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0575654s
+2025-03-23 05:19:05.0|Info|FluentMigrator.Runner.MigrationRunner|CreateIndex Logs (Time)
+2025-03-23 05:19:05.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE INDEX "IX_Logs_Time" ON "Logs" ("Time" ASC)
+2025-03-23 05:19:05.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0308824s
+2025-03-23 05:19:05.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (1, '2025-03-23T05:19:05', 'InitialSetup')
+2025-03-23 05:19:05.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.1|Info|FluentMigrator.Runner.MigrationRunner|1: InitialSetup migrated
+2025-03-23 05:19:05.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1102951s
+2025-03-23 05:19:05.1|Info|FluentMigrator.Runner.MigrationRunner|2: ApplicationStatus migrating
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.2|Info|ApplicationStatus|Starting migration of Log DB to 2
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (2, '2025-03-23T05:19:05', 'ApplicationStatus')
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.2|Info|FluentMigrator.Runner.MigrationRunner|2: ApplicationStatus migrated
+2025-03-23 05:19:05.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0717457s
+2025-03-23 05:19:05.2|Info|FluentMigrator.Runner.MigrationRunner|3: IndexerProps migrating
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.2|Info|IndexerProps|Starting migration of Log DB to 3
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (3, '2025-03-23T05:19:05', 'IndexerProps')
+2025-03-23 05:19:05.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|3: IndexerProps migrated
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0261636s
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|4: add_update_history migrating
+2025-03-23 05:19:05.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.3|Info|add_update_history|Starting migration of Log DB to 4
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|CreateTable UpdateHistory
+2025-03-23 05:19:05.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "UpdateHistory" ("Id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "Date" DATETIME NOT NULL, "Version" TEXT NOT NULL, "EventType" INTEGER NOT NULL)
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0190825s
+2025-03-23 05:19:05.3|Info|FluentMigrator.Runner.MigrationRunner|CreateIndex UpdateHistory (Date)
+2025-03-23 05:19:05.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE INDEX "IX_UpdateHistory_Date" ON "UpdateHistory" ("Date" ASC)
+2025-03-23 05:19:05.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0294698s
+2025-03-23 05:19:05.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (4, '2025-03-23T05:19:05', 'add_update_history')
+2025-03-23 05:19:05.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.4|Info|FluentMigrator.Runner.MigrationRunner|4: add_update_history migrated
+2025-03-23 05:19:05.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0845409s
+2025-03-23 05:19:05.4|Info|FluentMigrator.Runner.MigrationRunner|5: update_notifiarr migrating
+2025-03-23 05:19:05.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.4|Info|update_notifiarr|Starting migration of Log DB to 5
+2025-03-23 05:19:05.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (5, '2025-03-23T05:19:05', 'update_notifiarr')
+2025-03-23 05:19:05.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.4|Info|FluentMigrator.Runner.MigrationRunner|5: update_notifiarr migrated
+2025-03-23 05:19:05.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0312875s
+2025-03-23 05:19:05.5|Info|FluentMigrator.Runner.MigrationRunner|6: app_profiles migrating
+2025-03-23 05:19:05.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.5|Info|app_profiles|Starting migration of Log DB to 6
+2025-03-23 05:19:05.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (6, '2025-03-23T05:19:05', 'app_profiles')
+2025-03-23 05:19:05.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.5|Info|FluentMigrator.Runner.MigrationRunner|6: app_profiles migrated
+2025-03-23 05:19:05.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0595922s
+2025-03-23 05:19:05.5|Info|FluentMigrator.Runner.MigrationRunner|7: history_failed migrating
+2025-03-23 05:19:05.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.5|Info|history_failed|Starting migration of Log DB to 7
+2025-03-23 05:19:05.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (7, '2025-03-23T05:19:05', 'history_failed')
+2025-03-23 05:19:05.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.6|Info|FluentMigrator.Runner.MigrationRunner|7: history_failed migrated
+2025-03-23 05:19:05.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0892652s
+2025-03-23 05:19:05.6|Info|FluentMigrator.Runner.MigrationRunner|8: redacted_api migrating
+2025-03-23 05:19:05.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.7|Info|redacted_api|Starting migration of Log DB to 8
+2025-03-23 05:19:05.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (8, '2025-03-23T05:19:05', 'redacted_api')
+2025-03-23 05:19:05.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.7|Info|FluentMigrator.Runner.MigrationRunner|8: redacted_api migrated
+2025-03-23 05:19:05.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0430932s
+2025-03-23 05:19:05.7|Info|FluentMigrator.Runner.MigrationRunner|10: IndexerProxies migrating
+2025-03-23 05:19:05.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.7|Info|IndexerProxies|Starting migration of Log DB to 10
+2025-03-23 05:19:05.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (10, '2025-03-23T05:19:05', 'IndexerProxies')
+2025-03-23 05:19:05.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|10: IndexerProxies migrated
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0468788s
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|11: app_indexer_remote_name migrating
+2025-03-23 05:19:05.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.8|Info|app_indexer_remote_name|Starting migration of Log DB to 11
+2025-03-23 05:19:05.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (11, '2025-03-23T05:19:05', 'app_indexer_remote_name')
+2025-03-23 05:19:05.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|11: app_indexer_remote_name migrated
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0381289s
+2025-03-23 05:19:05.8|Info|FluentMigrator.Runner.MigrationRunner|13: desi_gazelle_to_unit3d migrating
+2025-03-23 05:19:05.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.9|Info|desi_gazelle_to_unit3d|Starting migration of Log DB to 13
+2025-03-23 05:19:05.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (13, '2025-03-23T05:19:05', 'desi_gazelle_to_unit3d')
+2025-03-23 05:19:05.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:05.9|Info|FluentMigrator.Runner.MigrationRunner|13: desi_gazelle_to_unit3d migrated
+2025-03-23 05:19:05.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0557788s
+2025-03-23 05:19:05.9|Info|FluentMigrator.Runner.MigrationRunner|14: add_on_update_to_notifications migrating
+2025-03-23 05:19:05.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:05.9|Info|add_on_update_to_notifications|Starting migration of Log DB to 14
+2025-03-23 05:19:05.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (14, '2025-03-23T05:19:05', 'add_on_update_to_notifications')
+2025-03-23 05:19:06.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|14: add_on_update_to_notifications migrated
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0501946s
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|15: IndexerVersions migrating
+2025-03-23 05:19:06.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.0|Info|IndexerVersions|Starting migration of Log DB to 15
+2025-03-23 05:19:06.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (15, '2025-03-23T05:19:06', 'IndexerVersions')
+2025-03-23 05:19:06.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|15: IndexerVersions migrated
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0365245s
+2025-03-23 05:19:06.0|Info|FluentMigrator.Runner.MigrationRunner|16: cleanup_config migrating
+2025-03-23 05:19:06.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.0|Info|cleanup_config|Starting migration of Log DB to 16
+2025-03-23 05:19:06.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (16, '2025-03-23T05:19:06', 'cleanup_config')
+2025-03-23 05:19:06.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.1|Info|FluentMigrator.Runner.MigrationRunner|16: cleanup_config migrated
+2025-03-23 05:19:06.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0540463s
+2025-03-23 05:19:06.1|Info|FluentMigrator.Runner.MigrationRunner|17: indexer_cleanup migrating
+2025-03-23 05:19:06.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.1|Info|indexer_cleanup|Starting migration of Log DB to 17
+2025-03-23 05:19:06.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (17, '2025-03-23T05:19:06', 'indexer_cleanup')
+2025-03-23 05:19:06.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.2|Info|FluentMigrator.Runner.MigrationRunner|17: indexer_cleanup migrated
+2025-03-23 05:19:06.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.044321s
+2025-03-23 05:19:06.2|Info|FluentMigrator.Runner.MigrationRunner|18: minimum_seeders migrating
+2025-03-23 05:19:06.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.2|Info|minimum_seeders|Starting migration of Log DB to 18
+2025-03-23 05:19:06.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (18, '2025-03-23T05:19:06', 'minimum_seeders')
+2025-03-23 05:19:06.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.2|Info|FluentMigrator.Runner.MigrationRunner|18: minimum_seeders migrated
+2025-03-23 05:19:06.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0652928s
+2025-03-23 05:19:06.3|Info|FluentMigrator.Runner.MigrationRunner|19: remove_showrss migrating
+2025-03-23 05:19:06.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.3|Info|remove_showrss|Starting migration of Log DB to 19
+2025-03-23 05:19:06.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (19, '2025-03-23T05:19:06', 'remove_showrss')
+2025-03-23 05:19:06.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.4|Info|FluentMigrator.Runner.MigrationRunner|19: remove_showrss migrated
+2025-03-23 05:19:06.4|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1356408s
+2025-03-23 05:19:06.4|Info|FluentMigrator.Runner.MigrationRunner|20: remove_torrentparadiseml migrating
+2025-03-23 05:19:06.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.5|Info|remove_torrentparadiseml|Starting migration of Log DB to 20
+2025-03-23 05:19:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (20, '2025-03-23T05:19:06', 'remove_torrentparadiseml')
+2025-03-23 05:19:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.5|Info|FluentMigrator.Runner.MigrationRunner|20: remove_torrentparadiseml migrated
+2025-03-23 05:19:06.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0591033s
+2025-03-23 05:19:06.5|Info|FluentMigrator.Runner.MigrationRunner|21: localization_setting_to_string migrating
+2025-03-23 05:19:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.5|Info|localization_setting_to_string|Starting migration of Log DB to 21
+2025-03-23 05:19:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (21, '2025-03-23T05:19:06', 'localization_setting_to_string')
+2025-03-23 05:19:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.6|Info|FluentMigrator.Runner.MigrationRunner|21: localization_setting_to_string migrated
+2025-03-23 05:19:06.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0489653s
+2025-03-23 05:19:06.6|Info|FluentMigrator.Runner.MigrationRunner|22: orpheus_api migrating
+2025-03-23 05:19:06.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.6|Info|orpheus_api|Starting migration of Log DB to 22
+2025-03-23 05:19:06.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (22, '2025-03-23T05:19:06', 'orpheus_api')
+2025-03-23 05:19:06.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.6|Info|FluentMigrator.Runner.MigrationRunner|22: orpheus_api migrated
+2025-03-23 05:19:06.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0710594s
+2025-03-23 05:19:06.7|Info|FluentMigrator.Runner.MigrationRunner|23: download_client_categories migrating
+2025-03-23 05:19:06.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.7|Info|download_client_categories|Starting migration of Log DB to 23
+2025-03-23 05:19:06.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (23, '2025-03-23T05:19:06', 'download_client_categories')
+2025-03-23 05:19:06.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.7|Info|FluentMigrator.Runner.MigrationRunner|23: download_client_categories migrated
+2025-03-23 05:19:06.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0877355s
+2025-03-23 05:19:06.8|Info|FluentMigrator.Runner.MigrationRunner|24: add_salt_to_users migrating
+2025-03-23 05:19:06.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.8|Info|add_salt_to_users|Starting migration of Log DB to 24
+2025-03-23 05:19:06.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (24, '2025-03-23T05:19:06', 'add_salt_to_users')
+2025-03-23 05:19:06.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|24: add_salt_to_users migrated
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0872828s
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|25: speedcd_userpasssettings_to_speedcdsettings migrating
+2025-03-23 05:19:06.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.9|Info|speedcd_userpasssettings_to_speedcdsettings|Starting migration of Log DB to 25
+2025-03-23 05:19:06.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (25, '2025-03-23T05:19:06', 'speedcd_userpasssettings_to_speedcdsettings')
+2025-03-23 05:19:06.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|25: speedcd_userpasssettings_to_speedcdsettings migrated
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0352102s
+2025-03-23 05:19:06.9|Info|FluentMigrator.Runner.MigrationRunner|26: torrentday_cookiesettings_to_torrentdaysettings migrating
+2025-03-23 05:19:06.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:06.9|Info|torrentday_cookiesettings_to_torrentdaysettings|Starting migration of Log DB to 26
+2025-03-23 05:19:06.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (26, '2025-03-23T05:19:06', 'torrentday_cookiesettings_to_torrentdaysettings')
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|26: torrentday_cookiesettings_to_torrentdaysettings migrated
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0440044s
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|27: alpharatio_greatposterwall_config_contract migrating
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.0|Info|alpharatio_greatposterwall_config_contract|Starting migration of Log DB to 27
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (27, '2025-03-23T05:19:07', 'alpharatio_greatposterwall_config_contract')
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|27: alpharatio_greatposterwall_config_contract migrated
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.034861s
+2025-03-23 05:19:07.0|Info|FluentMigrator.Runner.MigrationRunner|28: remove_notwhatcd migrating
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.0|Info|remove_notwhatcd|Starting migration of Log DB to 28
+2025-03-23 05:19:07.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (28, '2025-03-23T05:19:07', 'remove_notwhatcd')
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|28: remove_notwhatcd migrated
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0350698s
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|29: add_on_grab_to_notifications migrating
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.1|Info|add_on_grab_to_notifications|Starting migration of Log DB to 29
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (29, '2025-03-23T05:19:07', 'add_on_grab_to_notifications')
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|29: add_on_grab_to_notifications migrated
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.024834s
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|30: animetorrents_use_custom_config_contract migrating
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.1|Info|animetorrents_use_custom_config_contract|Starting migration of Log DB to 30
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (30, '2025-03-23T05:19:07', 'animetorrents_use_custom_config_contract')
+2025-03-23 05:19:07.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|30: animetorrents_use_custom_config_contract migrated
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0281054s
+2025-03-23 05:19:07.1|Info|FluentMigrator.Runner.MigrationRunner|31: apprise_server_url migrating
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.2|Info|apprise_server_url|Starting migration of Log DB to 31
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (31, '2025-03-23T05:19:07', 'apprise_server_url')
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|31: apprise_server_url migrated
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0307895s
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|32: health_restored_notification migrating
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.2|Info|health_restored_notification|Starting migration of Log DB to 32
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (32, '2025-03-23T05:19:07', 'health_restored_notification')
+2025-03-23 05:19:07.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|32: health_restored_notification migrated
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0403492s
+2025-03-23 05:19:07.2|Info|FluentMigrator.Runner.MigrationRunner|33: remove_uc migrating
+2025-03-23 05:19:07.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.3|Info|remove_uc|Starting migration of Log DB to 33
+2025-03-23 05:19:07.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (33, '2025-03-23T05:19:07', 'remove_uc')
+2025-03-23 05:19:07.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.3|Info|FluentMigrator.Runner.MigrationRunner|33: remove_uc migrated
+2025-03-23 05:19:07.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0854621s
+2025-03-23 05:19:07.4|Info|FluentMigrator.Runner.MigrationRunner|34: history_fix_data_titles migrating
+2025-03-23 05:19:07.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.4|Info|history_fix_data_titles|Starting migration of Log DB to 34
+2025-03-23 05:19:07.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (34, '2025-03-23T05:19:07', 'history_fix_data_titles')
+2025-03-23 05:19:07.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.5|Info|FluentMigrator.Runner.MigrationRunner|34: history_fix_data_titles migrated
+2025-03-23 05:19:07.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1211052s
+2025-03-23 05:19:07.5|Info|FluentMigrator.Runner.MigrationRunner|35: download_client_per_indexer migrating
+2025-03-23 05:19:07.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.6|Info|download_client_per_indexer|Starting migration of Log DB to 35
+2025-03-23 05:19:07.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (35, '2025-03-23T05:19:07', 'download_client_per_indexer')
+2025-03-23 05:19:07.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.6|Info|FluentMigrator.Runner.MigrationRunner|35: download_client_per_indexer migrated
+2025-03-23 05:19:07.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0585358s
+2025-03-23 05:19:07.6|Info|FluentMigrator.Runner.MigrationRunner|36: postgres_update_timestamp_columns_to_with_timezone migrating
+2025-03-23 05:19:07.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.6|Info|postgres_update_timestamp_columns_to_with_timezone|Starting migration of Log DB to 36
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|AlterTable Logs
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|=> 3E-06s
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|AlterColumn Logs Time DateTimeOffset
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "Logs_temp" ("Id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "Message" TEXT NOT NULL, "Time" DATETIME NOT NULL, "Logger" TEXT NOT NULL, "Exception" TEXT, "ExceptionType" TEXT, "Level" TEXT NOT NULL)
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "Logs_temp" ("Id", "Message", "Time", "Logger", "Exception", "ExceptionType", "Level") SELECT "Id", "Message", "Time", "Logger", "Exception", "ExceptionType", "Level" FROM "Logs"
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|DROP TABLE "Logs"
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|ALTER TABLE "Logs_temp" RENAME TO "Logs"
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE INDEX "IX_Logs_Time" ON "Logs" ("Time" ASC)
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0505786s
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|AlterTable UpdateHistory
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|=> 2E-06s
+2025-03-23 05:19:07.7|Info|FluentMigrator.Runner.MigrationRunner|AlterColumn UpdateHistory Date DateTimeOffset
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "UpdateHistory_temp" ("Id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, "Date" DATETIME NOT NULL, "Version" TEXT NOT NULL, "EventType" INTEGER NOT NULL)
+2025-03-23 05:19:07.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "UpdateHistory_temp" ("Id", "Date", "Version", "EventType") SELECT "Id", "Date", "Version", "EventType" FROM "UpdateHistory"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|DROP TABLE "UpdateHistory"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|ALTER TABLE "UpdateHistory_temp" RENAME TO "UpdateHistory"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE INDEX "IX_UpdateHistory_Date" ON "UpdateHistory" ("Date" ASC)
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0467453s
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|AlterTable VersionInfo
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|=> 1.9E-06s
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|AlterColumn VersionInfo AppliedOn DateTimeOffset
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE TABLE "VersionInfo_temp" ("Version" INTEGER NOT NULL, "AppliedOn" DATETIME, "Description" TEXT)
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo_temp" ("Version", "AppliedOn", "Description") SELECT "Version", "AppliedOn", "Description" FROM "VersionInfo"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|DROP TABLE "VersionInfo"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|ALTER TABLE "VersionInfo_temp" RENAME TO "VersionInfo"
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|CREATE UNIQUE INDEX "UC_Version" ON "VersionInfo" ("Version" ASC)
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0281404s
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (36, '2025-03-23T05:19:07', 'postgres_update_timestamp_columns_to_with_timezone')
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|36: postgres_update_timestamp_columns_to_with_timezone migrated
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0477569s
+2025-03-23 05:19:07.8|Info|FluentMigrator.Runner.MigrationRunner|37: add_notification_status migrating
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.8|Info|add_notification_status|Starting migration of Log DB to 37
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (37, '2025-03-23T05:19:07', 'add_notification_status')
+2025-03-23 05:19:07.8|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|37: add_notification_status migrated
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0157957s
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|38: indexers_freeleech_only_config_contract migrating
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.9|Info|indexers_freeleech_only_config_contract|Starting migration of Log DB to 38
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (38, '2025-03-23T05:19:07', 'indexers_freeleech_only_config_contract')
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|38: indexers_freeleech_only_config_contract migrated
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0211722s
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|39: email_encryption migrating
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.9|Info|email_encryption|Starting migration of Log DB to 39
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (39, '2025-03-23T05:19:07', 'email_encryption')
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|39: email_encryption migrated
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0328395s
+2025-03-23 05:19:07.9|Info|FluentMigrator.Runner.MigrationRunner|40: newznab_category_to_capabilities_settings migrating
+2025-03-23 05:19:07.9|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:07.9|Info|newznab_category_to_capabilities_settings|Starting migration of Log DB to 40
+2025-03-23 05:19:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (40, '2025-03-23T05:19:08', 'newznab_category_to_capabilities_settings')
+2025-03-23 05:19:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:08.0|Info|FluentMigrator.Runner.MigrationRunner|40: newznab_category_to_capabilities_settings migrated
+2025-03-23 05:19:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0302919s
+2025-03-23 05:19:08.0|Info|FluentMigrator.Runner.MigrationRunner|41: gazelle_freeleech_token_options migrating
+2025-03-23 05:19:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:08.0|Info|gazelle_freeleech_token_options|Starting migration of Log DB to 41
+2025-03-23 05:19:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (41, '2025-03-23T05:19:08', 'gazelle_freeleech_token_options')
+2025-03-23 05:19:08.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:08.0|Info|FluentMigrator.Runner.MigrationRunner|41: gazelle_freeleech_token_options migrated
+2025-03-23 05:19:08.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0389715s
+2025-03-23 05:19:08.1|Info|FluentMigrator.Runner.MigrationRunner|42: myanonamouse_freeleech_wedge_options migrating
+2025-03-23 05:19:08.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Beginning Transaction
+2025-03-23 05:19:08.1|Info|myanonamouse_freeleech_wedge_options|Starting migration of Log DB to 42
+2025-03-23 05:19:08.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|INSERT INTO "VersionInfo" ("Version", "AppliedOn", "Description") VALUES (42, '2025-03-23T05:19:08', 'myanonamouse_freeleech_wedge_options')
+2025-03-23 05:19:08.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Committing Transaction
+2025-03-23 05:19:08.1|Info|FluentMigrator.Runner.MigrationRunner|42: myanonamouse_freeleech_wedge_options migrated
+2025-03-23 05:19:08.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0252798s
+2025-03-23 05:19:08.1|Debug|MigrationController|Took: 00:00:03.9489309
+2025-03-23 05:19:11.6|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-23 05:19:11.8|Info|UpdaterConfigProvider|Update mechanism BuiltIn not supported in the current configuration, changing to Docker.
+2025-03-23 05:19:13.1|Info|AppSyncProfileService|Setting up default app profile
+2025-03-23 05:19:13.2|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-23 05:19:13.3|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-23 05:19:13.6|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-23 05:19:14.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-23 05:19:15.9|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-23 05:19:18.4|Debug|HttpClient|Downloading Completed. took 4s
+2025-03-23 05:19:20.3|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-23 05:19:20.3|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-23 05:19:20.3|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-23 05:19:20.3|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-23 05:19:20.3|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-23 05:19:20.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-23 05:19:20.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-23 05:19:20.4|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-23 05:19:44.9|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.3|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.3|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.4|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.6|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.6|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.6|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.6|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.7|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.7|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.8|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:45.9|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:45.9|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:45.9|Debug|Api|[GET] /api/v1/customFilter: 200.OK (29 ms)
+2025-03-23 05:19:45.9|Debug|Api|[GET] /api/v1/tag: 200.OK (28 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/appprofile: 200.OK (11 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/indexerStatus: 200.OK (8 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/indexer/categories: 200.OK (6 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/config/ui: 200.OK (9 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/indexer: 200.OK (40 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.0|Debug|Api|[GET] /api/v1/localization: 200.OK (7 ms)
+2025-03-23 05:19:46.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.1|Debug|Api|[GET] /api/v1/system/status: 200.OK (51 ms)
+2025-03-23 05:19:46.1|Debug|Api|[GET] /api/v1/config/host: 200.OK (66 ms)
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: SignalR was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Api|[GET] /api/v1/config/host: 200.OK (5 ms)
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Api|[GET] /api/v1/indexer: 200.OK (6 ms)
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Api|[GET] /api/v1/indexerStatus: 200.OK (1 ms)
+2025-03-23 05:19:46.2|Debug|Api|[GET] /api/v1/health: 200.OK (14 ms)
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:46.2|Debug|Prowlarr.Http.Authentication.NoAuthenticationHandler|AuthenticationScheme: None was successfully authenticated.
+2025-03-23 05:19:46.3|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: SignalR was successfully authenticated.
+2025-03-23 20:48:15.4|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-23 20:48:15.9|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-23 20:48:15.9|Debug|ProcessProvider| - [138] Prowlarr
+2025-03-23 20:48:16.8|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:18.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-23 20:48:18.2|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-23 20:48:18.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-23 20:48:19.9|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-23 20:48:19.9|Info|FluentMigrator.Runner.MigrationRunner|=> 1.6858228s
+2025-03-23 20:48:19.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-23 20:48:19.9|Info|FluentMigrator.Runner.MigrationRunner|=> 1.6898121s
+2025-03-23 20:48:20.4|Debug|MigrationController|Took: 00:00:03.5827382
+2025-03-23 20:48:20.4|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-23 20:48:20.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-23 20:48:20.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-23 20:48:20.4|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-23 20:48:20.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-23 20:48:20.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0681758s
+2025-03-23 20:48:20.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-23 20:48:20.5|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0699944s
+2025-03-23 20:48:20.5|Debug|MigrationController|Took: 00:00:00.1273710
+2025-03-23 20:48:24.7|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-23 20:48:25.9|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-23 20:48:26.0|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-23 20:48:26.4|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-23 20:48:26.8|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-23 20:48:30.8|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-23 20:48:40.5|Debug|HttpClient|Downloading Completed. took 13s
+2025-03-23 20:48:45.2|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-23 20:48:45.2|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-23 20:48:45.3|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-23 20:48:45.3|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-23 20:48:45.3|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-23 20:48:45.4|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-23 20:48:45.4|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-23 20:48:45.4|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-23 20:48:57.2|Debug|InstallUpdateService|Checking for updates
+2025-03-23 20:48:57.5|Debug|InstallUpdateService|No update available
+2025-03-25 02:49:37.4|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-25 02:49:37.7|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-25 02:49:37.7|Debug|ProcessProvider| - [140] Prowlarr
+2025-03-25 02:49:39.1|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:49:43.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 02:49:44.1|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 02:49:44.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 02:49:45.6|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 02:49:45.6|Info|FluentMigrator.Runner.MigrationRunner|=> 1.4672995s
+2025-03-25 02:49:45.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 02:49:45.6|Info|FluentMigrator.Runner.MigrationRunner|=> 1.5122768s
+2025-03-25 02:49:46.3|Debug|MigrationController|Took: 00:00:07.1848867
+2025-03-25 02:49:46.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 02:49:46.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 02:49:46.3|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 02:49:46.3|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 02:49:46.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 02:49:46.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0094741s
+2025-03-25 02:49:46.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 02:49:46.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0120224s
+2025-03-25 02:49:46.4|Debug|MigrationController|Took: 00:00:00.0799655
+2025-03-25 02:49:54.2|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-25 02:49:58.9|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-25 02:49:59.6|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-25 02:49:59.8|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-25 02:50:02.0|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-25 02:50:04.3|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-25 02:50:14.1|Debug|HttpClient|Downloading Completed. took 12s
+2025-03-25 02:50:18.7|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-25 02:50:18.7|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-25 02:50:18.8|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-25 02:50:18.8|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-25 02:50:18.8|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-25 02:50:18.9|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 02:50:18.9|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 02:50:18.9|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-25 02:50:31.5|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-25 02:50:31.7|Info|HousekeepingService|Running housecleaning tasks
+2025-03-25 02:50:31.8|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-25 02:50:31.8|Debug|HttpClient|Downloading Completed. took 0s
+2025-03-25 02:50:31.8|Debug|InstallUpdateService|Checking for updates
+2025-03-25 02:50:31.8|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-25 02:50:31.8|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-25 02:50:32.1|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-25 02:50:32.1|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-03-25 02:50:32.1|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-03-25 02:50:32.1|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-25 02:50:32.2|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-25 02:50:32.2|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-25 02:50:32.2|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-25 02:50:32.2|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-25 02:50:32.3|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-25 02:50:32.3|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-25 02:50:32.3|Debug|InstallUpdateService|No update available
+2025-03-25 02:50:32.4|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-25 02:50:32.4|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-25 02:50:32.4|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-25 02:50:32.4|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-25 02:50:32.9|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-25 02:50:32.9|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-03-25 02:50:33.0|Info|HistoryService|Removing items older than 30 days from history
+2025-03-25 02:50:33.0|Debug|HistoryService|History has been cleaned up.
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-25 02:50:33.1|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-25 02:50:33.4|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-25 02:50:33.4|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-25 02:50:33.4|Info|Database|Vacuuming Log database
+2025-03-25 02:50:33.5|Info|Database|Log database compressed
+2025-03-25 02:50:33.5|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-25 02:50:33.5|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-25 02:50:33.5|Info|Database|Vacuuming Main database
+2025-03-25 02:50:33.7|Info|Database|Main database compressed
+2025-03-25 02:50:33.9|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-25 05:46:23.8|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-25 05:46:24.4|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-25 05:46:24.4|Debug|ProcessProvider| - [140] Prowlarr
+2025-03-25 05:46:25.4|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:27.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 05:46:28.1|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 05:46:28.2|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 05:46:29.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 05:46:29.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.1665328s
+2025-03-25 05:46:29.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 05:46:29.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.2276213s
+2025-03-25 05:46:30.5|Debug|MigrationController|Took: 00:00:05.0997474
+2025-03-25 05:46:30.5|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-25 05:46:30.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-25 05:46:30.7|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-25 05:46:30.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-25 05:46:30.8|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-25 05:46:30.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1139777s
+2025-03-25 05:46:30.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-25 05:46:30.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1328321s
+2025-03-25 05:46:30.9|Debug|MigrationController|Took: 00:00:00.4378600
+2025-03-25 05:46:42.0|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-25 05:46:45.4|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-25 05:46:46.8|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-25 05:46:47.1|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-25 05:46:49.0|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-25 05:46:51.7|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-25 05:46:57.6|Debug|HttpClient|Downloading Completed. took 8s
+2025-03-25 05:47:00.7|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-25 05:47:00.7|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-25 05:47:00.8|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-25 05:47:00.8|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-25 05:47:00.8|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-25 05:47:00.9|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-25 05:47:00.9|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-25 05:47:00.9|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-27 01:23:31.9|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-27 01:23:32.9|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-27 01:23:32.9|Debug|ProcessProvider| - [141] Prowlarr
+2025-03-27 01:23:34.5|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:36.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 01:23:36.9|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 01:23:37.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 01:23:37.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 01:23:37.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.7889866s
+2025-03-27 01:23:37.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 01:23:37.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.8014259s
+2025-03-27 01:23:38.4|Debug|MigrationController|Took: 00:00:03.9439608
+2025-03-27 01:23:38.4|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 01:23:38.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 01:23:38.6|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 01:23:38.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 01:23:39.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 01:23:39.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.4714531s
+2025-03-27 01:23:39.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 01:23:39.0|Info|FluentMigrator.Runner.MigrationRunner|=> 0.4745213s
+2025-03-27 01:23:39.2|Debug|MigrationController|Took: 00:00:00.7655597
+2025-03-27 01:23:47.4|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-27 01:23:53.4|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-27 01:23:54.4|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-27 01:23:54.8|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-27 01:23:56.8|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-27 01:23:59.6|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-27 01:24:08.1|Debug|HttpClient|Downloading Completed. took 11s
+2025-03-27 01:24:10.9|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-27 01:24:10.9|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-27 01:24:10.9|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-27 01:24:10.9|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-27 01:24:10.9|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-27 01:24:10.9|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 01:24:10.9|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 01:24:10.9|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-27 01:24:27.1|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-27 01:24:27.3|Info|HistoryService|Removing items older than 30 days from history
+2025-03-27 01:24:27.3|Debug|InstallUpdateService|Checking for updates
+2025-03-27 01:24:27.4|Debug|HttpClient|Downloading Completed. took 0s
+2025-03-27 01:24:27.5|Debug|HistoryService|History has been cleaned up.
+2025-03-27 01:24:27.6|Info|HousekeepingService|Running housecleaning tasks
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-03-27 01:24:27.6|Debug|InstallUpdateService|No update available
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-27 01:24:27.6|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-27 01:24:27.9|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-27 01:24:27.9|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-27 01:24:28.0|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-27 01:24:28.0|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-03-27 01:24:28.1|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-03-27 01:24:28.1|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-27 01:24:28.1|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-27 01:24:28.1|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-27 01:24:28.2|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-27 01:24:28.2|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-27 01:24:28.2|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-27 01:24:28.2|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-27 01:24:28.2|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-27 01:24:28.3|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-27 01:24:28.3|Info|Database|Vacuuming Log database
+2025-03-27 01:24:28.4|Info|Database|Log database compressed
+2025-03-27 01:24:28.4|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-27 01:24:28.4|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-27 01:24:28.4|Info|Database|Vacuuming Main database
+2025-03-27 01:24:28.5|Info|Database|Main database compressed
+2025-03-27 01:24:28.7|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-27 23:42:54.3|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-27 23:42:54.5|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-27 23:42:54.5|Debug|ProcessProvider| - [140] Prowlarr
+2025-03-27 23:42:56.2|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:42:57.5|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 23:42:57.7|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 23:42:57.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 23:42:59.3|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 23:42:59.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.6373409s
+2025-03-27 23:42:59.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 23:42:59.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7187243s
+2025-03-27 23:43:00.7|Debug|MigrationController|Took: 00:00:04.5783900
+2025-03-27 23:43:00.8|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-27 23:43:00.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-27 23:43:01.1|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-27 23:43:01.1|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-27 23:43:01.2|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-27 23:43:01.2|Info|FluentMigrator.Runner.MigrationRunner|=> 0.1381408s
+2025-03-27 23:43:01.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-27 23:43:01.3|Info|FluentMigrator.Runner.MigrationRunner|=> 0.202074s
+2025-03-27 23:43:01.5|Debug|MigrationController|Took: 00:00:00.7424685
+2025-03-27 23:43:12.2|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-27 23:43:15.6|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-27 23:43:16.8|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-27 23:43:17.0|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-27 23:43:21.6|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-27 23:43:24.0|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-27 23:43:32.4|Debug|HttpClient|Downloading Completed. took 10s
+2025-03-27 23:43:36.5|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-27 23:43:36.5|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-27 23:43:36.6|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-27 23:43:36.6|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-27 23:43:36.6|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-27 23:43:36.6|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-27 23:43:36.7|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-27 23:43:36.7|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-27 23:43:47.6|Debug|InstallUpdateService|Checking for updates
+2025-03-27 23:43:47.8|Debug|InstallUpdateService|No update available
+2025-03-28 06:47:52.2|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-28 06:47:53.3|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-28 06:47:53.3|Debug|ProcessProvider| - [141] Prowlarr
+2025-03-28 06:47:55.4|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:47:58.1|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-28 06:47:58.7|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-28 06:47:58.7|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-28 06:48:00.4|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-28 06:48:00.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.751094s
+2025-03-28 06:48:00.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-28 06:48:00.4|Info|FluentMigrator.Runner.MigrationRunner|=> 1.7653043s
+2025-03-28 06:48:02.3|Debug|MigrationController|Took: 00:00:06.8988685
+2025-03-28 06:48:02.4|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-28 06:48:02.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-28 06:48:02.6|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-28 06:48:02.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-28 06:48:02.8|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-28 06:48:02.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2120014s
+2025-03-28 06:48:02.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-28 06:48:02.9|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2466709s
+2025-03-28 06:48:03.0|Debug|MigrationController|Took: 00:00:00.6239292
+2025-03-28 06:48:12.6|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-28 06:48:15.5|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-28 06:48:16.8|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-28 06:48:17.0|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-28 06:48:19.4|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-28 06:48:22.2|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-28 06:48:30.3|Debug|HttpClient|Downloading Completed. took 10s
+2025-03-28 06:48:33.1|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-28 06:48:33.1|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-28 06:48:33.1|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-28 06:48:33.2|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-28 06:48:33.2|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-28 06:48:33.2|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-28 06:48:33.2|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-28 06:48:33.2|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-28 06:48:49.0|Info|HistoryService|Removing items older than 30 days from history
+2025-03-28 06:48:49.1|Debug|HistoryService|History has been cleaned up.
+2025-03-28 06:48:49.1|Info|HousekeepingService|Running housecleaning tasks
+2025-03-28 06:48:49.1|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-28 06:48:49.1|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-28 06:48:49.2|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-28 06:48:49.3|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-28 06:48:49.3|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-28 06:48:49.3|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-28 06:48:49.3|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-28 06:48:49.3|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-28 06:48:49.4|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-28 06:48:49.4|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-28 06:48:49.4|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-28 06:48:49.5|Debug|InstallUpdateService|Checking for updates
+2025-03-28 06:48:49.5|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-28 06:48:49.5|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-03-28 06:48:49.6|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-03-28 06:48:49.6|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-28 06:48:49.6|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-28 06:48:49.6|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-28 06:48:49.7|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-28 06:48:49.7|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-28 06:48:49.8|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-28 06:48:49.8|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-28 06:48:49.8|Debug|HttpClient|Downloading Completed. took 0s
+2025-03-28 06:48:49.8|Debug|InstallUpdateService|No update available
+2025-03-28 06:48:50.3|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-28 06:48:50.3|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-28 06:48:50.3|Info|Database|Vacuuming Log database
+2025-03-28 06:48:50.4|Info|Database|Log database compressed
+2025-03-28 06:48:50.4|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-28 06:48:50.4|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-28 06:48:50.4|Info|Database|Vacuuming Main database
+2025-03-28 06:48:50.6|Info|Database|Main database compressed
+2025-03-28 06:48:51.5|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 05:59:28.8|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-30 05:59:29.2|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-30 05:59:29.3|Debug|ProcessProvider| - [141] Prowlarr
+2025-03-30 05:59:31.1|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:32.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:33.5|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:33.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:35.5|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:35.6|Info|FluentMigrator.Runner.MigrationRunner|=> 2.036763s
+2025-03-30 05:59:35.7|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:35.7|Info|FluentMigrator.Runner.MigrationRunner|=> 2.1405639s
+2025-03-30 05:59:37.4|Debug|MigrationController|Took: 00:00:06.2312621
+2025-03-30 05:59:37.5|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-30 05:59:38.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-30 05:59:38.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-30 05:59:38.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-30 05:59:38.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-30 05:59:38.7|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2489115s
+2025-03-30 05:59:38.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-30 05:59:38.8|Info|FluentMigrator.Runner.MigrationRunner|=> 0.2707138s
+2025-03-30 05:59:39.1|Debug|MigrationController|Took: 00:00:01.5470156
+2025-03-30 05:59:51.4|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-30 05:59:56.0|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-30 05:59:57.0|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-30 05:59:57.4|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-30 06:00:01.3|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-30 06:00:05.4|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-30 06:00:14.8|Debug|HttpClient|Downloading Completed. took 12s
+2025-03-30 06:00:17.8|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 06:00:17.8|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-30 06:00:17.9|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-30 06:00:17.9|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-30 06:00:18.0|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-30 06:00:18.0|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-30 06:00:31.9|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-30 06:00:32.3|Info|HousekeepingService|Running housecleaning tasks
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-03-30 06:00:32.3|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-03-30 06:00:32.6|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-03-30 06:00:32.6|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-03-30 06:00:32.7|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-03-30 06:00:32.7|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:32.9|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-03-30 06:00:32.9|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-03-30 06:00:33.1|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-03-30 06:00:33.1|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-03-30 06:00:34.2|Debug|HttpClient|Downloading Completed. took 2s
+2025-03-30 06:00:37.5|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-30 06:00:38.3|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-03-30 06:00:38.3|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-03-30 06:00:38.4|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-03-30 06:00:38.6|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-03-30 06:00:38.6|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-03-30 06:00:38.7|Info|HistoryService|Removing items older than 30 days from history
+2025-03-30 06:00:38.7|Debug|HistoryService|History has been cleaned up.
+2025-03-30 06:00:38.7|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-03-30 06:00:38.7|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:38.8|Debug|InstallUpdateService|Checking for updates
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-03-30 06:00:38.8|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-03-30 06:00:38.9|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-03-30 06:00:38.9|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-03-30 06:00:39.0|Info|BackupService|Starting Backup
+2025-03-30 06:00:39.2|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-03-30 06:00:39.5|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-03-30 06:00:39.5|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-03-30 06:00:39.8|Info|Database|Vacuuming Log database
+2025-03-30 06:00:39.8|Info|Database|Log database compressed
+2025-03-30 06:00:39.9|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-03-30 06:00:40.0|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-03-30 06:00:40.0|Debug|InstallUpdateService|No update available
+2025-03-30 06:00:40.0|Info|Database|Vacuuming Main database
+2025-03-30 06:00:40.1|Debug|BackupService|Cleaning up backup files older than 28 days
+2025-03-30 06:00:40.2|Debug|BackupService|Finished cleaning up old backup files
+2025-03-30 06:00:40.2|Debug|BackupService|Backing up config.xml
+2025-03-30 06:00:40.3|Info|Database|Main database compressed
+2025-03-30 06:00:40.4|Debug|DiskTransferService|Copy [/config/config.xml] > [/run/prowlarr-temp/prowlarr_backup/config.xml]
+2025-03-30 06:00:41.5|Debug|BackupService|Backing up database
+2025-03-30 06:00:41.9|Debug|BackupService|Creating backup zip
+2025-03-30 06:00:42.0|Debug|ArchiveService|Creating archive /config/Backups/scheduled/prowlarr_backup_v1.32.2.4987_2025.03.30_06.00.39.zip
+2025-03-30 06:00:43.5|Debug|BackupService|Backup zip created
+2025-03-31 02:26:57.2|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-03-31 02:26:58.1|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-03-31 02:26:58.1|Debug|ProcessProvider| - [139] Prowlarr
+2025-03-31 02:26:59.6|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:01.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:01.4|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:01.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:03.6|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:04.0|Info|FluentMigrator.Runner.MigrationRunner|=> 2.2100947s
+2025-03-31 02:27:04.0|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:04.2|Info|FluentMigrator.Runner.MigrationRunner|=> 2.5884453s
+2025-03-31 02:27:06.1|Debug|MigrationController|Took: 00:00:06.4869945
+2025-03-31 02:27:06.3|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-03-31 02:27:06.4|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-03-31 02:27:06.5|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-03-31 02:27:06.5|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-03-31 02:27:06.6|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-03-31 02:27:06.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0839412s
+2025-03-31 02:27:06.6|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-03-31 02:27:06.6|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0851599s
+2025-03-31 02:27:06.9|Debug|MigrationController|Took: 00:00:00.6760894
+2025-03-31 02:27:21.2|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-03-31 02:27:28.4|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-03-31 02:27:29.5|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-03-31 02:27:30.0|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-03-31 02:27:32.5|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-03-31 02:27:34.5|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-03-31 02:27:42.9|Debug|HttpClient|Downloading Completed. took 10s
+2025-03-31 02:27:48.1|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-03-31 02:27:48.1|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-03-31 02:27:48.1|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-03-31 02:27:48.2|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-03-31 02:27:48.2|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-03-31 02:27:48.3|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-03-31 02:27:48.3|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-03-31 02:27:48.3|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-03-31 02:28:02.2|Debug|InstallUpdateService|Checking for updates
+2025-03-31 02:28:02.3|Debug|InstallUpdateService|No update available
+2025-04-06 02:34:56.5|Debug|ProcessProvider|Found 0 processes with the name: Prowlarr.Console
+2025-04-06 02:34:56.6|Debug|ProcessProvider|Found 1 processes with the name: Prowlarr
+2025-04-06 02:34:56.6|Debug|ProcessProvider| - [139] Prowlarr
+2025-04-06 02:34:58.1|Info|MigrationController|*** Migrating data source=/config/prowlarr.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:34:59.3|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:34:59.5|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:34:59.6|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:35:01.7|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:35:01.7|Info|FluentMigrator.Runner.MigrationRunner|=> 2.167179s
+2025-04-06 02:35:01.8|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:35:01.8|Info|FluentMigrator.Runner.MigrationRunner|=> 2.2082828s
+2025-04-06 02:35:02.5|Debug|MigrationController|Took: 00:00:04.4143534
+2025-04-06 02:35:02.6|Info|MigrationController|*** Migrating data source=/config/logs.db;cache size=-20000;datetimekind=Utc;journal mode=Wal;pooling=True;version=3;busytimeout=100 ***
+2025-04-06 02:35:02.9|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrating
+2025-04-06 02:35:03.0|Info|FluentMigrator.Runner.MigrationRunner|PerformDBOperation 
+2025-04-06 02:35:03.0|Info|NzbDrone.Core.Datastore.Migration.Framework.NzbDroneSQLiteProcessor|Performing DB Operation
+2025-04-06 02:35:03.0|Info|DatabaseEngineVersionCheck|SQLite 3.48.0
+2025-04-06 02:35:03.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0895086s
+2025-04-06 02:35:03.1|Info|FluentMigrator.Runner.MigrationRunner|DatabaseEngineVersionCheck migrated
+2025-04-06 02:35:03.1|Info|FluentMigrator.Runner.MigrationRunner|=> 0.0969021s
+2025-04-06 02:35:03.3|Debug|MigrationController|Took: 00:00:00.6497534
+2025-04-06 02:35:09.8|Info|Microsoft.Hosting.Lifetime|Now listening on: http://[::]:9696
+2025-04-06 02:35:13.9|Debug|Prowlarr.Http.Authentication.ApiKeyAuthenticationHandler|AuthenticationScheme: API was not authenticated.
+2025-04-06 02:35:14.6|Debug|NotificationFactory|Initializing Providers. Count 20
+2025-04-06 02:35:14.6|Info|CommandExecutor|Starting 3 threads for tasks.
+2025-04-06 02:35:17.3|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-04-06 02:35:19.2|Info|ManagedHttpDispatcher|IPv4 is available: True, IPv6 will be disabled
+2025-04-06 02:35:27.0|Debug|HttpClient|Downloading Completed. took 9s
+2025-04-06 02:35:35.4|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-04-06 02:35:35.4|Debug|IndexerFactory|Initializing Providers. Count 67
+2025-04-06 02:35:35.5|Debug|IndexerProxyFactory|Initializing Providers. Count 4
+2025-04-06 02:35:35.6|Debug|DownloadClientFactory|Initializing Providers. Count 18
+2025-04-06 02:35:35.6|Debug|ApplicationFactory|Initializing Providers. Count 7
+2025-04-06 02:35:35.7|Info|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down.
+2025-04-06 02:35:35.7|Info|Microsoft.Hosting.Lifetime|Hosting environment: Production
+2025-04-06 02:35:35.8|Info|Microsoft.Hosting.Lifetime|Content root path: /app/prowlarr/bin
+2025-04-06 02:35:45.9|Debug|InstallUpdateService|Checking for updates
+2025-04-06 02:35:46.2|Debug|InstallUpdateService|No update available
+2025-04-06 02:35:46.3|Debug|HttpClient|Downloading [https://indexers.prowlarr.com/master/11/package.zip] to [/config/Definitions/indexers.zip]
+2025-04-06 02:35:46.7|Debug|HttpClient|Downloading Completed. took 0s
+2025-04-06 02:35:46.7|Info|HousekeepingService|Running housecleaning tasks
+2025-04-06 02:35:46.7|Debug|HousekeepingService|Starting CleanupAdditionalUsers
+2025-04-06 02:35:46.8|Info|HistoryService|Removing items older than 30 days from history
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Completed CleanupAdditionalUsers
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Starting CleanupCommandQueue
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Completed CleanupCommandQueue
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Starting CleanupOrphanedApplicationStatus
+2025-04-06 02:35:46.9|Debug|HistoryService|History has been cleaned up.
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Completed CleanupOrphanedApplicationStatus
+2025-04-06 02:35:46.9|Debug|HousekeepingService|Starting CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:47.1|Debug|HousekeepingService|Completed CleanupOrphanedDownloadClientStatus
+2025-04-06 02:35:47.1|Debug|HousekeepingService|Starting CleanupOrphanedHistoryItems
+2025-04-06 02:35:47.1|Debug|HousekeepingService|Completed CleanupOrphanedHistoryItems
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Starting CleanupOrphanedIndexerStatus
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Completed CleanupOrphanedIndexerStatus
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Starting CleanupOrphanedNotificationStatus
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Completed CleanupOrphanedNotificationStatus
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Starting CleanupTemporaryUpdateFiles
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Completed CleanupTemporaryUpdateFiles
+2025-04-06 02:35:47.2|Debug|HousekeepingService|Starting CleanupUnusedTags
+2025-04-06 02:35:47.3|Debug|HousekeepingService|Completed CleanupUnusedTags
+2025-04-06 02:35:47.3|Debug|HousekeepingService|Starting FixFutureApplicationStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Completed FixFutureApplicationStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Starting FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Completed FixFutureDownloadClientStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Starting FixFutureIndexerStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Completed FixFutureIndexerStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Starting FixFutureNotificationStatusTimes
+2025-04-06 02:35:47.4|Debug|HousekeepingService|Completed FixFutureNotificationStatusTimes
+2025-04-06 02:35:47.5|Debug|HousekeepingService|Starting FixFutureRunScheduledTasks
+2025-04-06 02:35:47.5|Debug|HousekeepingService|Completed FixFutureRunScheduledTasks
+2025-04-06 02:35:47.5|Debug|HousekeepingService|Starting TrimLogDatabase
+2025-04-06 02:35:48.0|Info|Database|Vacuuming Log database
+2025-04-06 02:35:48.2|Info|Database|Log database compressed
+2025-04-06 02:35:48.2|Debug|HousekeepingService|Completed TrimLogDatabase
+2025-04-06 02:35:48.2|Debug|HousekeepingService|Compressing main database after housekeeping
+2025-04-06 02:35:48.2|Info|Database|Vacuuming Main database
+2025-04-06 02:35:48.3|Debug|IndexerDefinitionUpdateService|Updated indexer definitions
+2025-04-06 02:35:48.5|Info|Database|Main database compressed
