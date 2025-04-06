@@ -46,3 +46,5 @@ PARAMETERS:
 
 
 
+2025-04-06 22:55:32.2|Info|Microsoft.Hosting.Lifetime|Application is shutting down...
+2025-04-06 22:55:33.2|Info|ConsoleApp|Exiting main.

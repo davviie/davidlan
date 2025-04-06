@@ -1170,3 +1170,144 @@ no such table: Commands
 --- End of stack trace from previous location ---
    at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
 
+2025-04-06 22:54:21.4|Error|EventAggregator|TaskManager failed while processing [CommandExecutedEvent]
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: ScheduledTasks
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1075
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1094
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in /_/Dapper/SqlMapper.cs:line 734
+   at NzbDrone.Core.Datastore.SqlMapperExtensions.Query[T](IDatabase db, String sql, Object param) in ./Whisparr.Core/Datastore/Extensions/SqlMapperExtensions.cs:line 17
+   at NzbDrone.Core.Datastore.BasicRepository`1.Query(SqlBuilder builder) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 72
+   at NzbDrone.Core.Jobs.TaskManager.Handle(CommandExecutedEvent message) in ./Whisparr.Core/Jobs/TaskManager.cs:line 204
+   at NzbDrone.Core.Messaging.Events.EventAggregator.PublishEvent[TEvent](TEvent event)
+
+2025-04-06 22:54:21.4|Error|TaskExtensions|Task Error
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Commands
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1075
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1058
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 138
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute4[T0,T1,T2,T3,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2, T3 arg3)
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push(String commandName, Nullable`1 lastExecutionTime, Nullable`1 lastStartTime, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 142
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Whisparr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+2025-04-06 22:54:21.4|Error|CommandExecutor|Error occurred while executing task MessagingCleanup
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Commands
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in /_/Dapper/SqlMapper.cs:line 2858
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 581
+   at NzbDrone.Core.Datastore.BasicRepository`1.UpdateFields(IDbConnection connection, IDbTransaction transaction, TModel model, List`1 propertiesToUpdate) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 385
+   at NzbDrone.Core.Datastore.BasicRepository`1.SetFields(TModel model, Expression`1[] properties) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 335
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Update(CommandModel command, CommandStatus status, String message) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 258
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Fail(CommandModel command, String message, Exception e) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 213
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Whisparr.Core/Messaging/Commands/CommandExecutor.cs:line 97
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Whisparr.Core/Messaging/Commands/CommandExecutor.cs:line 42
+
+2025-04-06 22:54:51.4|Error|TaskExtensions|Task Error
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Commands
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1075
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1058
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 138
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute4[T0,T1,T2,T3,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2, T3 arg3)
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push(String commandName, Nullable`1 lastExecutionTime, Nullable`1 lastStartTime, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 142
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Whisparr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+2025-04-06 22:55:21.4|Error|TaskExtensions|Task Error
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Commands
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1075
+   at Dapper.SqlMapper.QueryMultipleImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 1058
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(IDbConnection connection, IDbTransaction transaction, TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 188
+   at NzbDrone.Core.Datastore.BasicRepository`1.Insert(TModel model) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 151
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push[TCommand](TCommand command, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 138
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute4[T0,T1,T2,T3,TRet](CallSite site, T0 arg0, T1 arg1, T2 arg2, T3 arg3)
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Push(String commandName, Nullable`1 lastExecutionTime, Nullable`1 lastStartTime, CommandPriority priority, CommandTrigger trigger) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 142
+   at NzbDrone.Core.Jobs.Scheduler.ExecuteCommands() in ./Whisparr.Core/Jobs/Scheduler.cs:line 42
+   at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+
+2025-04-06 22:55:21.4|Error|EventAggregator|TaskManager failed while processing [CommandExecutedEvent]
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: ScheduledTasks
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteReaderWithFlagsFallback(IDbCommand cmd, Boolean wasClosed, CommandBehavior behavior) in /_/Dapper/SqlMapper.cs:line 1075
+   at Dapper.SqlMapper.QueryImpl[T](IDbConnection cnn, CommandDefinition command, Type effectiveType)+MoveNext() in /_/Dapper/SqlMapper.cs:line 1094
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at Dapper.SqlMapper.Query[T](IDbConnection cnn, String sql, Object param, IDbTransaction transaction, Boolean buffered, Nullable`1 commandTimeout, Nullable`1 commandType) in /_/Dapper/SqlMapper.cs:line 734
+   at NzbDrone.Core.Datastore.SqlMapperExtensions.Query[T](IDatabase db, String sql, Object param) in ./Whisparr.Core/Datastore/Extensions/SqlMapperExtensions.cs:line 17
+   at NzbDrone.Core.Datastore.BasicRepository`1.Query(SqlBuilder builder) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 72
+   at NzbDrone.Core.Jobs.TaskManager.Handle(CommandExecutedEvent message) in ./Whisparr.Core/Jobs/TaskManager.cs:line 204
+   at NzbDrone.Core.Messaging.Events.EventAggregator.PublishEvent[TEvent](TEvent event)
+
+2025-04-06 22:55:21.4|Error|CommandExecutor|Error occurred while executing task MessagingCleanup
+
+[v2.0.0.891] code = Error (1), message = System.Data.SQLite.SQLiteException (0x800007BF): SQL logic error
+no such table: Commands
+   at System.Data.SQLite.SQLite3.Prepare(SQLiteConnection cnn, String strSql, SQLiteStatement previous, UInt32 timeoutMS, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery(CommandBehavior behavior)
+   at Dapper.SqlMapper.ExecuteCommand(IDbConnection cnn, CommandDefinition& command, Action`2 paramReader) in /_/Dapper/SqlMapper.cs:line 2858
+   at Dapper.SqlMapper.ExecuteImpl(IDbConnection cnn, CommandDefinition& command) in /_/Dapper/SqlMapper.cs:line 581
+   at NzbDrone.Core.Datastore.BasicRepository`1.UpdateFields(IDbConnection connection, IDbTransaction transaction, TModel model, List`1 propertiesToUpdate) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 385
+   at NzbDrone.Core.Datastore.BasicRepository`1.SetFields(TModel model, Expression`1[] properties) in ./Whisparr.Core/Datastore/BasicRepository.cs:line 335
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Update(CommandModel command, CommandStatus status, String message) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 258
+   at NzbDrone.Core.Messaging.Commands.CommandQueueManager.Fail(CommandModel command, String message, Exception e) in ./Whisparr.Core/Messaging/Commands/CommandQueueManager.cs:line 213
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommand[TCommand](TCommand command, CommandModel commandModel) in ./Whisparr.Core/Messaging/Commands/CommandExecutor.cs:line 116
+   at NzbDrone.Core.Messaging.Commands.CommandExecutor.ExecuteCommands() in ./Whisparr.Core/Messaging/Commands/CommandExecutor.cs:line 42
+
+2025-04-06 22:55:32.6|Info|Microsoft.Hosting.Lifetime|Application is shutting down...
+2025-04-06 22:55:34.3|Info|ConsoleApp|Exiting main.
