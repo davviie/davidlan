@@ -2,7 +2,7 @@
 networks:
   traefik_network:
     driver: bridge
-    
+
 services:
   traefik:
     image: traefik:latest
@@ -29,8 +29,6 @@ services:
     environment:
       - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
       - DOMAIN=${DOMAIN}
-    networks:
-      - traefik_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)" # Dynamic domain for dashboard
