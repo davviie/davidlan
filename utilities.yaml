@@ -124,25 +124,6 @@ services:
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls=true"
 
-  # Speedtest - Internet Speed Monitoring
-  speedtest:
-    image: ghcr.io/linuxserver/speedtest:latest
-    container_name: speedtest
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - "${SPEEDTEST_PORT}:${SPEEDTEST_PORT}" # Speedtest Web UI
-    volumes:
-      - ${DOCKERDATA}/speedtest/config:/config
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.speedtest.rule=Host(`speedtest.${DOMAIN}`)"
-      - "traefik.http.routers.speedtest.entrypoints=websecure"
-      - "traefik.http.routers.speedtest.tls=true"
-
   # Uptime Kuma - Monitoring and Status Page
   uptime-kuma:
     image: louislam/uptime-kuma:latest
