@@ -8,7 +8,7 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.file.filename=/etc/traefik/traefik.yml" # Load static config from file
+      - "--providers.file.filename=/etc/traefik/traefik-static.yml" # Load static config from file
       - "--api.dashboard=true" # Enable Traefik dashboard
       - "--log.level=INFO" # Optional: Set log level
     ports:
@@ -19,7 +19,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # Required for Docker provider
       - ./selfsigned.crt:/certs/selfsigned.crt
       - ./selfsigned.key:/certs/selfsigned.key
-      - ./traefik.yml:/etc/traefik/traefik.yml # Mount the static config file
+      - ./traefik-static.yml:/etc/traefik/traefik-static.yml # Mount the static config file
     environment:
       - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
     networks:
