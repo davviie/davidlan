@@ -7,9 +7,7 @@ services:
     restart: unless-stopped
     command:
       - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
       - "--providers.file.filename=/etc/traefik/traefik-static.yml" # Load static config from file
-      - "--api.dashboard=true" # Enable Traefik dashboard
       - "--log.level=INFO" # Optional: Set log level
     ports:
       - "80:80" # HTTP
