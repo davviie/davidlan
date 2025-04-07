@@ -15,6 +15,9 @@ TORRENTS=./torrents
 # ID and Tokens
 VAULTWARDEN_ADMIN_TOKEN=your_secure_admin_token
 TRAEFIK_ACME_EMAIL=mail@davidlan.xyz
+PLEX_CLAIM=mraYUbL2QPo7onDyhrok
+PLEX_PASS=true
+ADVERTISE_IP=
 
 # Ports
 PORTAINER_PORT=9000
