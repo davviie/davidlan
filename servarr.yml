@@ -189,7 +189,7 @@ services:
     container_name: tautulli
     restart: unless-stopped
     volumes:
-      - <path to data>:/config
+      - ${DOCKERDATA}:/config
     environment:
       - PUID=1000
       - PGID=1000
