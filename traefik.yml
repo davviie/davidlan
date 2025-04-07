@@ -21,7 +21,7 @@ services:
     ports:
       - "80:80" # HTTP
       - "443:443" # HTTPS
-      - "${TRAEFIK_DASHBOARD_PORT}:8080" # Traefik dashboard
+      - "${TRAEFIK_DASHBOARD_PORT}:8081" # Traefik dashboard (changed to avoid port conflict)
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # Required for Docker provider
       - ./selfsigned.crt:/certs/selfsigned.crt
@@ -29,6 +29,27 @@ services:
       - ${DOCKERDATA}/traefik/letsencrypt:/letsencrypt # Path for Let's Encrypt certificates
     environment:
       - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
+    networks:
+      - traefik_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls=true"
+      - "traefik.http.routers.traefik.tls.certresolver=myresolver"
+
+  backend:
+    image: nginx:latest
+    container_name: nginx-backend
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`api.${DOMAIN}`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls=true"
+      - "traefik.http.routers.backend.tls.certresolver=myresolver"
+      - "traefik.http.services.backend.loadbalancer.server.port=80" # Nginx default port
     networks:
       - traefik_network
 
