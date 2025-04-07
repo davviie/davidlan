@@ -1,3 +1,7 @@
+networks:
+  traefik_network:
+    driver: bridge
+    
 services:
   # Portainer - Docker Management UI
   portainer:

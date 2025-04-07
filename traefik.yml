@@ -1,5 +1,8 @@
 # traefik
-
+networks:
+  traefik_network:
+    driver: bridge
+    
 services:
   traefik:
     image: traefik:latest
