@@ -13,7 +13,7 @@ services:
       - ./dockerdata/servarr/overseerr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -34,7 +34,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -55,7 +55,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
@@ -73,7 +73,7 @@ services:
       - ./dockerdata/servarr/prowlarr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -93,7 +93,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -114,7 +114,7 @@ services:
       - ./media/movie:/movies
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
 
@@ -134,7 +134,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -155,7 +155,7 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
@@ -176,7 +176,21 @@ services:
       - ./torrents:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.davidlan.local`)"
+      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
       - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
       - "traefik.http.routers.{{ .Name }}.tls=true"
       - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+
+services:
+  tautulli:
+    image: ghcr.io/tautulli/tautulli
+    container_name: tautulli
+    restart: unless-stopped
+    volumes:
+      - <path to data>:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Montreal
+    ports:
+      - 8181:8181

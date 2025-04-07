@@ -11,6 +11,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN}`)"
+      - "traefik.http.routers.portainer.entrypoints=websecure"
+      - "traefik.http.routers.portainer.tls=true"
 
   # Portainer Agent - For Remote Portainer Management
   portainer-agent:
@@ -22,6 +27,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer-agent.rule=Host(`agent.${DOMAIN}`)"
+      - "traefik.http.routers.portainer-agent.entrypoints=websecure"
+      - "traefik.http.routers.portainer-agent.tls=true"
 
   # Watchtower - Automatic Updates for Containers
   watchtower:
@@ -33,6 +43,11 @@ services:
       - WATCHTOWER_POLL_INTERVAL=3600 # Check every hour
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.watchtower.rule=Host(`watchtower.${DOMAIN}`)"
+      - "traefik.http.routers.watchtower.entrypoints=websecure"
+      - "traefik.http.routers.watchtower.tls=true"
 
   # Alpine - Lightweight Linux Container
   alpine:
@@ -41,6 +56,11 @@ services:
     restart: unless-stopped
     command: tail -f /dev/null # Keeps the container running
     tty: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.alpine.rule=Host(`alpine.${DOMAIN}`)"
+      - "traefik.http.routers.alpine.entrypoints=websecure"
+      - "traefik.http.routers.alpine.tls=true"
 
   # FileZilla - FTP Client
   filezilla:
@@ -56,6 +76,11 @@ services:
     volumes:
       - ./filezilla/config:/config
       - ./filezilla/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.filezilla.rule=Host(`filezilla.${DOMAIN}`)"
+      - "traefik.http.routers.filezilla.entrypoints=websecure"
+      - "traefik.http.routers.filezilla.tls=true"
 
   # Netdata - System Monitoring
   netdata:
@@ -75,6 +100,11 @@ services:
       - ./netdata/config:/etc/netdata
       - ./netdata/lib:/var/lib/netdata
       - ./netdata/cache:/var/cache/netdata
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.netdata.rule=Host(`netdata.${DOMAIN}`)"
+      - "traefik.http.routers.netdata.entrypoints=websecure"
+      - "traefik.http.routers.netdata.tls=true"
 
   # Nginx - Reverse Proxy
   nginx:
@@ -88,6 +118,11 @@ services:
       - ./nginx/conf:/etc/nginx/conf.d
       - ./nginx/html:/usr/share/nginx/html
       - ./nginx/logs:/var/log/nginx
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`nginx.${DOMAIN}`)"
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.tls=true"
 
   # Uptime Kuma - Monitoring and Status Page
   uptime-kuma:
@@ -98,6 +133,11 @@ services:
       - "3001:3001" # Uptime Kuma Web UI
     volumes:
       - ./uptime-kuma/data:/app/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptime-kuma.rule=Host(`uptime.${DOMAIN}`)"
+      - "traefik.http.routers.uptime-kuma.entrypoints=websecure"
+      - "traefik.http.routers.uptime-kuma.tls=true"
 
   # Vaultwarden - Self-Hosted Password Manager
   vaultwarden:
@@ -111,6 +151,11 @@ services:
     environment:
       - ADMIN_TOKEN=your_admin_token # Replace with a secure admin token
       - WEBSOCKET_ENABLED=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vaultwarden.${DOMAIN}`)"
+      - "traefik.http.routers.vaultwarden.entrypoints=websecure"
+      - "traefik.http.routers.vaultwarden.tls=true"
 
   # Heimdall - Application Dashboard
   heimdall:
@@ -125,6 +170,11 @@ services:
       - TZ=Etc/UTC
     volumes:
       - ./heimdall/config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.heimdall.rule=Host(`heimdall.${DOMAIN}`)"
+      - "traefik.http.routers.heimdall.entrypoints=websecure"
+      - "traefik.http.routers.heimdall.tls=true"
 
   # Homepage - Customizable Start Page
   homepage:
@@ -139,3 +189,8 @@ services:
     environment:
       - TZ=Etc/UTC
       - HOMEPAGE_PORT=3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage.rule=Host(`homepage.${DOMAIN}`)"
+      - "traefik.http.routers.homepage.entrypoints=websecure"
+      - "traefik.http.routers.homepage.tls=true"
