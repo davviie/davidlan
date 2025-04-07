@@ -18,6 +18,8 @@ services:
       - "--log.level=INFO" # Optional: Set log level
       - "--entrypoints.websecure.tls.certificates[0].certFile=/certs/selfsigned.crt"
       - "--entrypoints.websecure.tls.certificates[0].keyFile=/certs/selfsigned.key"
+      - "--entrypoints.websecure.http.tls.certificates[0].certFile=/certs/selfsigned.crt"
+      - "--entrypoints.websecure.http.tls.certificates[0].keyFile=/certs/selfsigned.key"
     ports:
       - "80:80" # HTTP
       - "443:443" # HTTPS
