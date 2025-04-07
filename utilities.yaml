@@ -62,23 +62,6 @@ services:
       - "traefik.http.routers.alpine.entrypoints=websecure"
       - "traefik.http.routers.alpine.tls=true"
 
-  # CasaOS - Personal Cloud OS
-  casaos:
-    image: ixxc/casaos:latest
-    container_name: casaos
-    restart: unless-stopped
-    ports:
-      - "${CASAOS_HTTP_PORT}:80"   # CasaOS Web UI
-      - "${CASAOS_HTTPS_PORT}:443" # CasaOS HTTPS
-    volumes:
-      - ${DOCKERDATA}/casaos/config:/config
-      - ${DOCKERDATA}/casaos/data:/data
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.casaos.rule=Host(`casaos.${DOMAIN}`)"
-      - "traefik.http.routers.casaos.entrypoints=websecure"
-      - "traefik.http.routers.casaos.tls=true"
-
   # FileZilla - FTP Client
   filezilla:
     image: ghcr.io/linuxserver/filezilla:latest
