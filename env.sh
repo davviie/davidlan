@@ -5,8 +5,8 @@ cat <<EOF > .env
 PUID=$(id -u)                  # Get the current user's UID
 PGID=$(id -g)                  # Get the current user's GID
 TZ=$(cat /etc/timezone 2>/dev/null || echo "Etc/UTC") # Get the system timezone
-DOMAIN=david.lan               # Set your domain name
-HOSTNAME=$(hostname)           # Get the system hostname
+DOMAIN=david.lan               # Custom domain name for Traefik routing
+HOSTNAME=$(hostname)           # System hostname for local network identification
 DOCKER_SOCK=/var/run/docker.sock
 DOCKERDATA=./dockerdata
 MEDIA=./media
@@ -17,7 +17,7 @@ VAULTWARDEN_ADMIN_TOKEN=your_secure_admin_token
 TRAEFIK_ACME_EMAIL=mail@davidlan.xyz
 PLEX_CLAIM=mraYUbL2QPo7onDyhrok
 PLEX_PASS=true
-ADVERTISE_IP=
+ADVERTISE_IP=http://$(hostname -I | awk '{print $1}'):32400 # Automatically set local IP
 
 # Ports
 PORTAINER_PORT=9000
