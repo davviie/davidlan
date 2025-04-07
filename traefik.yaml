@@ -8,22 +8,27 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.address=:${TRAEFIK_HTTP_PORT}" # HTTP port from .env
+      - "--entrypoints.websecure.address=:${TRAEFIK_HTTPS_PORT}" # HTTPS port from .env
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.myresolver.acme.email=mail@davidlan.xyz" # Replace with your email
+      - "--certificatesresolvers.myresolver.acme.email=${TRAEFIK_ACME_EMAIL}" # Email from .env
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
-      - "80:80" # HTTP
-      - "443:443" # HTTPS
-      - "8080:8080" # Traefik dashboard
+      - "${TRAEFIK_HTTP_PORT}:${TRAEFIK_HTTP_PORT}" # HTTP
+      - "${TRAEFIK_HTTPS_PORT}:${TRAEFIK_HTTPS_PORT}" # HTTPS
+      - "${TRAEFIK_DASHBOARD_PORT}:${TRAEFIK_DASHBOARD_PORT}" # Traefik dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./traefik/letsencrypt:/letsencrypt"
+      - "${DOCKERDATA}/traefik/letsencrypt:/letsencrypt" # Dynamic path for letsencrypt
+    environment:
+      - TRAEFIK_HTTP_PORT=${TRAEFIK_HTTP_PORT}
+      - TRAEFIK_HTTPS_PORT=${TRAEFIK_HTTPS_PORT}
+      - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
+      - DOMAIN=${DOMAIN}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)" # Replace with your domain
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)" # Dynamic domain
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.entrypoints=websecure"
       - "traefik.http.routers.traefik.tls=true"
