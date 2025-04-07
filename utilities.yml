@@ -28,7 +28,7 @@ services:
       - "${PORTAINER_AGENT_PORT}:${PORTAINER_AGENT_PORT}" # Portainer Agent Port
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${DOCKERDATA}/volumes:ls/volumes
+      - ${DOCKERDATA}/volumes:/volumes
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer-agent.rule=Host(`agent.${DOMAIN}`)"
