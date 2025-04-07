@@ -209,7 +209,7 @@ services:
       - PGID=$PGID
       - TZ=$TZ
     volumes:
-      - ./nzbget:/config
+      - $DOCKERDATA/nzbget:/config
       - $MEDIADIR/usenet:/media/usenet
     ports:
       - 6789:6789
