@@ -4,184 +4,186 @@ services:
     container_name: overseerr
     restart: unless-stopped
     ports:
-      - "5055:5055"
+      - "${OVERSEERR_PORT}:${OVERSEERR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/overseerr:/config
+      - ${DOCKERDATA}/servarr/overseerr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.overseerr.rule=Host(`overseerr.${DOMAIN}`)"
+      - "traefik.http.routers.overseerr.entrypoints=websecure"
+      - "traefik.http.routers.overseerr.tls=true"
+      - "traefik.http.routers.overseerr.tls.certresolver=myresolver"
 
   sonarr:
     image: linuxserver/sonarr:latest
     container_name: sonarr
     restart: unless-stopped
     ports:
-      - "8989:8989"
+      - "${SONARR_PORT}:${SONARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/sonarr:/config
-      - ./media/TV:/tv
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/sonarr:/config
+      - ${MEDIA}/TV:/tv
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.sonarr.rule=Host(`sonarr.${DOMAIN}`)"
+      - "traefik.http.routers.sonarr.entrypoints=websecure"
+      - "traefik.http.routers.sonarr.tls=true"
+      - "traefik.http.routers.sonarr.tls.certresolver=myresolver"
 
   radarr:
     image: linuxserver/radarr:latest
     container_name: radarr
     restart: unless-stopped
     ports:
-      - "7878:7878"
+      - "${RADARR_PORT}:${RADARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/radarr:/config
-      - ./media/movie:/movies
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/radarr:/config
+      - ${MEDIA}/movie:/movies
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.radarr.rule=Host(`radarr.${DOMAIN}`)"
+      - "traefik.http.routers.radarr.entrypoints=websecure"
+      - "traefik.http.routers.radarr.tls=true"
+      - "traefik.http.routers.radarr.tls.certresolver=myresolver"
 
   prowlarr:
     image: linuxserver/prowlarr:latest
     container_name: prowlarr
     restart: unless-stopped
     ports:
-      - "9696:9696"
+      - "${PROWLARR_PORT}:${PROWLARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/prowlarr:/config
+      - ${DOCKERDATA}/servarr/prowlarr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.${DOMAIN}`)"
+      - "traefik.http.routers.prowlarr.entrypoints=websecure"
+      - "traefik.http.routers.prowlarr.tls=true"
+      - "traefik.http.routers.prowlarr.tls.certresolver=myresolver"
 
   mylar:
     image: linuxserver/mylar3:latest
     container_name: mylar
     restart: unless-stopped
     ports:
-      - "8090:8090"
+      - "${MYLAR_PORT}:${MYLAR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000 - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/mylar:/config
-      - ./media/comics:/comics
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/mylar:/config
+      - ${MEDIA}/comics:/comics
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.mylar.rule=Host(`mylar.${DOMAIN}`)"
+      - "traefik.http.routers.mylar.entrypoints=websecure"
+      - "traefik.http.routers.mylar.tls=true"
+      - "traefik.http.routers.mylar.tls.certresolver=myresolver"
 
   bazarr:
     image: linuxserver/bazarr:latest
     container_name: bazarr
     restart: unless-stopped
     ports:
-      - "6767:6767"
+      - "${BAZARR_PORT}:${BAZARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/bazarr:/config
-      - ./media/TV Shows:/tv
-      - ./media/movie:/movies
+      - ${DOCKERDATA}/servarr/bazarr:/config
+      - ${MEDIA}/TV:/tv
+      - ${MEDIA}/movie:/movies
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"- "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.bazarr.rule=Host(`bazarr.${DOMAIN}`)"
+      - "traefik.http.routers.bazarr.entrypoints=websecure"
+      - "traefik.http.routers.bazarr.tls=true"
+      - "traefik.http.routers.bazarr.tls.certresolver=myresolver"
 
   lazylibrarian:
     image: linuxserver/lazylibrarian:latest
     container_name: lazylibrarian
     restart: unless-stopped
     ports:
-      - "5299:5299"
+      - "${LAZYLIBRARIAN_PORT}:${LAZYLIBRARIAN_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/lazylibrarian:/config
-      - ./media/books:/books
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/lazylibrarian:/config
+      - ${MEDIA}/books:/books
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.lazylibrarian.rule=Host(`lazylibrarian.${DOMAIN}`)"
+      - "traefik.http.routers.lazylibrarian.entrypoints=websecure"
+      - "traefik.http.routers.lazylibrarian.tls=true"
+      - "traefik.http.routers.lazylibrarian.tls.certresolver=myresolver"
 
   lidarr:
     image: linuxserver/lidarr:latest
     container_name: lidarr
     restart: unless-stopped
-    ports: 
-    - "8686:8686"
+    ports:
+      - "${LIDARR_PORT}:${LIDARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/lidarr:/config
-      - ./media/music:/music
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/lidarr:/config
+      - ${MEDIA}/music:/music
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.lidarr.rule=Host(`lidarr.${DOMAIN}`)"
+      - "traefik.http.routers.lidarr.entrypoints=websecure"
+      - "traefik.http.routers.lidarr.tls=true"
+      - "traefik.http.routers.lidarr.tls.certresolver=myresolver"
 
   whisparr:
     image: hotio/whisparr:latest
     container_name: whisparr
     restart: unless-stopped
     ports:
-      - "6969:6969"
+      - "${WHISPARR_PORT}:${WHISPARR_PORT}"
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC 
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./dockerdata/servarr/whisparr:/config
-      - ./media/adult:/adult
-      - ./torrents:/downloads
+      - ${DOCKERDATA}/servarr/whisparr:/config
+      - ${MEDIA}/adult:/adult
+      - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.{{ .Name }}.rule=Host(`{{ .Name }}.${DOMAIN}`)"
-      - "traefik.http.routers.{{ .Name }}.entrypoints=websecure"
-      - "traefik.http.routers.{{ .Name }}.tls=true"
-      - "traefik.http.routers.{{ .Name }}.tls.certresolver=myresolver"
+      - "traefik.http.routers.whisparr.rule=Host(`whisparr.${DOMAIN}`)"
+      - "traefik.http.routers.whisparr.entrypoints=websecure"
+      - "traefik.http.routers.whisparr.tls=true"
+      - "traefik.http.routers.whisparr.tls.certresolver=myresolver"
 
-services:
   tautulli:
     image: ghcr.io/tautulli/tautulli
     container_name: tautulli
@@ -194,3 +196,17 @@ services:
       - TZ=America/Montreal
     ports:
       - 8181:8181
+
+  nzbget: #usenet download agent
+    image: ghcr.io/linuxserver/nzbget
+    container_name: nzbget
+    environment:
+      - PUID=$PUID
+      - PGID=$PGID
+      - TZ=$TZ
+    volumes:
+      - ./nzbget:/config
+      - $MEDIADIR/usenet:/media/usenet
+    ports:
+      - 6789:6789
+    restart: unless-stopped

@@ -7,10 +7,10 @@ services:
     container_name: portainer
     restart: unless-stopped
     ports:
-      - "9000:9000" # Portainer Web UI
+      - "${PORTAINER_PORT}:${PORTAINER_PORT}" # Portainer Web UI
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./portainer/data:/data
+      - ${DOCKERDATA}/portainer:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.portainer.rule=Host(`portainer.${DOMAIN}`)"
@@ -23,7 +23,7 @@ services:
     container_name: portainer-agent
     restart: unless-stopped
     ports:
-      - "9001:9001" # Portainer Agent Port
+      - "${PORTAINER_AGENT_PORT}:${PORTAINER_AGENT_PORT}" # Portainer Agent Port
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/docker/volumes:/var/lib/docker/volumes
@@ -62,20 +62,37 @@ services:
       - "traefik.http.routers.alpine.entrypoints=websecure"
       - "traefik.http.routers.alpine.tls=true"
 
+  # CasaOS - Personal Cloud OS
+  casaos:
+    image: ixxc/casaos:latest
+    container_name: casaos
+    restart: unless-stopped
+    ports:
+      - "${CASAOS_HTTP_PORT}:80"   # CasaOS Web UI
+      - "${CASAOS_HTTPS_PORT}:443" # CasaOS HTTPS
+    volumes:
+      - ${DOCKERDATA}/casaos/config:/config
+      - ${DOCKERDATA}/casaos/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.casaos.rule=Host(`casaos.${DOMAIN}`)"
+      - "traefik.http.routers.casaos.entrypoints=websecure"
+      - "traefik.http.routers.casaos.tls=true"
+
   # FileZilla - FTP Client
   filezilla:
     image: ghcr.io/linuxserver/filezilla:latest
     container_name: filezilla
     restart: unless-stopped
     ports:
-      - "3000:3000" # FileZilla Web UI
+      - "${FILEZILLA_PORT}:${FILEZILLA_PORT}" # FileZilla Web UI
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./filezilla/config:/config
-      - ./filezilla/data:/data
+      - ${DOCKERDATA}/filezilla/config:/config
+      - ${DOCKERDATA}/filezilla/data:/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.filezilla.rule=Host(`filezilla.${DOMAIN}`)"
@@ -88,7 +105,7 @@ services:
     container_name: netdata
     restart: unless-stopped
     ports:
-      - "19999:19999" # Netdata Web UI
+      - "${NETDATA_PORT}:${NETDATA_PORT}" # Netdata Web UI
     cap_add:
       - SYS_PTRACE
     security_opt:
@@ -97,9 +114,9 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./netdata/config:/etc/netdata
-      - ./netdata/lib:/var/lib/netdata
-      - ./netdata/cache:/var/cache/netdata
+      - ${DOCKERDATA}/netdata/config:/etc/netdata
+      - ${DOCKERDATA}/netdata/lib:/var/lib/netdata
+      - ${DOCKERDATA}/netdata/cache:/var/cache/netdata
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.netdata.rule=Host(`netdata.${DOMAIN}`)"
@@ -112,17 +129,36 @@ services:
     container_name: nginx
     restart: unless-stopped
     ports:
-      - "8080:80"  # HTTP
-      - "8443:443" # HTTPS
+      - "${NGINX_HTTP_PORT}:80"  # HTTP
+      - "${NGINX_HTTPS_PORT}:443" # HTTPS
     volumes:
-      - ./nginx/conf:/etc/nginx/conf.d
-      - ./nginx/html:/usr/share/nginx/html
-      - ./nginx/logs:/var/log/nginx
+      - ${DOCKERDATA}/nginx/conf:/etc/nginx/conf.d
+      - ${DOCKERDATA}/nginx/html:/usr/share/nginx/html
+      - ${DOCKERDATA}/nginx/logs:/var/log/nginx
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nginx.rule=Host(`nginx.${DOMAIN}`)"
       - "traefik.http.routers.nginx.entrypoints=websecure"
       - "traefik.http.routers.nginx.tls=true"
+
+  # Speedtest - Internet Speed Monitoring
+  speedtest:
+    image: ghcr.io/linuxserver/speedtest:latest
+    container_name: speedtest
+    restart: unless-stopped
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    ports:
+      - "${SPEEDTEST_PORT}:${SPEEDTEST_PORT}" # Speedtest Web UI
+    volumes:
+      - ${DOCKERDATA}/speedtest/config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.speedtest.rule=Host(`speedtest.${DOMAIN}`)"
+      - "traefik.http.routers.speedtest.entrypoints=websecure"
+      - "traefik.http.routers.speedtest.tls=true"
 
   # Uptime Kuma - Monitoring and Status Page
   uptime-kuma:
@@ -130,9 +166,9 @@ services:
     container_name: uptime-kuma
     restart: unless-stopped
     ports:
-      - "3001:3001" # Uptime Kuma Web UI
+      - "${UPTIME_KUMA_PORT}:${UPTIME_KUMA_PORT}" # Uptime Kuma Web UI
     volumes:
-      - ./uptime-kuma/data:/app/data
+      - ${DOCKERDATA}/uptime-kuma/data:/app/data
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.uptime-kuma.rule=Host(`uptime.${DOMAIN}`)"
@@ -145,11 +181,11 @@ services:
     container_name: vaultwarden
     restart: unless-stopped
     ports:
-      - "8083:80" # Vaultwarden Web UI
+      - "${VAULTWARDEN_PORT}:80" # Vaultwarden Web UI
     volumes:
-      - ./vaultwarden/data:/data
+      - ${DOCKERDATA}/vaultwarden/data:/data
     environment:
-      - ADMIN_TOKEN=your_admin_token # Replace with a secure admin token
+      - ADMIN_TOKEN=${VAULTWARDEN_ADMIN_TOKEN} # Replace with a secure admin token
       - WEBSOCKET_ENABLED=true
     labels:
       - "traefik.enable=true"
@@ -163,13 +199,13 @@ services:
     container_name: heimdall
     restart: unless-stopped
     ports:
-      - "3002:80" # Heimdall Web UI
+      - "${HEIMDALL_PORT}:80" # Heimdall Web UI
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
-      - ./heimdall/config:/config
+      - ${DOCKERDATA}/heimdall/config:/config
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.heimdall.rule=Host(`heimdall.${DOMAIN}`)"
@@ -182,13 +218,12 @@ services:
     container_name: homepage
     restart: unless-stopped
     ports:
-      - "3003:3000" # Homepage Web UI
+      - "${HOMEPAGE_PORT}:${HOMEPAGE_PORT}" # Homepage Web UI
     volumes:
-      - ./homepage/config:/app/config
-      - ./homepage/data:/app/data
+      - ${DOCKERDATA}/homepage/config:/app/config
+      - ${DOCKERDATA}/homepage/data:/app/data
     environment:
-      - TZ=Etc/UTC
-      - HOMEPAGE_PORT=3000
+      - TZ=${TZ}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.homepage.rule=Host(`homepage.${DOMAIN}`)"
