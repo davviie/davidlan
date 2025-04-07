@@ -16,39 +16,21 @@ services:
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       - "--api.dashboard=true" # Enable Traefik dashboard
       - "--log.level=INFO" # Optional: Set log level
-      - "--entrypoints.websecure.http.tls.certificates[0].certFile=/certs/selfsigned.crt"
-      - "--entrypoints.websecure.http.tls.certificates[0].keyFile=/certs/selfsigned.key"
+      - "--entrypoints.websecure.tls.certificates[0].certFile=/certs/selfsigned.crt"
+      - "--entrypoints.websecure.tls.certificates[0].keyFile=/certs/selfsigned.key"
     ports:
       - "80:80" # HTTP
       - "443:443" # HTTPS
       - "${TRAEFIK_DASHBOARD_PORT}:8080" # Traefik dashboard
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # Required for Docker provider
-      - "${DOCKERDATA}/traefik/letsencrypt:/letsencrypt" # Path for Let's Encrypt certificates
       - ./selfsigned.crt:/certs/selfsigned.crt
       - ./selfsigned.key:/certs/selfsigned.key
+      - ${DOCKERDATA}/traefik/letsencrypt:/letsencrypt # Path for Let's Encrypt certificates
     environment:
       - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
-      - DOMAIN=${DOMAIN}
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)" # Dynamic domain for dashboard
-      - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.routers.traefik.tls=true"
-      - "traefik.http.routers.traefik.tls.certresolver=myresolver"
-
-  backend:
-    image: nginx:latest
-    container_name: nginx-backend
-    restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=Host(`api.${DOMAIN}`)" # Dynamic domain for backend
-      - "traefik.http.routers.backend.entrypoints=websecure"
-      - "traefik.http.routers.backend.tls=true"
-      - "traefik.http.routers.backend.tls.certresolver=myresolver"
-      - "traefik.http.services.backend.loadbalancer.server.port=80" # Nginx default port
+    networks:
+      - traefik_network
 
 networks:
   traefik_network:
