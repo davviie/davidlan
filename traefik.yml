@@ -20,8 +20,6 @@ services:
       - ./traefik-static.yml:/etc/traefik/traefik-static.yml # Mount the static config file
     environment:
       - TRAEFIK_ACME_EMAIL=${TRAEFIK_ACME_EMAIL}
-    networks:
-      - traefik_network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
@@ -38,12 +36,6 @@ services:
       - "traefik.http.routers.backend.rule=Host(`api.${DOMAIN}`)"
       - "traefik.http.routers.backend.entrypoints=websecure"
       - "traefik.http.routers.backend.tls=true"
-    networks:
-      - traefik_network
-
-networks:
-  traefik_network:
-    driver: bridge
 
 entryPoints:
   web:

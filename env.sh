@@ -52,3 +52,19 @@ NGINX_HTTPS_PORT=8443
 EOF
 
 echo ".env file generated successfully!"
+
+# Create Docker networks
+#echo "Creating Docker networks..."
+#docker network create backend || echo "Network 'backend' already exists."
+#docker network create frontend || echo "Network 'frontend' already exists."
+#echo "Docker networks created successfully!"
+
+# Set backend as the default network
+#echo "Setting 'backend' as the default network in Docker Compose files..."
+#cat <<EOF > docker-compose.override.yml
+#networks:
+#  default:
+#    name: backend
+EOF
+
+#echo "Default network set to 'backend'."

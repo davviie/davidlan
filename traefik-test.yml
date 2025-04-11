@@ -1,10 +1,5 @@
 # https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/
 
-networks:
-  default:
-    name: traefik_network
-    driver: bridge
-
 services:
   
   traefik:
