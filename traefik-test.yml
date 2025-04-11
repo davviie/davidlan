@@ -7,10 +7,10 @@ services:
     container_name: "traefik"
     command:
       - "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entryPoints.web.address=:80"
+      - "--api.insecure=true"   # Traefik will listen on port 8080 by default for API request.
+      - "--providers.docker=true"     # Enabling Docker provider
+      - "--providers.docker.exposedbydefault=false"     # Do not expose containers unless explicitly told so; TRUE=exposed
+      - "--entryPoints.web.address=:80" # Traefik will listen to incoming request on the port 80 (HTTP)
     ports:
       - "80:80"
       - "8080:8080"
@@ -21,6 +21,6 @@ services:
     image: "traefik/whoami"
     container_name: "simple-service"
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`192.168.2.30`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.enable=true"     # Explicitly tell Traefik to expose this container
+      - "traefik.http.routers.whoami.rule=Host(`davidlan/whoami`)"     # The domain the service will respond to
+      - "traefik.http.routers.whoami.entrypoints=web"     # Allow request only from the predefined entry point named "web"
