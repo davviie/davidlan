@@ -53,18 +53,17 @@ EOF
 
 echo ".env file generated successfully!"
 
-# Create Docker networks
-#echo "Creating Docker networks..."
-#docker network create backend || echo "Network 'backend' already exists."
-#docker network create frontend || echo "Network 'frontend' already exists."
-#echo "Docker networks created successfully!"
+# Create Docker network 'dockernet'
+echo "Creating default Docker network 'dockernet'..."
+docker network create dockernet || echo "Network 'dockernet' already exists."
+echo "Default Docker network 'dockernet' created successfully!"
 
-# Set backend as the default network
-#echo "Setting 'backend' as the default network in Docker Compose files..."
-#cat <<EOF > docker-compose.override.yml
-#networks:
-#  default:
-#    name: backend
-#EOF
+# Set 'dockernet' as the default network for Docker Compose
+echo "Setting 'dockernet' as the default network in Docker Compose files..."
+cat <<EOF > docker-compose.override.yml
+networks:
+  default:
+    name: dockernet
+EOF
 
-#echo "Default network set to 'backend'."
+echo "Default network set to 'dockernet'."
