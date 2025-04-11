@@ -65,6 +65,6 @@ echo ".env file generated successfully!"
 #networks:
 #  default:
 #    name: backend
-EOF
+#EOF
 
 #echo "Default network set to 'backend'."
