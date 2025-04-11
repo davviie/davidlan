@@ -17,7 +17,7 @@ services:
       - ${DOCKERDATA}/servarr/overseerr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.overseerr.rule=Host(`overseerr.${DOMAIN}`)"
+      - "traefik.http.routers.overseerr.rule=Host(`${DOMAIN}`) && PathPrefix(`/overseerr`)"
       - "traefik.http.routers.overseerr.entrypoints=websecure"
       - "traefik.http.routers.overseerr.tls=true"
       - "traefik.http.routers.overseerr.tls.certresolver=myresolver"
@@ -38,7 +38,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.sonarr.rule=Host(`sonarr.${DOMAIN}`)"
+      - "traefik.http.routers.sonarr.rule=Host(`${DOMAIN}`) && PathPrefix(`/sonarr`)"
       - "traefik.http.routers.sonarr.entrypoints=websecure"
       - "traefik.http.routers.sonarr.tls=true"
       - "traefik.http.routers.sonarr.tls.certresolver=myresolver"
@@ -59,7 +59,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.radarr.rule=Host(`radarr.${DOMAIN}`)"
+      - "traefik.http.routers.radarr.rule=Host(`${DOMAIN}`) && PathPrefix(`/radarr`)"
       - "traefik.http.routers.radarr.entrypoints=websecure"
       - "traefik.http.routers.radarr.tls=true"
       - "traefik.http.routers.radarr.tls.certresolver=myresolver"
@@ -78,7 +78,7 @@ services:
       - ${DOCKERDATA}/servarr/prowlarr:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.prowlarr.rule=Host(`prowlarr.${DOMAIN}`)"
+      - "traefik.http.routers.prowlarr.rule=Host(`${DOMAIN}`) && PathPrefix(`/prowlarr`)"
       - "traefik.http.routers.prowlarr.entrypoints=websecure"
       - "traefik.http.routers.prowlarr.tls=true"
       - "traefik.http.routers.prowlarr.tls.certresolver=myresolver"
@@ -99,7 +99,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mylar.rule=Host(`mylar.${DOMAIN}`)"
+      - "traefik.http.routers.mylar.rule=Host(`${DOMAIN}`) && PathPrefix(`/mylar`)"
       - "traefik.http.routers.mylar.entrypoints=websecure"
       - "traefik.http.routers.mylar.tls=true"
       - "traefik.http.routers.mylar.tls.certresolver=myresolver"
@@ -120,7 +120,7 @@ services:
       - ${MEDIA}/movie:/movies
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.bazarr.rule=Host(`bazarr.${DOMAIN}`)"
+      - "traefik.http.routers.bazarr.rule=Host(`${DOMAIN}`) && PathPrefix(`/bazarr`)"
       - "traefik.http.routers.bazarr.entrypoints=websecure"
       - "traefik.http.routers.bazarr.tls=true"
       - "traefik.http.routers.bazarr.tls.certresolver=myresolver"
@@ -141,7 +141,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.lazylibrarian.rule=Host(`lazylibrarian.${DOMAIN}`)"
+      - "traefik.http.routers.lazylibrarian.rule=Host(`${DOMAIN}`) && PathPrefix(`/lazylibrarian`)"
       - "traefik.http.routers.lazylibrarian.entrypoints=websecure"
       - "traefik.http.routers.lazylibrarian.tls=true"
       - "traefik.http.routers.lazylibrarian.tls.certresolver=myresolver"
@@ -162,7 +162,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.lidarr.rule=Host(`lidarr.${DOMAIN}`)"
+      - "traefik.http.routers.lidarr.rule=Host(`${DOMAIN}`) && PathPrefix(`/lidarr`)"
       - "traefik.http.routers.lidarr.entrypoints=websecure"
       - "traefik.http.routers.lidarr.tls=true"
       - "traefik.http.routers.lidarr.tls.certresolver=myresolver"
@@ -183,7 +183,7 @@ services:
       - ${TORRENTS}:/downloads
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whisparr.rule=Host(`whisparr.${DOMAIN}`)"
+      - "traefik.http.routers.whisparr.rule=Host(`${DOMAIN}`) && PathPrefix(`/whisparr`)"
       - "traefik.http.routers.whisparr.entrypoints=websecure"
       - "traefik.http.routers.whisparr.tls=true"
       - "traefik.http.routers.whisparr.tls.certresolver=myresolver"
