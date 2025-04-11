@@ -1,7 +1,8 @@
 # https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/
 
 networks:
-  traefik_network:
+  default:
+    name: traefik_network
     driver: bridge
 
 services:
@@ -26,6 +27,5 @@ services:
     container_name: "simple-service"
     labels:
       - "traefik.enable=true"     # Explicitly tell Traefik to expose this container
-      - "traefik.http.routers.whoami.rule=Host(`david.lan.whoami`)"     # The domain the service will respond to
       - "traefik.http.routers.whoami.rule=Host(`david.lan`) && PathPrefix(`/whoami`)"
       - "traefik.http.routers.whoami.entrypoints=web"     # Allow request only from the predefined entry point named "web"

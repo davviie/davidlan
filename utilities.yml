@@ -1,5 +1,6 @@
 networks:
-  traefik_network:
+  default:
+    name: traefik_network
     driver: bridge
     
 services:
