@@ -26,5 +26,5 @@ services:
     container_name: "simple-service"
     labels:
       - "traefik.enable=true"     # Explicitly tell Traefik to expose this container
-      - "traefik.http.routers.whoami.rule=Host(`david.lan`) && PathPrefix(`/whoami`)"
+      - "traefik.http.routers.whoami.rule=Host(`${DOMAIN}`) && PathPrefix(`/whoami`)"
       - "traefik.http.routers.whoami.entrypoints=web"     # Allow request only from the predefined entry point named "web"
