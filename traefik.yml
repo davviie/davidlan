@@ -11,7 +11,7 @@ services:
     container_name: "traefik"
     command:
       - "--log.level=DEBUG"
-     - "--api.insecure=true"   # Enable Traefik dashboard (insecure mode)
+      - "--api.insecure=true"   # Enable Traefik dashboard (insecure mode)
 #      - "--api.dashboard=true"   # Enable Traefik dashboard
       - "--providers.docker=true"     # Enable Docker provider
       - "--providers.docker.exposedbydefault=false"     # Do not expose containers unless explicitly told so
