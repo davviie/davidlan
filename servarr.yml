@@ -211,7 +211,7 @@ services:
       - TZ=$TZ
     volumes:
       - $DOCKERDATA/nzbget:/config
-      - $MEDIADIR/usenet:/media/usenet
+      - $MEDIA/usenet:/media/usenet
     ports:
       - 6789:6789
     restart: unless-stopped
