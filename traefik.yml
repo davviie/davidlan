@@ -11,11 +11,14 @@ services:
     container_name: "traefik"
     command:
       - "--log.level=DEBUG"
-      - "--api.insecure=true"   # Enable Traefik dashboard (insecure mode)
+#     - "--api.insecure=true"   # Enable Traefik dashboard (insecure mode)
+      - "--api.dashboard=true"   # Enable Traefik dashboard
       - "--providers.docker=true"     # Enable Docker provider
       - "--providers.docker.exposedbydefault=false"     # Do not expose containers unless explicitly told so
       - "--entryPoints.web.address=:80" # HTTP entry point
       - "--entryPoints.websecure.address=:443" # HTTPS entry point
+      - "--entryPoints.traefik.address=:8080" # Traefik dashboard entry point
+      - "--entryPoints.traefik.http.tls=true" # Enable HTTPS for the dashboard
       - "--certificatesResolvers.myresolver.acme.email=${TRAEFIK_ACME_EMAIL}" # Email for Let's Encrypt
       - "--certificatesResolvers.myresolver.acme.storage=/letsencrypt/acme.json" # File to store certificates
       - "--certificatesResolvers.myresolver.acme.httpChallenge.entryPoint=web" # Use HTTP-01 challenge
