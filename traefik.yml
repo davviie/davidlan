@@ -30,6 +30,11 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro" # Required for Docker provider
       - "./dockerdata/traefik/traefik-static.yml:/etc/traefik/traefik-static.yml" # Mount static config file
       - "./dockerdata/letsencrypt:/letsencrypt" # Directory to store Let's Encrypt certificates
+    labels:
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)"
+      - "traefik.http.routers.http-catchall.entrypoints=web"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
 
   whoami:
     image: "traefik/whoami"
