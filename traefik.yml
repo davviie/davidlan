@@ -34,6 +34,10 @@ services:
       - "traefik.http.routers.dashboard.entrypoints=websecure"
       - "traefik.http.routers.dashboard.tls=true"
       - "traefik.http.routers.dashboard.tls.certresolver=myresolver"
+      - "traefik.http.middlewares.redirect-dashboard.redirectregex.regex=^/dashboard(.*)"
+      - "traefik.http.middlewares.redirect-dashboard.redirectregex.replacement=/$1"
+      - "traefik.http.middlewares.redirect-dashboard.redirectregex.permanent=false"
+      - "traefik.http.routers.dashboard.middlewares=redirect-dashboard"
 
   whoami:
     image: "traefik/whoami"
