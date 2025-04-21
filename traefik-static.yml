@@ -3,10 +3,6 @@ entryPoints:
     address: ":80"
   websecure:
     address: ":443"
-    tls:
-      certificates:
-        - certFile: "dockerdata/certs/selfsigned.crt"
-          keyFile: "dockerdata/certs/selfsigned.key"
 
 providers:
   docker:
