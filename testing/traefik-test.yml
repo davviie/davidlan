@@ -9,8 +9,8 @@ services:
       - "--providers.docker=true"
       - "--entrypoints.web.address=:80"
     ports:
-      - "180:80"
-      - "1443:443" # HTTPS port
+      - "180:180"
+      - "1443:1443" # HTTPS port
       - "18080:18080" # Traefik dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
