@@ -15,7 +15,7 @@ services:
       - "18080:18080" # Traefik dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik/config/traefik.yml:/traefik.yml:ro
+      - ./traefik/config/traefik.yaml:/traefik.yaml:ro
     restart: unless-stopped
     
 networks:
