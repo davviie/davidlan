@@ -1,0 +1,14 @@
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_test
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik. http.routers.nginx-http.rule=Host(`nginx.david.lan`)
+      - traefik.http.routers.nginx-http.entrypoints=web
+      - restart: unless-stopped
+networks:
+      testing:
+        external: true
+      

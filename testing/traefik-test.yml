@@ -1,40 +1,22 @@
-# https://doc.traefik.io/traefik/user-guides/docker-compose/basic-example/
-networks:
-  default:
-    name: dockernet
-    external: true
-
+# done with video here: https://www.youtube.com/watch?v=-hfejNXqOzA
+---
 services:
-  
   traefik:
-    image: "traefik:v3.3"
-    container_name: "traefik"
+    image: traefik:latest
+    container_name: traefik_test
+  
     command:
-      - "--log.level=DEBUG"
-      - "--api.insecure=true"   # Enable Traefik dashboard (insecure mode)
-      - "--providers.docker=true"     # Enable Docker provider
-      - "--providers.docker.exposedbydefault=false"     # Do not expose containers unless explicitly told so
-      - "--entryPoints.web.address=:80" # HTTP entry point
-      - "--entryPoints.websecure.address=:443" # HTTPS entry point
-      - "--certificatesResolvers.myresolver.acme.email=${TRAEFIK_ACME_EMAIL}" # Email for Let's Encrypt
-      - "--certificatesResolvers.myresolver.acme.storage=/letsencrypt/acme.json" # File to store certificates
-      - "--certificatesResolvers.myresolver.acme.httpChallenge.entryPoint=web" # Use HTTP-01 challenge
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
     ports:
-      - "80:80"    # HTTP
-      - "443:443"  # HTTPS
-      - "8080:8080" # Traefik dashboard
+      - "180:80"
+      - "1443:443" # HTTPS port
+      - "18080:18080" # Traefik dashboard
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro" # Required for Docker provider
-      - "./traefik-static.yml:/etc/traefik/traefik-static.yml" # Mount static config file
-      - "./dockerdata/certs:/certs" # Directory to store certificates
-
-  whoami:
-    image: "traefik/whoami"
-    container_name: "simple-service"
-    labels:
-      - "traefik.enable=true"     # Explicitly tell Traefik to expose this container
-      - "traefik.http.routers.whoami.rule=Host(`${DOMAIN}`) && PathPrefix(`/whoami`)"
-#      - "traefik.http.routers.whoami.entrypoints=web"     # Allow request only from the predefined entry point named "web"
-      - "traefik.http.routers.whoami.entrypoints=websecure"
-      - "traefik.http.routers.whoami.tls=true"
-      - "traefik.http.routers.whoami.tls.certresolver=myresolver"
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/config/traefik.yml:/traefik.yml:ro
+    restart: unless-stopped
+    networks:
+      testing:
+        external: true
