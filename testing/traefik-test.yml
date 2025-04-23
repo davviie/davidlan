@@ -4,7 +4,6 @@ services:
   traefik:
     image: traefik:latest
     container_name: traefik_test
-  
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
@@ -17,6 +16,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/config/traefik.yaml:/traefik.yaml:ro
     restart: unless-stopped
+    networks:
+      - testing
     
 networks:
   testing:
