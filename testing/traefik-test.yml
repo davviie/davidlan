@@ -17,6 +17,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/config/traefik.yml:/traefik.yml:ro
     restart: unless-stopped
-    networks:
-      testing:
-        external: true
+    
+networks:
+  testing:
+    external: true
