@@ -6,7 +6,7 @@ services:
       - testing
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nginx-http.rule=Host(`david.lan`) || Host(`nginx.david.lan`)
+      - traefik.http.routers.nginx-http.rule=Host(`server.davidlan`) || Host(`nginx.server.davidlan`) || host(`nginx`) || Host(`server.davidlan/nginx`)
       - traefik.http.routers.nginx-http.entrypoints=web
     restart: unless-stopped  
 networks:
