@@ -33,5 +33,5 @@ services:
 
 networks:
   testing:
-  name: testing
-  driver: bridge
+    name: testing
+    driver: bridge
