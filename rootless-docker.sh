@@ -316,7 +316,24 @@ if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
             echo "Kernel configuration file not found."
         fi
         echo "=============================="
-        echo "The system will now reboot to apply any kernel changes. Please re-run this script after rebooting."
+
+        # Notify the user about the reboot
+        echo "The system needs to reboot to apply kernel changes."
+        echo "You can press Enter to reboot immediately or wait 30 seconds for an automatic reboot."
+
+        # Start a 30-second countdown
+        for i in {30..1}; do
+            echo -ne "Rebooting in $i seconds... Press Enter to reboot now. \r"
+            read -t 1 -n 1 input
+            if [ "$input" = "" ]; then
+                echo -e "\nRebooting now!"
+                sudo reboot
+                exit 0
+            fi
+        done
+
+        # Reboot after the countdown
+        echo -e "\nRebooting now!"
         sudo reboot
         exit 0
     else
