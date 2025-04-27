@@ -16,10 +16,13 @@ git config --global --add safe.directory /docker
 git remote add origin https://github.com/davviie/davidlan.git
 
 # Fetch the latest changes from the remote repository
-git fetch origin
+git fetch origin main
 
 # Reset the current directory to match the remote repository's main branch
 git reset --hard origin/main
+
+# Check out the main branch
+git checkout -b main --track origin/main
 
 # Pull the latest changes to ensure you're up-to-date
 git pull origin main
@@ -32,6 +35,7 @@ git commit -m "Your commit message here"
 
 # Push your changes to the remote repository
 git push origin main
+
 ```
 
 ## Add to docker
