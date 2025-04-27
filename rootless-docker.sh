@@ -103,38 +103,26 @@ install_docker_rootless_extras() {
     fi
 }
 
-# Function to test newuidmap and newgidmap
-test_newuidmap_newgidmap() {
-    echo "Testing newuidmap and newgidmap..."
-    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newuidmap test failed. Collecting debugging information..."
-        strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
-        echo "Debugging information saved to newuidmap_debug.log"
+# Function to verify kernel support for user namespaces
+verify_kernel_userns_support() {
+    echo "Verifying kernel support for user namespaces..."
+    if ! zgrep -q CONFIG_USER_NS=y /proc/config.gz; then
+        print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in the kernel."
         exit 1
     else
-        print_status 0 "newuidmap test passed."
-    fi
-
-    if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newgidmap test failed. Collecting debugging information..."
-        strace -e openat newgidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newgidmap_debug.log
-        echo "Debugging information saved to newgidmap_debug.log"
-        exit 1
-    else
-        print_status 0 "newgidmap test passed."
+        print_status 0 "Kernel supports user namespaces."
     fi
 }
 
-# Function to debug newuidmap
-debug_newuidmap() {
-    echo "Debugging newuidmap..."
-    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newuidmap test failed. Collecting debugging information..."
-        strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
-        echo "Debugging information saved to newuidmap_debug.log"
-        exit 1
+# Function to verify unprivileged user namespace cloning
+verify_unprivileged_userns_clone() {
+    echo "Verifying unprivileged user namespace cloning..."
+    if [ "$(cat /proc/sys/kernel/unprivileged_userns_clone)" -ne 1 ]; then
+        print_status 1 "Unprivileged user namespaces are disabled. Enabling temporarily..."
+        sudo sysctl kernel.unprivileged_userns_clone=1
+        print_status $? "Unprivileged user namespaces enabled temporarily."
     else
-        print_status 0 "newuidmap test passed."
+        print_status 0 "Unprivileged user namespaces are already enabled."
     fi
 }
 
@@ -150,16 +138,25 @@ verify_proc_access() {
     fi
 }
 
-# Function to verify user session
-verify_user_session() {
-    echo "Verifying user session..."
+# Function to verify lingering and user session
+verify_lingering_and_user_session() {
+    echo "Verifying lingering and user session..."
     if ! loginctl show-user $USER | grep -q "Linger=yes"; then
-        print_status 1 "User session is not properly configured. Enabling lingering..."
+        print_status 1 "Lingering is not enabled for $USER. Enabling lingering..."
         sudo loginctl enable-linger $USER
-        print_status $? "Linger enabled for $USER. Please reboot and re-run the script."
+        print_status $? "Lingering enabled for $USER. Please reboot and re-run the script."
         exit 1
     else
-        print_status 0 "User session is properly configured."
+        print_status 0 "Lingering is enabled for $USER."
+    fi
+
+    echo "Checking user@1000.service..."
+    if ! systemctl --user is-active user@1000.service >/dev/null 2>&1; then
+        print_status 1 "user@1000.service is not active. Restarting..."
+        sudo systemctl restart user-1000.slice
+        print_status $? "user@1000.service restarted successfully."
+    else
+        print_status 0 "user@1000.service is active."
     fi
 }
 
@@ -191,8 +188,10 @@ install_dependencies
 configure_subuid_subgid
 setup_apparmor_profile
 install_docker_rootless_extras
+verify_kernel_userns_support
+verify_unprivileged_userns_clone
 verify_proc_access
-verify_user_session
+verify_lingering_and_user_session
 debug_newuidmap
 start_rootless_docker
 
