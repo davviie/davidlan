@@ -25,7 +25,6 @@ networks:
     name: testing
     driver: bridge
 
-ervices:
   nginx:
     image: nginx:latest
     container_name: nginx_test
