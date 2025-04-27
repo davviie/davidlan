@@ -258,6 +258,21 @@ else
     exit 1
 fi
 
+# Check if user namespaces are supported
+echo "Checking user namespace support..."
+if ! unshare --user --map-root-user --mount echo "User namespaces are supported" >/dev/null 2>&1; then
+    print_status 1 "User namespaces are not supported for the current user. Enabling temporarily..."
+    if [ -f /proc/sys/kernel/unprivileged_userns_clone ]; then
+        sudo sysctl kernel.unprivileged_userns_clone=1
+        print_status $? "User namespaces enabled temporarily."
+    else
+        print_status 1 "Unable to enable user namespaces. Please check your system configuration."
+        exit 1
+    fi
+else
+    print_status 0 "User namespaces are supported."
+fi
+
 # Perform detailed checks for newuidmap failure
 echo "Performing detailed checks for newuidmap failure..."
 
@@ -351,6 +366,26 @@ if echo "$strace_output" | grep -q "Could not open proc directory"; then
     exit 1
 else
     print_status 0 "newuidmap test passed."
+fi
+
+# Test newuidmap and newgidmap manually
+echo "Testing newuidmap and newgidmap manually..."
+if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+    print_status 1 "newuidmap test failed. Collecting debugging information..."
+    strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
+    echo "Debugging information saved to newuidmap_debug.log"
+    exit 1
+else
+    print_status 0 "newuidmap test passed."
+fi
+
+if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+    print_status 1 "newgidmap test failed. Collecting debugging information..."
+    strace -e openat newgidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newgidmap_debug.log
+    echo "Debugging information saved to newgidmap_debug.log"
+    exit 1
+else
+    print_status 0 "newgidmap test passed."
 fi
 
 # Test newuidmap and newgidmap
