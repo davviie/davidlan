@@ -160,15 +160,24 @@ else
     print_status 0 "/etc/subgid is already configured for $USER."
 fi
 
+# Ensure permissions for newuidmap and newgidmap
+echo "Checking permissions for newuidmap and newgidmap..."
+sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
+print_status $? "Permissions for newuidmap and newgidmap are correctly set."
+
 # Retry rootless Docker installation
 echo "Ensuring rootless Docker service is installed..."
 if [ ! -f ~/.config/systemd/user/docker.service ]; then
     dockerd-rootless-setuptool.sh install || {
-        print_status 1 "Failed to install rootless Docker service. Check logs with: journalctl --user -xeu docker.service"
-        echo "If the issue persists, uninstall the current setup and retry:"
-        echo "  /usr/bin/dockerd-rootless-setuptool.sh uninstall -f"
-        echo "  /usr/bin/rootlesskit rm -rf ~/.local/share/docker"
-        exit 1
+        print_status 1 "Failed to install rootless Docker service. Uninstalling current setup and retrying..."
+        echo "Uninstalling current rootless Docker setup..."
+        /usr/bin/dockerd-rootless-setuptool.sh uninstall -f
+        /usr/bin/rootlesskit rm -rf ~/.local/share/docker
+        print_status $? "Uninstallation completed. Retrying installation..."
+        dockerd-rootless-setuptool.sh install || {
+            print_status 1 "Retry failed. Exiting."
+            exit 1
+        }
     }
     print_status $? "Rootless Docker service installed."
 else
