@@ -9,7 +9,7 @@ services:
       - "--providers.docker=true"
       - "--entrypoints.web.address=:8080"
     ports:
-      - "8080:8080" # HTTP port
+      - "8080:80" # HTTP port
       - "8443:443" # HTTPS port
       - "8081:8080" # Traefik dashboard
     volumes:
