@@ -444,6 +444,33 @@ else
     print_status 0 "newgidmap test passed."
 fi
 
+# Create and install the AppArmor profile for the current user
+echo "Creating and installing the AppArmor profile for the current user..."
+
+# Generate the AppArmor profile filename
+filename=$(echo "$HOME/bin/rootlesskit" | sed -e 's@^/@@' -e 's@/@.@g')
+
+# Create the AppArmor profile
+cat <<EOF > ~/${filename}
+abi <abi/4.0>,
+include <tunables/global>
+
+"$HOME/bin/rootlesskit" flags=(unconfined) {
+  userns,
+
+  include if exists <local/${filename}>
+}
+EOF
+
+# Move the profile to the AppArmor directory
+sudo mv ~/${filename} /etc/apparmor.d/${filename}
+print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
+
+# Restart the AppArmor service
+echo "Restarting the AppArmor service..."
+sudo systemctl restart apparmor.service
+print_status $? "AppArmor service restarted successfully."
+
 # Retry rootless Docker installation
 echo "Ensuring rootless Docker service is installed..."
 if [ ! -f ~/.config/systemd/user/docker.service ]; then
