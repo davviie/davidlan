@@ -10,8 +10,8 @@ services:
       - "--entrypoints.web.address=:80" # HTTP entrypoint
       - "--entrypoints.websecure.address=:443" # HTTPS entrypoint
     ports:
-      - "8080:80" # Map HTTP traffic to port 8080 on the host
-      - "8443:443" # Map HTTPS traffic to port 8443 on the host
+      - "8080:8080" # Map HTTP traffic to port 8080 on the host
+      - "8443:8443" # Map HTTPS traffic to port 8443 on the host
       - "8081:8080" # Map Traefik dashboard to port 8081 on the host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -24,3 +24,15 @@ networks:
   testing:
     name: testing
     driver: bridge
+
+ervices:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_test
+    networks:
+      - testing
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx-http.rule= Host(`davidlan.home`) 
+      - traefik.http.routers.nginx-http.entrypoints=web
+    restart: unless-stopped
