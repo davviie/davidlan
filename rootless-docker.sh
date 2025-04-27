@@ -308,9 +308,17 @@ if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
         echo "Permissions of newuidmap and newgidmap:"
         ls -l /usr/bin/newuidmap /usr/bin/newgidmap
         echo "Kernel user namespace support:"
-        zgrep CONFIG_USER_NS /proc/config.gz || echo "Kernel config not available."
+        if [ -f /proc/config.gz ]; then
+            zgrep CONFIG_USER_NS /proc/config.gz || echo "Kernel config not available."
+        elif [ -f /boot/config-$(uname -r) ]; then
+            grep CONFIG_USER_NS /boot/config-$(uname -r) || echo "Kernel config not available."
+        else
+            echo "Kernel configuration file not found."
+        fi
         echo "=============================="
-        exit 1
+        echo "The system will now reboot to apply any kernel changes. Please re-run this script after rebooting."
+        sudo reboot
+        exit 0
     else
         print_status 0 "newuidmap test passed after fixing."
     fi
