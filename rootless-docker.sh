@@ -1,78 +1,121 @@
 #!/bin/bash
 
-# Install dbus-user-session package if not installed and relogin
+# Function to print PASS/FAIL messages
+print_status() {
+    if [ $1 -eq 0 ]; then
+        echo -e "\e[32m[PASS]\e[0m $2"
+    else
+        echo -e "\e[31m[FAIL]\e[0m $2"
+    fi
+}
+
+# Check if the script is being run with sudo
+if [ "$EUID" -eq 0 ]; then
+    echo -e "\e[31m[FAIL]\e[0m Do not run this script with sudo. Exiting."
+    exit 1
+fi
+
+# Install dbus-user-session package if not installed
+echo "Checking if dbus-user-session is installed..."
 sudo apt-get install -y dbus-user-session
+print_status $? "dbus-user-session is installed."
 
 # Install uidmap package if not installed
+echo "Checking if uidmap is installed..."
 sudo apt-get install -y uidmap
+print_status $? "uidmap is installed."
 
 # Test if user is directly logged in or needs machinectl
 echo "Testing login session type..."
-
-# Check if XDG_SESSION_TYPE exists and is not empty
 if [ -z "$XDG_SESSION_TYPE" ]; then
-  echo "FAIL: Not directly logged in. XDG_SESSION_TYPE is not set."
-  echo "Action needed: Install systemd-container and use machinectl"
+    print_status 1 "Not directly logged in. XDG_SESSION_TYPE is not set."
+    echo "Action needed: Install systemd-container and use machinectl."
 
-  # Check if systemd-container is installed
-  if ! dpkg -l | grep -q systemd-container; then
-    echo "FAIL: systemd-container is not installed"
-    echo "Action needed: sudo apt-get install -y systemd-container"
-  else
-    echo "PASS: systemd-container is installed"
-  fi
+    # Check if systemd-container is installed
+    if ! dpkg -l | grep -q systemd-container; then
+        print_status 1 "systemd-container is not installed."
+        echo "Action needed: sudo apt-get install -y systemd-container"
+    else
+        print_status 0 "systemd-container is installed."
+    fi
 
-  echo "After installing systemd-container, use: sudo machinectl shell $USER@"
-  exit 1
+    echo "After installing systemd-container, use: sudo machinectl shell $USER@"
+    exit 1
 else
-  echo "PASS: Directly logged in with session type: $XDG_SESSION_TYPE"
+    print_status 0 "Directly logged in with session type: $XDG_SESSION_TYPE."
 fi
 
 # Additional test: Check if systemd user services work
 echo "Testing systemd user service functionality..."
 if ! systemctl --user status >/dev/null 2>&1; then
-  echo "FAIL: systemctl --user doesn't work properly"
-  echo "This indicates you're not in a proper user session"
-  echo "Action needed: Use sudo machinectl shell $USER@"
-  exit 1
+    print_status 1 "systemctl --user doesn't work properly."
+    echo "This indicates you're not in a proper user session."
+    echo "Action needed: Use sudo machinectl shell $USER@"
+    exit 1
 else
-  echo "PASS: systemctl --user is working properly"
+    print_status 0 "systemctl --user is working properly."
 fi
 
 echo "All tests PASSED. Your environment is suitable for Docker rootless mode."
 
-# Create and install the currently logged-in user's AppArmor profile
-filename=$(echo $HOME/bin/rootlesskit | sed -e s@^/@@ -e s@/@.@g)
-cat <<EOF > ~/${filename}
-abi <abi/4.0>,
-include <tunables/global>
+# Check if the system-wide Docker service exists before disabling it
+echo "Checking if system-wide Docker service exists..."
+if systemctl list-units --type=service | grep -q docker.service; then
+    sudo systemctl disable --now docker.service docker.socket
+    sudo rm -f /var/run/docker.sock
+    print_status $? "System-wide Docker service disabled."
+else
+    print_status 0 "System-wide Docker service does not exist. Skipping disable step."
+fi
 
-"$HOME/bin/rootlesskit" flags=(unconfined) {
-  userns,
+# Check if the rootless Docker service exists before stopping it
+echo "Checking if rootless Docker service exists..."
+if [ -f ~/.config/systemd/user/docker.service ]; then
+    systemctl --user stop docker
+    print_status $? "Rootless Docker service stopped."
+    rm -f /home/$USER/bin/dockerd
+    print_status $? "Rootless Docker binary removed."
+else
+    print_status 0 "Rootless Docker service does not exist. Skipping stop and removal steps."
+fi
 
-  include if exists <local/${filename}>
+# Ensure the rootless Docker setup tool is installed
+echo "Checking if dockerd-rootless-setuptool.sh is available..."
+if ! command -v dockerd-rootless-setuptool.sh >/dev/null 2>&1; then
+    print_status 1 "dockerd-rootless-setuptool.sh is not available."
+    echo "Attempting to install docker-ce-rootless-extras..."
+    sudo apt-get install -y docker-ce-rootless-extras
+    print_status $? "docker-ce-rootless-extras installed."
+fi
+
+# Ensure the rootless Docker service is installed
+echo "Ensuring rootless Docker service is installed..."
+if [ ! -f ~/.config/systemd/user/docker.service ]; then
+    dockerd-rootless-setuptool.sh install || {
+        print_status 1 "Failed to install rootless Docker service. Exiting."
+        exit 1
+    }
+    print_status $? "Rootless Docker service installed."
+else
+    print_status 0 "Rootless Docker service already installed."
+fi
+
+# Start the rootless Docker service
+echo "Starting the rootless Docker service..."
+systemctl --user daemon-reload
+systemctl --user start docker || {
+    print_status 1 "Failed to start rootless Docker service. Check logs with: journalctl --user -xeu docker.service"
+    exit 1
 }
-EOF
-sudo mv ~/${filename} /etc/apparmor.d/${filename}
-
-# Restart AppArmor
-systemctl restart apparmor.service
-
-# If the system-wide Docker daemon is already running, consider disabling it
-sudo systemctl disable --now docker.service docker.socket
-s rm /var/run/docker.sock
-
-# Install rootless Docker with convenience script
-# This will install the latest version of Docker in rootless mode
-curl -fsSL https://get.docker.com/rootless | sh
-
-# Post-Installation Steps
-# Set the required environment variables
-export PATH=/home/username/bin:$PATH  # Or /usr/bin:$PATH if using packages
-export DOCKER_HOST=unix:///run/user/1000/docker.sock
+print_status $? "Rootless Docker service started."
 
 # Enable the service to start on boot
 sudo loginctl enable-linger $(whoami)
+print_status $? "Linger enabled for the current user."
 
-# Start the service
-systemctl --user start docker
+# Post-Installation Steps
+# Set the required environment variables
+export PATH=/home/$USER/bin:$PATH
+export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
+
+echo -e "\e[32mRootless Docker installation and configuration completed successfully!\e[0m"
