@@ -32,15 +32,15 @@ sudo apt-get update
 
 # Install Docker Engine and related components
 echo "Installing Docker Engine and related components..."
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Start and enable the Docker service
 echo "Starting and enabling the Docker service..."
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Test Docker installation
-echo "Testing Docker installation with 'hello-world' container..."
+# Test Docker installation as root
+echo "Testing Docker installation with 'hello-world' container (as root)..."
 sudo docker run hello-world
 
 # Prompt for post-installation steps
@@ -55,7 +55,6 @@ sudo usermod -aG docker $USER
 echo "Verifying Docker installation and AppArmor status..."
 sudo aa-status
 systemctl status docker --no-pager
-docker run hello-world
 
 # Prompt the user to log out and log back in
 echo "Step 2: Log Out and Log Back In"
@@ -74,4 +73,8 @@ else
     # Log out the user
     gnome-session-quit --logout --no-prompt || pkill -KILL -u "$USER"
 fi
+
+# Instructions for the user after logging back in
+echo "After logging back in, test Docker as a non-root user by running:"
+echo "docker run hello-world"
 
