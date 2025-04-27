@@ -2,7 +2,7 @@
 ```bash
 
 # Take Ownership
-sudo chown -R $USER:$USER ./docker
+sudo chown -R $USER:$USER /docker
 
 # Navigate to docker directory
 cd ~/docker
