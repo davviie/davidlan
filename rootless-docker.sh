@@ -15,573 +15,55 @@ if [ "$EUID" -eq 0 ]; then
     exit 1
 fi
 
-# Update package database
-sudo apt-get update
+# Function to install dependencies
+install_dependencies() {
+    echo "Installing required dependencies..."
+    sudo apt-get update
+    sudo apt-get install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common \
+        gnupg \
+        lsb-release \
+        dbus-user-session \
+        uidmap \
+        slirp4netns \
+        fuse-overlayfs \
+        systemd-container
+    print_status $? "All required dependencies installed."
+}
 
-# Install required dependencies
-sudo apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    software-properties-common \
-    gnupg \
-    lsb-release
+# Function to configure /etc/subuid and /etc/subgid
+configure_subuid_subgid() {
+    echo "Configuring /etc/subuid and /etc/subgid for $USER..."
+    local UID_RANGE_START=100000
+    local UID_RANGE_COUNT=65536
 
-# Add Docker's official GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-# Add the Docker repository
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-# Update package database again
-sudo apt-get update
-
-# Verify and configure /etc/subuid and /etc/subgid for the current user
-echo "Verifying /etc/subuid and /etc/subgid configuration for $USER..."
-
-# Define the required UID/GID mapping range
-UID_RANGE_START=100000
-UID_RANGE_COUNT=65536
-
-# Check and configure /etc/subuid
-if ! grep -q "^$USER:" /etc/subuid; then
-    echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee -a /etc/subuid
-    print_status $? "/etc/subuid configured for $USER."
-else
-    CURRENT_SUBUID=$(grep "^$USER:" /etc/subuid | awk -F: '{print $2":"$3}')
-    if [ "$CURRENT_SUBUID" != "$UID_RANGE_START:$UID_RANGE_COUNT" ]; then
-        echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee /etc/subuid
-        print_status $? "/etc/subuid updated for $USER."
-    else
-        print_status 0 "/etc/subuid is already correctly configured for $USER."
-    fi
-fi
-
-# Check and configure /etc/subgid
-if ! grep -q "^$USER:" /etc/subgid; then
-    echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee -a /etc/subgid
-    print_status $? "/etc/subgid configured for $USER."
-else
-    CURRENT_SUBGID=$(grep "^$USER:" /etc/subgid | awk -F: '{print $2":"$3}')
-    if [ "$CURRENT_SUBGID" != "$UID_RANGE_START:$UID_RANGE_COUNT" ]; then
-        echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee /etc/subgid
-        print_status $? "/etc/subgid updated for $USER."
-    else
-        print_status 0 "/etc/subgid is already correctly configured for $USER."
-    fi
-fi
-
-# Ensure permissions for newuidmap and newgidmap
-echo "Checking permissions for newuidmap and newgidmap..."
-sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
-print_status $? "Permissions for newuidmap and newgidmap are correctly set."
-
-# Install dbus-user-session package if not installed
-echo "Checking if dbus-user-session is installed..."
-sudo apt-get install -y dbus-user-session
-print_status $? "dbus-user-session is installed."
-
-# Install uidmap package if not installed
-echo "Checking if uidmap is installed..."
-sudo apt-get install -y uidmap
-print_status $? "uidmap is installed."
-
-# Test if user is directly logged in or needs machinectl
-echo "Testing login session type..."
-if [ -z "$XDG_SESSION_TYPE" ]; then
-    print_status 1 "Not directly logged in. XDG_SESSION_TYPE is not set."
-    echo "Action needed: Install systemd-container and use machinectl to create a proper user session."
-    echo "Run the following commands:"
-    echo "  sudo apt-get install -y systemd-container"
-    echo "  sudo machinectl shell $USER@"
-    exit 1
-else
-    print_status 0 "Directly logged in with session type: $XDG_SESSION_TYPE."
-fi
-
-# Check if systemd-container is installed
-if ! dpkg -l | grep -q systemd-container; then
-    echo "Installing systemd-container..."
-    sudo apt-get install -y systemd-container
-    print_status $? "systemd-container installed."
-else
-    print_status 0 "systemd-container is already installed."
-fi
-
-# Additional test: Check if systemd user services work
-echo "Testing systemd user service functionality..."
-if ! systemctl --user status >/dev/null 2>&1; then
-    print_status 1 "systemctl --user doesn't work properly."
-    echo "This indicates you're not in a proper user session."
-    echo "Action needed: Use sudo machinectl shell $USER@"
-    exit 1
-else
-    print_status 0 "systemctl --user is working properly."
-fi
-
-echo "All tests PASSED. Your environment is suitable for Docker rootless mode."
-
-# Check if the system-wide Docker service exists before disabling it
-echo "Checking if system-wide Docker service exists..."
-if systemctl list-units --type=service | grep -q docker.service; then
-    sudo systemctl disable --now docker.service docker.socket
-    sudo rm -f /var/run/docker.sock
-    print_status $? "System-wide Docker service disabled."
-else
-    print_status 0 "System-wide Docker service does not exist. Skipping disable step."
-fi
-
-# Check if the rootless Docker service exists before stopping it
-echo "Checking if rootless Docker service exists..."
-if [ -f ~/.config/systemd/user/docker.service ]; then
-    systemctl --user stop docker
-    print_status $? "Rootless Docker service stopped."
-    rm -f /home/$USER/bin/dockerd
-    print_status $? "Rootless Docker binary removed."
-else
-    print_status 0 "Rootless Docker service does not exist. Skipping stop and removal steps."
-fi
-
-# Ensure the rootless Docker setup tool is installed
-echo "Checking if dockerd-rootless-setuptool.sh is available..."
-if ! command -v dockerd-rootless-setuptool.sh >/dev/null 2>&1; then
-    print_status 1 "dockerd-rootless-setuptool.sh is not available."
-    echo "Attempting to install docker-ce-rootless-extras..."
-    sudo apt-get install -y docker-ce-rootless-extras
-    print_status $? "docker-ce-rootless-extras installed."
-fi
-
-# Verify the installation method for docker-ce-rootless-extras
-echo "Checking if docker-ce-rootless-extras is installed..."
-if ! dpkg -l | grep -q docker-ce-rootless-extras; then
-    print_status 1 "docker-ce-rootless-extras is not installed. Installing..."
-    sudo apt-get install -y docker-ce-rootless-extras
-    print_status $? "docker-ce-rootless-extras installed."
-else
-    print_status 0 "docker-ce-rootless-extras is already installed."
-fi
-
-# Restart the AppArmor service after installing docker-ce-rootless-extras
-echo "Restarting the AppArmor service..."
-sudo systemctl restart apparmor.service
-print_status $? "AppArmor service restarted successfully."
-
-# Check if dockerd-rootless.sh exists
-echo "Checking if dockerd-rootless.sh exists..."
-if [ -f /usr/bin/dockerd-rootless.sh ]; then
-    print_status 0 "dockerd-rootless.sh exists."
-else
-    print_status 1 "dockerd-rootless.sh does not exist. Attempting to reinstall docker-ce-rootless-extras..."
-    sudo apt-get install --reinstall -y docker-ce-rootless-extras
-    if [ -f /usr/bin/dockerd-rootless.sh ]; then
-        print_status 0 "dockerd-rootless.sh successfully reinstalled."
-    else
-        print_status 1 "Failed to reinstall dockerd-rootless.sh. Exiting."
-        exit 1
-    fi
-fi
-
-# Check for required dependencies
-echo "Checking for required dependencies..."
-dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
-for dep in "${dependencies[@]}"; do
-    if dpkg -l | grep -q "$dep"; then
-        print_status 0 "$dep is installed."
-    else
-        print_status 1 "$dep is not installed. Installing..."
-        sudo apt-get install -y "$dep"
-        if dpkg -l | grep -q "$dep"; then
-            print_status 0 "$dep successfully installed."
+    for file in /etc/subuid /etc/subgid; do
+        if ! grep -q "^$USER:" "$file"; then
+            echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee -a "$file"
+            print_status $? "$file configured for $USER."
         else
-            print_status 1 "Failed to install $dep. Exiting."
-            exit 1
-        fi
-    fi
-done
-
-# Check /proc access
-echo "Checking /proc access..."
-if [ ! -d /proc ]; then
-    print_status 1 "/proc is not accessible. Attempting to remount..."
-    sudo mount -t proc proc /proc
-    if [ $? -eq 0 ]; then
-        print_status 0 "/proc successfully remounted."
-    else
-        print_status 1 "Failed to remount /proc. Please check your system configuration."
-        exit 1
-    fi
-else
-    print_status 0 "/proc is accessible."
-fi
-
-# Check kernel support for user namespaces
-echo "Checking kernel support for user namespaces..."
-if [ -f /proc/config.gz ]; then
-    if zgrep -q CONFIG_USER_NS /proc/config.gz; then
-        print_status 0 "Kernel supports user namespaces."
-    else
-        print_status 1 "Kernel does not support user namespaces. Attempting to upgrade or rebuild the kernel..."
-        sudo apt-get install -y linux-generic || {
-            print_status 1 "Failed to upgrade the kernel. Attempting to rebuild the kernel..."
-            # Install kernel build dependencies
-            sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-            # Download and configure the kernel
-            KERNEL_VERSION="6.5"
-            wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VERSION.tar.xz
-            tar -xf linux-$KERNEL_VERSION.tar.xz
-            cd linux-$KERNEL_VERSION
-            make menuconfig <<< "CONFIG_USER_NS=y"
-            # Build and install the kernel
-            make -j$(nproc)
-            sudo make modules_install
-            sudo make install
-            cd ..
-        }
-        print_status $? "Kernel upgrade or rebuild completed. Rebooting the system..."
-        echo "The system will now reboot. Please re-run this script after rebooting."
-        sudo reboot
-        exit 0
-    fi
-elif [ -f /boot/config-$(uname -r) ]; then
-    if grep -q CONFIG_USER_NS /boot/config-$(uname -r); then
-        print_status 0 "Kernel supports user namespaces."
-    else
-        print_status 1 "Kernel does not support user namespaces. Attempting to upgrade or rebuild the kernel..."
-        sudo apt-get install -y linux-generic || {
-            print_status 1 "Failed to upgrade the kernel. Attempting to rebuild the kernel..."
-            # Install kernel build dependencies
-            sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
-            # Download and configure the kernel
-            KERNEL_VERSION="6.5"
-            wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VERSION.tar.xz
-            tar -xf linux-$KERNEL_VERSION.tar.xz
-            cd linux-$KERNEL_VERSION
-            make menuconfig <<< "CONFIG_USER_NS=y"
-            # Build and install the kernel
-            make -j$(nproc)
-            sudo make modules_install
-            sudo make install
-            cd ..
-        }
-        print_status $? "Kernel upgrade or rebuild completed. Rebooting the system..."
-        echo "The system will now reboot. Please re-run this script after rebooting."
-        sudo reboot
-        exit 0
-    fi
-else
-    print_status 1 "Kernel configuration file not found. Unable to verify user namespace support."
-    exit 1
-fi
-
-# Check if unprivileged user namespaces are enabled
-echo "Checking if unprivileged user namespaces are enabled..."
-if [ -f /proc/sys/kernel/unprivileged_userns_clone ]; then
-    USERNS_CLONE=$(cat /proc/sys/kernel/unprivileged_userns_clone)
-    if [ "$USERNS_CLONE" -eq 0 ]; then
-        print_status 1 "Unprivileged user namespaces are disabled. Enabling temporarily..."
-        sudo sysctl kernel.unprivileged_userns_clone=1
-        print_status $? "Unprivileged user namespaces enabled temporarily."
-    else
-        print_status 0 "Unprivileged user namespaces are already enabled."
-    fi
-else
-    print_status 1 "/proc/sys/kernel/unprivileged_userns_clone not found. Please check your kernel configuration."
-    exit 1
-fi
-
-# Verify permissions for newuidmap and newgidmap
-echo "Checking permissions for newuidmap and newgidmap..."
-if [ ! -u /usr/bin/newuidmap ] || [ ! -u /usr/bin/newgidmap ]; then
-    print_status 1 "setuid bit is missing for newuidmap or newgidmap. Fixing..."
-    sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
-    print_status $? "setuid bit restored for newuidmap and newgidmap."
-else
-    print_status 0 "Permissions for newuidmap and newgidmap are correctly set."
-fi
-
-# Test newuidmap and newgidmap manually
-echo "Testing newuidmap and newgidmap manually..."
-if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newuidmap test failed. Collecting debugging information..."
-    strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
-    echo "Debugging information saved to newuidmap_debug.log"
-    exit 1
-else
-    print_status 0 "newuidmap test passed."
-fi
-
-if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newgidmap test failed. Collecting debugging information..."
-    strace -e openat newgidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newgidmap_debug.log
-    echo "Debugging information saved to newgidmap_debug.log"
-    exit 1
-else
-    print_status 0 "newgidmap test passed."
-fi
-
-# Perform detailed checks for newuidmap failure
-echo "Performing detailed checks for newuidmap failure..."
-
-# 1. Ensure /proc is mounted and accessible
-echo "Checking /proc access..."
-if [ ! -d /proc ]; then
-    print_status 1 "/proc is not accessible. Attempting to remount..."
-    sudo mount -t proc proc /proc
-    if [ $? -eq 0 ]; then
-        print_status 0 "/proc successfully remounted."
-    else
-        print_status 1 "Failed to remount /proc. Please check your system configuration."
-        exit 1
-    fi
-else
-    print_status 0 "/proc is accessible."
-fi
-
-# Check /proc/self/uid_map
-echo "Checking /proc/self/uid_map..."
-if [ -f /proc/self/uid_map ]; then
-    print_status 0 "/proc/self/uid_map exists and is accessible."
-else
-    print_status 1 "/proc/self/uid_map is missing or inaccessible. Please check your /proc configuration."
-    exit 1
-fi
-
-# 2. Disable AppArmor or SELinux temporarily
-echo "Checking AppArmor status..."
-if command -v aa-status >/dev/null 2>&1; then
-    sudo aa-status | grep -q "unprivileged_userns"
-    if [ $? -eq 0 ]; then
-        print_status 1 "AppArmor profile 'unprivileged_userns' is active. Disabling AppArmor temporarily..."
-        sudo systemctl stop apparmor
-        if [ $? -eq 0 ]; then
-            print_status 0 "AppArmor stopped successfully. Please re-enable it after troubleshooting."
-        else
-            print_status 1 "Failed to stop AppArmor. Please check your AppArmor configuration."
-            exit 1
-        fi
-    else
-        print_status 0 "AppArmor is not restricting unprivileged user namespaces."
-    fi
-else
-    print_status 0 "AppArmor is not installed."
-fi
-
-echo "Checking SELinux status..."
-if command -v sestatus >/dev/null 2>&1; then
-    SELINUX_STATUS=$(sestatus | grep "SELinux status" | awk '{print $3}')
-    if [ "$SELINUX_STATUS" = "enabled" ]; then
-        print_status 1 "SELinux is enabled. Setting SELinux to permissive mode temporarily..."
-        sudo setenforce 0
-        if [ $? -eq 0 ]; then
-            print_status 0 "SELinux set to permissive mode. Please re-enable it after troubleshooting."
-        else
-            print_status 1 "Failed to set SELinux to permissive mode. Please check your SELinux configuration."
-            exit 1
-        fi
-    else
-        print_status 0 "SELinux is not enforcing."
-    fi
-else
-    print_status 0 "SELinux is not installed."
-fi
-
-# 3. Verify kernel configurations
-echo "Checking kernel configurations..."
-KERNEL_CONFIGS=("CONFIG_USER_NS" "CONFIG_NAMESPACES" "CONFIG_PID_NS")
-for config in "${KERNEL_CONFIGS[@]}"; do
-    if grep -q "$config=y" /boot/config-$(uname -r); then
-        print_status 0 "$config is enabled in the kernel."
-    else
-        print_status 1 "$config is not enabled in the kernel. Please rebuild the kernel with $config enabled."
-        exit 1
-    fi
-done
-
-# Debug newuidmap with strace
-echo "Debugging newuidmap with strace..."
-strace_output=$(strace newuidmap 1000 0 1000 1 1 100000 65536 2>&1)
-if echo "$strace_output" | grep -q "Could not open proc directory"; then
-    print_status 1 "newuidmap failed: Could not open proc directory for target 1000."
-    echo "=== Debugging Information ==="
-    echo "$strace_output"
-    echo "=============================="
-    echo "Possible solutions:"
-    echo "1. Ensure /proc is mounted and accessible."
-    echo "2. Disable AppArmor or SELinux temporarily."
-    echo "3. Verify kernel configurations (CONFIG_USER_NS, CONFIG_NAMESPACES, CONFIG_PID_NS)."
-    exit 1
-else
-    print_status 0 "newuidmap test passed."
-fi
-
-# Test newuidmap and newgidmap manually
-echo "Testing newuidmap and newgidmap manually..."
-if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newuidmap test failed. Collecting debugging information..."
-    strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
-    echo "Debugging information saved to newuidmap_debug.log"
-    exit 1
-else
-    print_status 0 "newuidmap test passed."
-fi
-
-if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newgidmap test failed. Collecting debugging information..."
-    strace -e openat newgidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newgidmap_debug.log
-    echo "Debugging information saved to newgidmap_debug.log"
-    exit 1
-else
-    print_status 0 "newgidmap test passed."
-fi
-
-# Test newuidmap and newgidmap
-echo "Testing newuidmap and newgidmap..."
-if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newuidmap test failed. Attempting to fix /etc/subuid configuration..."
-    
-    # Fix /etc/subuid
-    if ! grep -q "^$USER:" /etc/subuid; then
-        echo "$USER:100000:65536" | sudo tee -a /etc/subuid
-        print_status $? "/etc/subuid configured for $USER."
-    else
-        CURRENT_SUBUID=$(grep "^$USER:" /etc/subuid | awk -F: '{print $2":"$3}')
-        if [ "$CURRENT_SUBUID" != "100000:65536" ]; then
-            echo "$USER:100000:65536" | sudo tee /etc/subuid
-            print_status $? "/etc/subuid updated for $USER."
-        else
-            print_status 0 "/etc/subuid is already correctly configured for $USER."
-        fi
-    fi
-
-    # Fix /etc/subgid
-    if ! grep -q "^$USER:" /etc/subgid; then
-        echo "$USER:100000:65536" | sudo tee -a /etc/subgid
-        print_status $? "/etc/subgid configured for $USER."
-    else
-        CURRENT_SUBGID=$(grep "^$USER:" /etc/subgid | awk -F: '{print $2":"$3}')
-        if [ "$CURRENT_SUBGID" != "100000:65536" ]; then
-            echo "$USER:100000:65536" | sudo tee /etc/subgid
-            print_status $? "/etc/subgid updated for $USER."
-        else
-            print_status 0 "/etc/subgid is already correctly configured for $USER."
-        fi
-    fi
-
-    # Ensure permissions for newuidmap and newgidmap
-    echo "Checking permissions for newuidmap and newgidmap..."
-    sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
-    print_status $? "Permissions for newuidmap and newgidmap are correctly set."
-
-    # Retry newuidmap test with debugging
-    echo "Retrying newuidmap test with debugging..."
-    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newuidmap test failed after fixing. Collecting debugging information..."
-        echo "=== Debugging Information ==="
-        echo "Contents of /etc/subuid:"
-        cat /etc/subuid
-        echo "Contents of /etc/subgid:"
-        cat /etc/subgid
-        echo "Permissions of newuidmap and newgidmap:"
-        ls -l /usr/bin/newuidmap /usr/bin/newgidmap
-        echo "Kernel user namespace support:"
-        if [ -f /proc/config.gz ]; then
-            zgrep CONFIG_USER_NS /proc/config.gz || echo "Kernel config not available."
-        elif [ -f /boot/config-$(uname -r) ]; then
-            grep CONFIG_USER_NS /boot/config-$(uname -r) || echo "Kernel config not available."
-        else
-            echo "Kernel configuration file not found."
-        fi
-        echo "=============================="
-
-        # Notify the user about the reboot
-        echo "The system needs to reboot to apply kernel changes."
-        echo "You can press Enter to reboot immediately or wait 30 seconds for an automatic reboot."
-
-        # Start a 30-second countdown
-        for i in {30..1}; do
-            echo -ne "Rebooting in $i seconds... Press Enter to reboot now. \r"
-            read -t 1 -n 1 input
-            if [ "$input" = "" ]; then
-                echo -e "\nRebooting now!"
-                sudo reboot
-                exit 0
+            local CURRENT_RANGE=$(grep "^$USER:" "$file" | awk -F: '{print $2":"$3}')
+            if [ "$CURRENT_RANGE" != "$UID_RANGE_START:$UID_RANGE_COUNT" ]; then
+                echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee "$file"
+                print_status $? "$file updated for $USER."
+            else
+                print_status 0 "$file is already correctly configured for $USER."
             fi
-        done
+        fi
+    done
+}
 
-        # Reboot after the countdown
-        echo -e "\nRebooting now!"
-        sudo reboot
-        exit 0
-    else
-        print_status 0 "newuidmap test passed after fixing."
-    fi
-else
-    print_status 0 "newuidmap test passed."
-fi
+# Function to check and create the AppArmor profile for rootlesskit
+setup_apparmor_profile() {
+    echo "Setting up the AppArmor profile for rootlesskit..."
+    local filename=$(echo "$HOME/bin/rootlesskit" | sed -e 's@^/@@' -e 's@/@.@g')
 
-if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newgidmap test failed. Attempting to fix /etc/subgid configuration..."
-    
-    # Retry newgidmap test
-    echo "Retrying newgidmap test..."
-    if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newgidmap test failed after fixing. Please manually check /etc/subgid and permissions."
-        exit 1
-    else
-        print_status 0 "newgidmap test passed after fixing."
-    fi
-else
-    print_status 0 "newgidmap test passed."
-fi
-
-# Verify user session
-echo "Checking user session..."
-if ! loginctl show-user $USER | grep -q "Linger=yes"; then
-    print_status 1 "User session is not properly configured. Enabling lingering..."
-    sudo loginctl enable-linger $USER
-    print_status $? "Linger enabled for $USER. Please reboot and re-run the script."
-    exit 1
-else
-    print_status 0 "User session is properly configured."
-fi
-
-# Test unshare command
-echo "Testing unshare command..."
-if ! unshare --user --map-root-user --mount echo "User namespaces are supported" >/dev/null 2>&1; then
-    print_status 1 "Unshare command failed. Ensure kernel.unprivileged_userns_clone is set to 1."
-    exit 1
-else
-    print_status 0 "Unshare command succeeded. User namespaces are supported."
-fi
-
-# Debug newuidmap with strace
-echo "Debugging newuidmap with strace..."
-strace_output=$(strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1)
-if echo "$strace_output" | grep -q "Could not open proc directory"; then
-    print_status 1 "newuidmap failed: Could not open proc directory for target 1000."
-    echo "=== Debugging Information ==="
-    echo "$strace_output"
-    echo "=============================="
-    echo "Possible solutions:"
-    echo "1. Ensure /proc is mounted and accessible."
-    echo "2. Verify user session with loginctl."
-    echo "3. Fully disable AppArmor or SELinux."
-    echo "4. Check for container or VM restrictions."
-    exit 1
-else
-    print_status 0 "newuidmap test passed."
-fi
-
-# Check and create the AppArmor profile for rootlesskit
-echo "Checking and creating the AppArmor profile for rootlesskit..."
-
-# Generate the AppArmor profile filename
-filename=$(echo "$HOME/bin/rootlesskit" | sed -e 's@^/@@' -e 's@/@.@g')
-
-# Check if the AppArmor profile already exists
-if [ ! -f /etc/apparmor.d/${filename} ]; then
-    echo "Creating the AppArmor profile for rootlesskit..."
-    cat <<EOF > ~/${filename}
+    if [ ! -f /etc/apparmor.d/${filename} ]; then
+        echo "Creating the AppArmor profile for rootlesskit..."
+        cat <<EOF > ~/${filename}
 abi <abi/4.0>,
 include <tunables/global>
 
@@ -591,196 +73,87 @@ include <tunables/global>
   include if exists <local/${filename}>
 }
 EOF
+        sudo mv ~/${filename} /etc/apparmor.d/${filename}
+        print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
+    else
+        print_status 0 "AppArmor profile for rootlesskit already exists."
+    fi
 
-    # Move the profile to the AppArmor directory
-    sudo mv ~/${filename} /etc/apparmor.d/${filename}
-    print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
-else
-    print_status 0 "AppArmor profile for rootlesskit already exists."
-fi
+    echo "Restarting the AppArmor service..."
+    sudo systemctl restart apparmor.service
+    print_status $? "AppArmor service restarted successfully."
 
-# Restart the AppArmor service
-echo "Restarting the AppArmor service..."
-sudo systemctl restart apparmor.service
-print_status $? "AppArmor service restarted successfully."
+    if sudo aa-status | grep -q rootlesskit; then
+        print_status 0 "AppArmor profile for rootlesskit is loaded."
+    else
+        print_status 1 "Failed to load AppArmor profile for rootlesskit. Please check manually."
+        exit 1
+    fi
+}
 
-# Verify that the profile is loaded
-if sudo aa-status | grep -q rootlesskit; then
-    print_status 0 "AppArmor profile for rootlesskit is loaded."
-else
-    print_status 1 "Failed to load AppArmor profile for rootlesskit. Please check manually."
-    exit 1
-fi
+# Function to verify and install docker-ce-rootless-extras
+install_docker_rootless_extras() {
+    echo "Checking if docker-ce-rootless-extras is installed..."
+    if ! dpkg -l | grep -q docker-ce-rootless-extras; then
+        print_status 1 "docker-ce-rootless-extras is not installed. Installing..."
+        sudo apt-get install -y docker-ce-rootless-extras
+        print_status $? "docker-ce-rootless-extras installed."
+    else
+        print_status 0 "docker-ce-rootless-extras is already installed."
+    fi
+}
 
-# Debug AppArmor profiles
-echo "Debugging AppArmor profiles..."
+# Function to test newuidmap and newgidmap
+test_newuidmap_newgidmap() {
+    echo "Testing newuidmap and newgidmap..."
+    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+        print_status 1 "newuidmap test failed. Collecting debugging information..."
+        strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
+        echo "Debugging information saved to newuidmap_debug.log"
+        exit 1
+    else
+        print_status 0 "newuidmap test passed."
+    fi
 
-# List all active profiles
-echo "Listing all active AppArmor profiles..."
-sudo aa-status
+    if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+        print_status 1 "newgidmap test failed. Collecting debugging information..."
+        strace -e openat newgidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newgidmap_debug.log
+        echo "Debugging information saved to newgidmap_debug.log"
+        exit 1
+    else
+        print_status 0 "newgidmap test passed."
+    fi
+}
 
-# Check if the unprivileged_userns profile is active
-if sudo aa-status | grep -q "unprivileged_userns"; then
-    print_status 1 "AppArmor profile 'unprivileged_userns' is active. Disabling it temporarily..."
-    sudo ln -s /etc/apparmor.d/unconfined /etc/apparmor.d/disable/unprivileged_userns
-    sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
-    print_status $? "AppArmor profile 'unprivileged_userns' disabled temporarily."
-else
-    print_status 0 "AppArmor profile 'unprivileged_userns' is not active."
-fi
-
-# Restart AppArmor after disabling unprivileged_userns
-echo "Restarting the AppArmor service..."
-sudo systemctl restart apparmor.service
-print_status $? "AppArmor service restarted successfully."
-
-# Retry rootless Docker installation
-echo "Ensuring rootless Docker service is installed..."
-if [ ! -f ~/.config/systemd/user/docker.service ]; then
-    dockerd-rootless-setuptool.sh install || {
-        print_status 1 "Failed to install rootless Docker service. Uninstalling current setup and retrying..."
-        echo "Uninstalling current rootless Docker setup..."
-        /usr/bin/dockerd-rootless-setuptool.sh uninstall -f
-        /usr/bin/rootlesskit rm -rf ~/.local/share/docker
-        print_status $? "Uninstallation completed. Retrying installation..."
+# Function to start the rootless Docker service
+start_rootless_docker() {
+    echo "Starting the rootless Docker service..."
+    if [ ! -f ~/.config/systemd/user/docker.service ]; then
         dockerd-rootless-setuptool.sh install || {
-            print_status 1 "Retry failed. Exiting."
+            print_status 1 "Failed to install rootless Docker service."
             exit 1
         }
-    }
-    print_status $? "Rootless Docker service installed."
-else
-    print_status 0 "Rootless Docker service already installed."
-fi
-
-# Start the rootless Docker service
-echo "Starting the rootless Docker service..."
-
-# Check logs for docker.service
-echo "Checking logs for docker.service..."
-journalctl --user -xeu docker.service | tail -n 20
-
-# Verify docker.service configuration
-echo "Verifying docker.service configuration..."
-if ! grep -q "/usr/bin/dockerd-rootless.sh" ~/.config/systemd/user/docker.service; then
-    print_status 1 "docker.service is misconfigured. Fixing the ExecStart path..."
-    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/dockerd-rootless.sh|' ~/.config/systemd/user/docker.service
-    systemctl --user daemon-reload
-    print_status $? "docker.service configuration updated."
-else
-    print_status 0 "docker.service is correctly configured."
-fi
-
-# Check dependencies for dockerd-rootless.sh
-echo "Checking dependencies for dockerd-rootless.sh..."
-dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
-for dep in "${dependencies[@]}"; do
-    if ! dpkg -l | grep -q "$dep"; then
-        print_status 1 "$dep is missing. Installing..."
-        sudo apt-get install -y "$dep"
-        print_status $? "$dep installed."
+        print_status $? "Rootless Docker service installed."
     else
-        print_status 0 "$dep is already installed."
+        print_status 0 "Rootless Docker service already installed."
     fi
-done
 
-# Restart docker.service
-echo "Restarting docker.service..."
-if ! systemctl --user restart docker.service; then
-    print_status 1 "Failed to restart docker.service. Collecting logs..."
-    journalctl --user -xeu docker.service | tail -n 20
-    exit 1
-else
-    print_status 0 "docker.service restarted successfully."
-fi
-
-# Verify docker.service configuration
-echo "Verifying docker.service configuration..."
-if ! grep -q "/usr/bin/dockerd-rootless.sh" ~/.config/systemd/user/docker.service; then
-    print_status 1 "docker.service is misconfigured. Fixing the ExecStart path..."
-    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/dockerd-rootless.sh|' ~/.config/systemd/user/docker.service
     systemctl --user daemon-reload
-    print_status $? "docker.service configuration updated."
-else
-    print_status 0 "docker.service is correctly configured."
-fi
-
-# Check dependencies for dockerd-rootless.sh
-echo "Checking dependencies for dockerd-rootless.sh..."
-dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
-for dep in "${dependencies[@]}"; do
-    if ! dpkg -l | grep -q "$dep"; then
-        print_status 1 "$dep is missing. Installing..."
-        sudo apt-get install -y "$dep"
-        print_status $? "$dep installed."
-    else
-        print_status 0 "$dep is already installed."
-    fi
-done
-
-# Start the service
-systemctl --user daemon-reload
-if ! systemctl --user start docker; then
-    print_status 1 "Failed to start rootless Docker service. Collecting logs..."
-    echo "=== Docker Service Logs ==="
-    journalctl --user -xeu docker.service | tail -n 20
-    echo "==========================="
-    echo "Retrying to start the service..."
-    systemctl --user restart docker || {
-        print_status 1 "Retry failed. Check logs with: journalctl --user -xeu docker.service"
+    if ! systemctl --user start docker; then
+        print_status 1 "Failed to start rootless Docker service. Collecting logs..."
+        journalctl --user -xeu docker.service | tail -n 20
         exit 1
-    }
-fi
-print_status $? "Rootless Docker service started successfully."
+    else
+        print_status 0 "Rootless Docker service started successfully."
+    fi
+}
 
-# Enable the service to start on boot
-sudo loginctl enable-linger $(whoami)
-print_status $? "Linger enabled for the current user."
-
-# Post-Installation Steps
-# Set the required environment variables
-export PATH=/home/$USER/bin:$PATH
-export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
+# Main script execution
+install_dependencies
+configure_subuid_subgid
+setup_apparmor_profile
+install_docker_rootless_extras
+test_newuidmap_newgidmap
+start_rootless_docker
 
 echo -e "\e[32mRootless Docker installation and configuration completed successfully!\e[0m"
-
-# Check for failed user services
-echo "Checking for failed user services..."
-failed_units=$(systemctl --user list-units --state=failed | grep -v "0 loaded units")
-if [ -n "$failed_units" ]; then
-    print_status 1 "User services are in a degraded state. Attempting to restart user@1000.service..."
-    systemctl --user restart user@1000.service
-    if [ $? -ne 0 ]; then
-        print_status 1 "Failed to restart user@1000.service. Please check the logs with: journalctl --user -xeu user@1000.service"
-        exit 1
-    else
-        print_status 0 "user@1000.service restarted successfully."
-    fi
-else
-    print_status 0 "No failed user services detected."
-fi
-
-# Verify dbus-user-session
-echo "Checking if dbus-user-session is installed..."
-sudo apt-get install -y dbus-user-session
-print_status $? "dbus-user-session is installed."
-
-# Verify /proc access
-echo "Checking /proc access..."
-if [ ! -d /proc ]; then
-    print_status 1 "/proc is not accessible. Attempting to remount..."
-    sudo mount -t proc proc /proc
-    print_status $? "/proc successfully remounted."
-else
-    print_status 0 "/proc is accessible."
-fi
-
-# Prompt for reboot if necessary
-echo "Checking if a system reboot is required..."
-if [ -f /var/run/reboot-required ]; then
-    print_status 1 "A system reboot is required to apply changes. Rebooting now..."
-    sudo reboot
-    exit 0
-else
-    print_status 0 "No reboot required."
-fi
