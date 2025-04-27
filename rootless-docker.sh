@@ -261,7 +261,7 @@ fi
 # Perform detailed checks for newuidmap failure
 echo "Performing detailed checks for newuidmap failure..."
 
-# Check /proc access
+# 1. Ensure /proc is mounted and accessible
 echo "Checking /proc access..."
 if [ ! -d /proc ]; then
     print_status 1 "/proc is not accessible. Attempting to remount..."
@@ -285,14 +285,19 @@ else
     exit 1
 fi
 
-# Check AppArmor status
+# 2. Disable AppArmor or SELinux temporarily
 echo "Checking AppArmor status..."
 if command -v aa-status >/dev/null 2>&1; then
     sudo aa-status | grep -q "unprivileged_userns"
     if [ $? -eq 0 ]; then
         print_status 1 "AppArmor profile 'unprivileged_userns' is active. Disabling AppArmor temporarily..."
         sudo systemctl stop apparmor
-        print_status $? "AppArmor stopped. Please re-enable it after troubleshooting."
+        if [ $? -eq 0 ]; then
+            print_status 0 "AppArmor stopped successfully. Please re-enable it after troubleshooting."
+        else
+            print_status 1 "Failed to stop AppArmor. Please check your AppArmor configuration."
+            exit 1
+        fi
     else
         print_status 0 "AppArmor is not restricting unprivileged user namespaces."
     fi
@@ -300,14 +305,18 @@ else
     print_status 0 "AppArmor is not installed."
 fi
 
-# Check SELinux status
 echo "Checking SELinux status..."
 if command -v sestatus >/dev/null 2>&1; then
     SELINUX_STATUS=$(sestatus | grep "SELinux status" | awk '{print $3}')
     if [ "$SELINUX_STATUS" = "enabled" ]; then
         print_status 1 "SELinux is enabled. Setting SELinux to permissive mode temporarily..."
         sudo setenforce 0
-        print_status $? "SELinux set to permissive mode. Please re-enable it after troubleshooting."
+        if [ $? -eq 0 ]; then
+            print_status 0 "SELinux set to permissive mode. Please re-enable it after troubleshooting."
+        else
+            print_status 1 "Failed to set SELinux to permissive mode. Please check your SELinux configuration."
+            exit 1
+        fi
     else
         print_status 0 "SELinux is not enforcing."
     fi
@@ -315,7 +324,7 @@ else
     print_status 0 "SELinux is not installed."
 fi
 
-# Check kernel configurations
+# 3. Verify kernel configurations
 echo "Checking kernel configurations..."
 KERNEL_CONFIGS=("CONFIG_USER_NS" "CONFIG_NAMESPACES" "CONFIG_PID_NS")
 for config in "${KERNEL_CONFIGS[@]}"; do
