@@ -177,12 +177,45 @@ fi
 
 # Start the rootless Docker service
 echo "Starting the rootless Docker service..."
+
+# Verify docker.service configuration
+echo "Verifying docker.service configuration..."
+if ! grep -q "/usr/bin/dockerd-rootless.sh" ~/.config/systemd/user/docker.service; then
+    print_status 1 "docker.service is misconfigured. Fixing the ExecStart path..."
+    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/dockerd-rootless.sh|' ~/.config/systemd/user/docker.service
+    systemctl --user daemon-reload
+    print_status $? "docker.service configuration updated."
+else
+    print_status 0 "docker.service is correctly configured."
+fi
+
+# Check dependencies for dockerd-rootless.sh
+echo "Checking dependencies for dockerd-rootless.sh..."
+dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
+for dep in "${dependencies[@]}"; do
+    if ! dpkg -l | grep -q "$dep"; then
+        print_status 1 "$dep is missing. Installing..."
+        sudo apt-get install -y "$dep"
+        print_status $? "$dep installed."
+    else
+        print_status 0 "$dep is already installed."
+    fi
+done
+
+# Start the service
 systemctl --user daemon-reload
-systemctl --user start docker || {
-    print_status 1 "Failed to start rootless Docker service. Check logs with: journalctl --user -xeu docker.service"
-    exit 1
-}
-print_status $? "Rootless Docker service started."
+if ! systemctl --user start docker; then
+    print_status 1 "Failed to start rootless Docker service. Collecting logs..."
+    echo "=== Docker Service Logs ==="
+    journalctl --user -xeu docker.service | tail -n 20
+    echo "==========================="
+    echo "Retrying to start the service..."
+    systemctl --user restart docker || {
+        print_status 1 "Retry failed. Check logs with: journalctl --user -xeu docker.service"
+        exit 1
+    }
+fi
+print_status $? "Rootless Docker service started successfully."
 
 # Enable the service to start on boot
 sudo loginctl enable-linger $(whoami)
