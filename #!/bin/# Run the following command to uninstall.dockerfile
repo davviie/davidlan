@@ -1,3 +1,5 @@
+# Link to page https://docs.docker.com/engine/install/ubuntu/
+# Docker Engine installation script for Ubuntu
 # Run the following command to uninstall all conflicting packages:
 
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do 
