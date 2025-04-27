@@ -127,11 +127,14 @@ else
     print_status 0 "/etc/subgid is already configured for $USER."
 fi
 
-# Ensure the rootless Docker service is installed
+# Retry rootless Docker installation
 echo "Ensuring rootless Docker service is installed..."
 if [ ! -f ~/.config/systemd/user/docker.service ]; then
-    dockerd-rootless-setuptool.sh install --force || {
-        print_status 1 "Failed to install rootless Docker service. Exiting."
+    dockerd-rootless-setuptool.sh install || {
+        print_status 1 "Failed to install rootless Docker service. Check logs with: journalctl --user -xeu docker.service"
+        echo "If the issue persists, uninstall the current setup and retry:"
+        echo "  /usr/bin/dockerd-rootless-setuptool.sh uninstall -f"
+        echo "  /usr/bin/rootlesskit rm -rf ~/.local/share/docker"
         exit 1
     }
     print_status $? "Rootless Docker service installed."
