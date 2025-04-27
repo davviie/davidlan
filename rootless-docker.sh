@@ -51,6 +51,17 @@ echo "To run Docker as a non-root user, you need to add your user to the 'docker
 echo "Adding the current user ($USER) to the 'docker' group..."
 sudo usermod -aG docker $USER
 
+# Check if the user is already part of the 'docker' group
+if groups $USER | grep -q "\bdocker\b"; then
+    echo "You are already part of the 'docker' group. No need to log out."
+    echo "You can now run Docker commands without 'sudo'."
+    echo "Testing Docker as a non-root user..."
+    docker run hello-world
+    exit 0
+else
+    echo "You have been added to the 'docker' group, but the changes will take effect after you log out and log back in."
+fi
+
 # Check Docker installation and AppArmor status
 echo "Verifying Docker installation and AppArmor status..."
 sudo aa-status
@@ -73,8 +84,4 @@ else
     # Log out the user
     gnome-session-quit --logout --no-prompt || pkill -KILL -u "$USER"
 fi
-
-# Instructions for the user after logging back in
-echo "After logging back in, test Docker as a non-root user by running:"
-echo "docker run hello-world"
 
