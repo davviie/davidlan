@@ -10,10 +10,10 @@ services:
         traefik.http.routers.nginx-http.rule=
         Host(`nginx.davidlan.local`) ||
         Host(`davidlan.local`) && PathPrefix(`/nginx`) ||
-        Host(`server.local`) && PathPrefix(`/nginx`) ||
-      # Host(`davidlan.local`) ||
+        Host(`server.local`) && PathPrefix(`/nginx`)
       - traefik.http.routers.nginx-http.entrypoints=web
-    restart: unless-stopped  
+    restart: unless-stopped
+
 networks:
-      testing:
-        external: true
+  testing:
+    external: true
