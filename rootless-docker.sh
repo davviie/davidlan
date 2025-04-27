@@ -205,15 +205,53 @@ if [ -f /proc/config.gz ]; then
     if zgrep -q CONFIG_USER_NS /proc/config.gz; then
         print_status 0 "Kernel supports user namespaces."
     else
-        print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
-        exit 1
+        print_status 1 "Kernel does not support user namespaces. Attempting to upgrade or rebuild the kernel..."
+        sudo apt-get install -y linux-generic || {
+            print_status 1 "Failed to upgrade the kernel. Attempting to rebuild the kernel..."
+            # Install kernel build dependencies
+            sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+            # Download and configure the kernel
+            KERNEL_VERSION="6.5"
+            wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VERSION.tar.xz
+            tar -xf linux-$KERNEL_VERSION.tar.xz
+            cd linux-$KERNEL_VERSION
+            make menuconfig <<< "CONFIG_USER_NS=y"
+            # Build and install the kernel
+            make -j$(nproc)
+            sudo make modules_install
+            sudo make install
+            cd ..
+        }
+        print_status $? "Kernel upgrade or rebuild completed. Rebooting the system..."
+        echo "The system will now reboot. Please re-run this script after rebooting."
+        sudo reboot
+        exit 0
     fi
 elif [ -f /boot/config-$(uname -r) ]; then
     if grep -q CONFIG_USER_NS /boot/config-$(uname -r); then
         print_status 0 "Kernel supports user namespaces."
     else
-        print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
-        exit 1
+        print_status 1 "Kernel does not support user namespaces. Attempting to upgrade or rebuild the kernel..."
+        sudo apt-get install -y linux-generic || {
+            print_status 1 "Failed to upgrade the kernel. Attempting to rebuild the kernel..."
+            # Install kernel build dependencies
+            sudo apt-get install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev
+            # Download and configure the kernel
+            KERNEL_VERSION="6.5"
+            wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VERSION.tar.xz
+            tar -xf linux-$KERNEL_VERSION.tar.xz
+            cd linux-$KERNEL_VERSION
+            make menuconfig <<< "CONFIG_USER_NS=y"
+            # Build and install the kernel
+            make -j$(nproc)
+            sudo make modules_install
+            sudo make install
+            cd ..
+        }
+        print_status $? "Kernel upgrade or rebuild completed. Rebooting the system..."
+        echo "The system will now reboot. Please re-run this script after rebooting."
+        sudo reboot
+        exit 0
     fi
 else
     print_status 1 "Kernel configuration file not found. Unable to verify user namespace support."
