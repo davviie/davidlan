@@ -36,6 +36,46 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 # Update package database again
 sudo apt-get update
 
+# Verify and configure /etc/subuid and /etc/subgid for the current user
+echo "Verifying /etc/subuid and /etc/subgid configuration for $USER..."
+
+# Define the required UID/GID mapping range
+UID_RANGE_START=100000
+UID_RANGE_COUNT=65536
+
+# Check and configure /etc/subuid
+if ! grep -q "^$USER:" /etc/subuid; then
+    echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee -a /etc/subuid
+    print_status $? "/etc/subuid configured for $USER."
+else
+    CURRENT_SUBUID=$(grep "^$USER:" /etc/subuid | awk -F: '{print $2":"$3}')
+    if [ "$CURRENT_SUBUID" != "$UID_RANGE_START:$UID_RANGE_COUNT" ]; then
+        echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee /etc/subuid
+        print_status $? "/etc/subuid updated for $USER."
+    else
+        print_status 0 "/etc/subuid is already correctly configured for $USER."
+    fi
+fi
+
+# Check and configure /etc/subgid
+if ! grep -q "^$USER:" /etc/subgid; then
+    echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee -a /etc/subgid
+    print_status $? "/etc/subgid configured for $USER."
+else
+    CURRENT_SUBGID=$(grep "^$USER:" /etc/subgid | awk -F: '{print $2":"$3}')
+    if [ "$CURRENT_SUBGID" != "$UID_RANGE_START:$UID_RANGE_COUNT" ]; then
+        echo "$USER:$UID_RANGE_START:$UID_RANGE_COUNT" | sudo tee /etc/subgid
+        print_status $? "/etc/subgid updated for $USER."
+    else
+        print_status 0 "/etc/subgid is already correctly configured for $USER."
+    fi
+fi
+
+# Ensure permissions for newuidmap and newgidmap
+echo "Checking permissions for newuidmap and newgidmap..."
+sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
+print_status $? "Permissions for newuidmap and newgidmap are correctly set."
+
 # Install dbus-user-session package if not installed
 echo "Checking if dbus-user-session is installed..."
 sudo apt-get install -y dbus-user-session
@@ -144,26 +184,21 @@ for dep in "${dependencies[@]}"; do
     fi
 done
 
-# Ensure /etc/subuid and /etc/subgid are configured
-echo "Checking /etc/subuid and /etc/subgid configuration..."
-if ! grep -q "^$USER:" /etc/subuid; then
-    echo "$USER:100000:65536" | sudo tee -a /etc/subuid
-    print_status $? "/etc/subuid configured for $USER."
+# Test newuidmap and newgidmap
+echo "Testing newuidmap and newgidmap..."
+if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+    print_status 1 "newuidmap test failed. Please check /etc/subuid configuration."
+    exit 1
 else
-    print_status 0 "/etc/subuid is already configured for $USER."
+    print_status 0 "newuidmap test passed."
 fi
 
-if ! grep -q "^$USER:" /etc/subgid; then
-    echo "$USER:100000:65536" | sudo tee -a /etc/subgid
-    print_status $? "/etc/subgid configured for $USER."
+if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+    print_status 1 "newgidmap test failed. Please check /etc/subgid configuration."
+    exit 1
 else
-    print_status 0 "/etc/subgid is already configured for $USER."
+    print_status 0 "newgidmap test passed."
 fi
-
-# Ensure permissions for newuidmap and newgidmap
-echo "Checking permissions for newuidmap and newgidmap..."
-sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
-print_status $? "Permissions for newuidmap and newgidmap are correctly set."
 
 # Retry rootless Docker installation
 echo "Ensuring rootless Docker service is installed..."
