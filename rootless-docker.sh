@@ -258,6 +258,92 @@ else
     exit 1
 fi
 
+# Perform detailed checks for newuidmap failure
+echo "Performing detailed checks for newuidmap failure..."
+
+# Check /proc access
+echo "Checking /proc access..."
+if [ ! -d /proc ]; then
+    print_status 1 "/proc is not accessible. Attempting to remount..."
+    sudo mount -t proc proc /proc
+    if [ $? -eq 0 ]; then
+        print_status 0 "/proc successfully remounted."
+    else
+        print_status 1 "Failed to remount /proc. Please check your system configuration."
+        exit 1
+    fi
+else
+    print_status 0 "/proc is accessible."
+fi
+
+# Check /proc/self/uid_map
+echo "Checking /proc/self/uid_map..."
+if [ -f /proc/self/uid_map ]; then
+    print_status 0 "/proc/self/uid_map exists and is accessible."
+else
+    print_status 1 "/proc/self/uid_map is missing or inaccessible. Please check your /proc configuration."
+    exit 1
+fi
+
+# Check AppArmor status
+echo "Checking AppArmor status..."
+if command -v aa-status >/dev/null 2>&1; then
+    sudo aa-status | grep -q "unprivileged_userns"
+    if [ $? -eq 0 ]; then
+        print_status 1 "AppArmor profile 'unprivileged_userns' is active. Disabling AppArmor temporarily..."
+        sudo systemctl stop apparmor
+        print_status $? "AppArmor stopped. Please re-enable it after troubleshooting."
+    else
+        print_status 0 "AppArmor is not restricting unprivileged user namespaces."
+    fi
+else
+    print_status 0 "AppArmor is not installed."
+fi
+
+# Check SELinux status
+echo "Checking SELinux status..."
+if command -v sestatus >/dev/null 2>&1; then
+    SELINUX_STATUS=$(sestatus | grep "SELinux status" | awk '{print $3}')
+    if [ "$SELINUX_STATUS" = "enabled" ]; then
+        print_status 1 "SELinux is enabled. Setting SELinux to permissive mode temporarily..."
+        sudo setenforce 0
+        print_status $? "SELinux set to permissive mode. Please re-enable it after troubleshooting."
+    else
+        print_status 0 "SELinux is not enforcing."
+    fi
+else
+    print_status 0 "SELinux is not installed."
+fi
+
+# Check kernel configurations
+echo "Checking kernel configurations..."
+KERNEL_CONFIGS=("CONFIG_USER_NS" "CONFIG_NAMESPACES" "CONFIG_PID_NS")
+for config in "${KERNEL_CONFIGS[@]}"; do
+    if grep -q "$config=y" /boot/config-$(uname -r); then
+        print_status 0 "$config is enabled in the kernel."
+    else
+        print_status 1 "$config is not enabled in the kernel. Please rebuild the kernel with $config enabled."
+        exit 1
+    fi
+done
+
+# Debug newuidmap with strace
+echo "Debugging newuidmap with strace..."
+strace_output=$(strace newuidmap 1000 0 1000 1 1 100000 65536 2>&1)
+if echo "$strace_output" | grep -q "Could not open proc directory"; then
+    print_status 1 "newuidmap failed: Could not open proc directory for target 1000."
+    echo "=== Debugging Information ==="
+    echo "$strace_output"
+    echo "=============================="
+    echo "Possible solutions:"
+    echo "1. Ensure /proc is mounted and accessible."
+    echo "2. Disable AppArmor or SELinux temporarily."
+    echo "3. Verify kernel configurations (CONFIG_USER_NS, CONFIG_NAMESPACES, CONFIG_PID_NS)."
+    exit 1
+else
+    print_status 0 "newuidmap test passed."
+fi
+
 # Test newuidmap and newgidmap
 echo "Testing newuidmap and newgidmap..."
 if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
