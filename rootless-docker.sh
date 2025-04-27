@@ -15,6 +15,27 @@ if [ "$EUID" -eq 0 ]; then
     exit 1
 fi
 
+# Update package database
+sudo apt-get update
+
+# Install required dependencies
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common \
+    gnupg \
+    lsb-release
+
+# Add Docker's official GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Add the Docker repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Update package database again
+sudo apt-get update
+
 # Install dbus-user-session package if not installed
 echo "Checking if dbus-user-session is installed..."
 sudo apt-get install -y dbus-user-session
