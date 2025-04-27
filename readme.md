@@ -1,5 +1,8 @@
 ##Set up the Git Repo
 ```bash
+# Navigate to docker directory
+cd ~/docker
+
 # Initialize Git in the current directory
 git init
 
