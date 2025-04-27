@@ -584,6 +584,51 @@ echo "Restarting the AppArmor service..."
 sudo systemctl restart apparmor.service
 print_status $? "AppArmor service restarted successfully."
 
+# Verify that the profile is loaded
+if sudo aa-status | grep -q rootlesskit; then
+    print_status 0 "AppArmor profile for rootlesskit is loaded."
+else
+    print_status 1 "Failed to load AppArmor profile for rootlesskit. Please check manually."
+    exit 1
+fi
+
+# Verify the installation method for docker-ce-rootless-extras
+echo "Checking if docker-ce-rootless-extras is installed..."
+if ! dpkg -l | grep -q docker-ce-rootless-extras; then
+    print_status 1 "docker-ce-rootless-extras is not installed. Installing..."
+    sudo apt-get install -y docker-ce-rootless-extras
+    print_status $? "docker-ce-rootless-extras installed."
+else
+    print_status 0 "docker-ce-rootless-extras is already installed."
+fi
+
+# Restart the AppArmor service after installing docker-ce-rootless-extras
+echo "Restarting the AppArmor service..."
+sudo systemctl restart apparmor.service
+print_status $? "AppArmor service restarted successfully."
+
+# Debug AppArmor profiles
+echo "Debugging AppArmor profiles..."
+
+# List all active profiles
+echo "Listing all active AppArmor profiles..."
+sudo aa-status
+
+# Check if the unprivileged_userns profile is active
+if sudo aa-status | grep -q "unprivileged_userns"; then
+    print_status 1 "AppArmor profile 'unprivileged_userns' is active. Disabling it temporarily..."
+    sudo ln -s /etc/apparmor.d/unconfined /etc/apparmor.d/disable/unprivileged_userns
+    sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
+    print_status $? "AppArmor profile 'unprivileged_userns' disabled temporarily."
+else
+    print_status 0 "AppArmor profile 'unprivileged_userns' is not active."
+fi
+
+# Restart AppArmor after disabling unprivileged_userns
+echo "Restarting the AppArmor service..."
+sudo systemctl restart apparmor.service
+print_status $? "AppArmor service restarted successfully."
+
 # Retry rootless Docker installation
 echo "Ensuring rootless Docker service is installed..."
 if [ ! -f ~/.config/systemd/user/docker.service ]; then
