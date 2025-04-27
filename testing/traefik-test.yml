@@ -18,12 +18,7 @@ services:
       - ./traefik/config/traefik.yaml:/traefik.yaml:ro
     restart: unless-stopped
     networks:
-      - testing
-    
-networks:
-  testing:
-    name: testing
-    driver: bridge
+      - testing    
 
   nginx:
     image: nginx:latest
@@ -35,3 +30,8 @@ networks:
       - traefik.http.routers.nginx-http.rule= Host(`davidlan.home`) 
       - traefik.http.routers.nginx-http.entrypoints=web
     restart: unless-stopped
+
+networks:
+  testing:
+  name: testing
+  driver: bridge
