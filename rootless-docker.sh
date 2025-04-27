@@ -160,6 +160,62 @@ verify_lingering_and_user_session() {
     fi
 }
 
+# Function to verify pam_systemd configuration
+verify_pam_systemd() {
+    echo "Verifying pam_systemd configuration..."
+    for file in /etc/pam.d/common-session /etc/pam.d/common-session-noninteractive; do
+        if [ ! -f "$file" ]; then
+            print_status 1 "$file does not exist. Creating it..."
+            echo "# PAM configuration for $file" | sudo tee "$file"
+            print_status $? "$file created."
+        fi
+
+        if ! grep -q pam_systemd "$file"; then
+            print_status 1 "pam_systemd is not configured in $file. Adding it..."
+            echo "session optional pam_systemd.so" | sudo tee -a "$file"
+            print_status $? "pam_systemd added to $file."
+        else
+            print_status 0 "pam_systemd is properly configured in $file."
+        fi
+    done
+}
+
+# Function to verify systemd-logind service
+verify_systemd_logind() {
+    echo "Verifying systemd-logind service..."
+    if ! systemctl is-active systemd-logind >/dev/null 2>&1; then
+        print_status 1 "systemd-logind service is not active. Restarting..."
+        sudo systemctl restart systemd-logind
+        print_status $? "systemd-logind service restarted successfully."
+    else
+        print_status 0 "systemd-logind service is active."
+    fi
+}
+
+# Function to manually register user session
+manually_register_user_session() {
+    echo "Manually registering user session..."
+    if ! loginctl list-sessions | grep -q $USER; then
+        print_status 1 "User session for $USER is not registered. Registering manually..."
+        sudo loginctl create-session $USER
+        print_status $? "User session for $USER registered manually."
+    else
+        print_status 0 "User session for $USER is already registered."
+    fi
+}
+
+# Function to debug systemd-machined
+debug_systemd_machined() {
+    echo "Debugging systemd-machined..."
+    if ! systemctl is-active systemd-machined >/dev/null 2>&1; then
+        print_status 1 "systemd-machined service is not active. Restarting..."
+        sudo systemctl restart systemd-machined
+        print_status $? "systemd-machined service restarted successfully."
+    else
+        print_status 0 "systemd-machined service is active."
+    fi
+}
+
 # Function to start the rootless Docker service
 start_rootless_docker() {
     echo "Starting the rootless Docker service..."
@@ -192,7 +248,10 @@ verify_kernel_userns_support
 verify_unprivileged_userns_clone
 verify_proc_access
 verify_lingering_and_user_session
-debug_newuidmap
+verify_pam_systemd
+verify_systemd_logind
+manually_register_user_session
+debug_systemd_machined
 start_rootless_docker
 
 echo -e "\e[32mRootless Docker installation and configuration completed successfully!\e[0m"
