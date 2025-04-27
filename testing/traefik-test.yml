@@ -21,4 +21,5 @@ services:
     
 networks:
   testing:
+    name: testing
     driver: bridge
