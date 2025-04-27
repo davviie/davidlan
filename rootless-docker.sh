@@ -201,10 +201,22 @@ fi
 
 # Check kernel support for user namespaces
 echo "Checking kernel support for user namespaces..."
-if zgrep -q CONFIG_USER_NS /proc/config.gz; then
-    print_status 0 "Kernel supports user namespaces."
+if [ -f /proc/config.gz ]; then
+    if zgrep -q CONFIG_USER_NS /proc/config.gz; then
+        print_status 0 "Kernel supports user namespaces."
+    else
+        print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
+        exit 1
+    fi
+elif [ -f /boot/config-$(uname -r) ]; then
+    if grep -q CONFIG_USER_NS /boot/config-$(uname -r); then
+        print_status 0 "Kernel supports user namespaces."
+    else
+        print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
+        exit 1
+    fi
 else
-    print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
+    print_status 1 "Kernel configuration file not found. Unable to verify user namespace support."
     exit 1
 fi
 
