@@ -7,8 +7,7 @@ services:
     labels:
       - traefik.enable=true
       - >
-        traefik.http.routers.nginx-http.rule=
-        Host(`nginx.davidlan.local`) ||
+        traefik.http.routers.nginx-http.rule= Host(`nginx.davidlan.local`) ||
         Host(`davidlan.local`) && PathPrefix(`/nginx`) ||
         Host(`server.local`) && PathPrefix(`/nginx`)
       - traefik.http.routers.nginx-http.entrypoints=web
