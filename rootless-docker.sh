@@ -55,11 +55,14 @@ sudo usermod -aG docker $USER
 if groups $USER | grep -q "\bdocker\b"; then
     echo "You are already part of the 'docker' group. No need to log out."
     echo "You can now run Docker commands without 'sudo'."
+else
+    echo "You have been added to the 'docker' group. Applying group changes with 'newgrp docker'..."
+    echo "Starting a new shell session for the 'docker' group..."
+    newgrp docker <<EOF
     echo "Testing Docker as a non-root user..."
     docker run hello-world
+    EOF
     exit 0
-else
-    echo "You have been added to the 'docker' group, but the changes will take effect after you log out and log back in."
 fi
 
 # Check Docker installation and AppArmor status
