@@ -151,6 +151,21 @@ if ! command -v dockerd-rootless-setuptool.sh >/dev/null 2>&1; then
     print_status $? "docker-ce-rootless-extras installed."
 fi
 
+# Verify the installation method for docker-ce-rootless-extras
+echo "Checking if docker-ce-rootless-extras is installed..."
+if ! dpkg -l | grep -q docker-ce-rootless-extras; then
+    print_status 1 "docker-ce-rootless-extras is not installed. Installing..."
+    sudo apt-get install -y docker-ce-rootless-extras
+    print_status $? "docker-ce-rootless-extras installed."
+else
+    print_status 0 "docker-ce-rootless-extras is already installed."
+fi
+
+# Restart the AppArmor service after installing docker-ce-rootless-extras
+echo "Restarting the AppArmor service..."
+sudo systemctl restart apparmor.service
+print_status $? "AppArmor service restarted successfully."
+
 # Check if dockerd-rootless.sh exists
 echo "Checking if dockerd-rootless.sh exists..."
 if [ -f /usr/bin/dockerd-rootless.sh ]; then
@@ -557,14 +572,16 @@ else
     print_status 0 "newuidmap test passed."
 fi
 
-# Create and install the AppArmor profile for the current user
-echo "Creating and installing the AppArmor profile for the current user..."
+# Check and create the AppArmor profile for rootlesskit
+echo "Checking and creating the AppArmor profile for rootlesskit..."
 
 # Generate the AppArmor profile filename
 filename=$(echo "$HOME/bin/rootlesskit" | sed -e 's@^/@@' -e 's@/@.@g')
 
-# Create the AppArmor profile
-cat <<EOF > ~/${filename}
+# Check if the AppArmor profile already exists
+if [ ! -f /etc/apparmor.d/${filename} ]; then
+    echo "Creating the AppArmor profile for rootlesskit..."
+    cat <<EOF > ~/${filename}
 abi <abi/4.0>,
 include <tunables/global>
 
@@ -575,9 +592,12 @@ include <tunables/global>
 }
 EOF
 
-# Move the profile to the AppArmor directory
-sudo mv ~/${filename} /etc/apparmor.d/${filename}
-print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
+    # Move the profile to the AppArmor directory
+    sudo mv ~/${filename} /etc/apparmor.d/${filename}
+    print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
+else
+    print_status 0 "AppArmor profile for rootlesskit already exists."
+fi
 
 # Restart the AppArmor service
 echo "Restarting the AppArmor service..."
@@ -591,21 +611,6 @@ else
     print_status 1 "Failed to load AppArmor profile for rootlesskit. Please check manually."
     exit 1
 fi
-
-# Verify the installation method for docker-ce-rootless-extras
-echo "Checking if docker-ce-rootless-extras is installed..."
-if ! dpkg -l | grep -q docker-ce-rootless-extras; then
-    print_status 1 "docker-ce-rootless-extras is not installed. Installing..."
-    sudo apt-get install -y docker-ce-rootless-extras
-    print_status $? "docker-ce-rootless-extras installed."
-else
-    print_status 0 "docker-ce-rootless-extras is already installed."
-fi
-
-# Restart the AppArmor service after installing docker-ce-rootless-extras
-echo "Restarting the AppArmor service..."
-sudo systemctl restart apparmor.service
-print_status $? "AppArmor service restarted successfully."
 
 # Debug AppArmor profiles
 echo "Debugging AppArmor profiles..."
