@@ -29,7 +29,7 @@ print_status $? "uidmap is installed."
 echo "Testing login session type..."
 if [ -z "$XDG_SESSION_TYPE" ]; then
     print_status 1 "Not directly logged in. XDG_SESSION_TYPE is not set."
-    echo "Action needed: Use machinectl to create a proper user session."
+    echo "Action needed: Install systemd-container and use machinectl to create a proper user session."
     echo "Run the following commands:"
     echo "  sudo apt-get install -y systemd-container"
     echo "  sudo machinectl shell $USER@"
