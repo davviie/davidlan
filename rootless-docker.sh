@@ -111,10 +111,26 @@ if ! command -v dockerd-rootless-setuptool.sh >/dev/null 2>&1; then
     print_status $? "docker-ce-rootless-extras installed."
 fi
 
+# Ensure /etc/subuid and /etc/subgid are configured
+echo "Checking /etc/subuid and /etc/subgid configuration..."
+if ! grep -q "^$USER:" /etc/subuid; then
+    echo "$USER:100000:65536" | sudo tee -a /etc/subuid
+    print_status $? "/etc/subuid configured for $USER."
+else
+    print_status 0 "/etc/subuid is already configured for $USER."
+fi
+
+if ! grep -q "^$USER:" /etc/subgid; then
+    echo "$USER:100000:65536" | sudo tee -a /etc/subgid
+    print_status $? "/etc/subgid configured for $USER."
+else
+    print_status 0 "/etc/subgid is already configured for $USER."
+fi
+
 # Ensure the rootless Docker service is installed
 echo "Ensuring rootless Docker service is installed..."
 if [ ! -f ~/.config/systemd/user/docker.service ]; then
-    dockerd-rootless-setuptool.sh install || {
+    dockerd-rootless-setuptool.sh install --force || {
         print_status 1 "Failed to install rootless Docker service. Exiting."
         exit 1
     }
