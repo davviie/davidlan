@@ -21,4 +21,4 @@ services:
     
 networks:
   testing:
-    external: true
+    driver: bridge
