@@ -1,10 +1,16 @@
 ##Set up the Git Repo
 ```bash
+
+# Take Ownership
+sudo chown -R $USER:$USER ~/docker
+
 # Navigate to docker directory
 cd ~/docker
 
 # Initialize Git in the current directory
 git init
+
+git config --global --add safe.directory /docker
 
 # Add the remote repository
 git remote add origin https://github.com/davviie/davidlan.git
