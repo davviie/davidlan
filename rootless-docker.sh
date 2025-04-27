@@ -111,6 +111,39 @@ if ! command -v dockerd-rootless-setuptool.sh >/dev/null 2>&1; then
     print_status $? "docker-ce-rootless-extras installed."
 fi
 
+# Check if dockerd-rootless.sh exists
+echo "Checking if dockerd-rootless.sh exists..."
+if [ -f /usr/bin/dockerd-rootless.sh ]; then
+    print_status 0 "dockerd-rootless.sh exists."
+else
+    print_status 1 "dockerd-rootless.sh does not exist. Attempting to reinstall docker-ce-rootless-extras..."
+    sudo apt-get install --reinstall -y docker-ce-rootless-extras
+    if [ -f /usr/bin/dockerd-rootless.sh ]; then
+        print_status 0 "dockerd-rootless.sh successfully reinstalled."
+    else
+        print_status 1 "Failed to reinstall dockerd-rootless.sh. Exiting."
+        exit 1
+    fi
+fi
+
+# Check for required dependencies
+echo "Checking for required dependencies..."
+dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
+for dep in "${dependencies[@]}"; do
+    if dpkg -l | grep -q "$dep"; then
+        print_status 0 "$dep is installed."
+    else
+        print_status 1 "$dep is not installed. Installing..."
+        sudo apt-get install -y "$dep"
+        if dpkg -l | grep -q "$dep"; then
+            print_status 0 "$dep successfully installed."
+        else
+            print_status 1 "Failed to install $dep. Exiting."
+            exit 1
+        fi
+    fi
+done
+
 # Ensure /etc/subuid and /etc/subgid are configured
 echo "Checking /etc/subuid and /etc/subgid configuration..."
 if ! grep -q "^$USER:" /etc/subuid; then
