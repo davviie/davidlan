@@ -125,8 +125,15 @@ networks:
 EOF
 echo "Default network set to 'dockernet'."
 
+# Step 8: Apply Group Changes with newgrp and Test Docker
+echo "Applying group changes with 'newgrp docker'..."
+newgrp docker <<EOF
+echo "Testing Docker by running the 'hello-world' container in detached mode..."
+docker run -d hello-world
+EOF
+
 # Final Instructions
 echo "Docker setup is complete!"
-echo "Please log out and log back in to apply the group changes."
-echo "After logging back in, test Docker by running: docker run hello-world"
+echo "The 'hello-world' container has been run in detached mode."
+echo "Configurations will be permanent after your next login."
 
