@@ -724,3 +724,13 @@ if [ ! -d /proc ]; then
 else
     print_status 0 "/proc is accessible."
 fi
+
+# Prompt for reboot if necessary
+echo "Checking if a system reboot is required..."
+if [ -f /var/run/reboot-required ]; then
+    print_status 1 "A system reboot is required to apply changes. Rebooting now..."
+    sudo reboot
+    exit 0
+else
+    print_status 0 "No reboot required."
+fi
