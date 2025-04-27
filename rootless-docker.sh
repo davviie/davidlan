@@ -519,6 +519,44 @@ else
     print_status 0 "newgidmap test passed."
 fi
 
+# Verify user session
+echo "Checking user session..."
+if ! loginctl show-user $USER | grep -q "Linger=yes"; then
+    print_status 1 "User session is not properly configured. Enabling lingering..."
+    sudo loginctl enable-linger $USER
+    print_status $? "Linger enabled for $USER. Please reboot and re-run the script."
+    exit 1
+else
+    print_status 0 "User session is properly configured."
+fi
+
+# Test unshare command
+echo "Testing unshare command..."
+if ! unshare --user --map-root-user --mount echo "User namespaces are supported" >/dev/null 2>&1; then
+    print_status 1 "Unshare command failed. Ensure kernel.unprivileged_userns_clone is set to 1."
+    exit 1
+else
+    print_status 0 "Unshare command succeeded. User namespaces are supported."
+fi
+
+# Debug newuidmap with strace
+echo "Debugging newuidmap with strace..."
+strace_output=$(strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1)
+if echo "$strace_output" | grep -q "Could not open proc directory"; then
+    print_status 1 "newuidmap failed: Could not open proc directory for target 1000."
+    echo "=== Debugging Information ==="
+    echo "$strace_output"
+    echo "=============================="
+    echo "Possible solutions:"
+    echo "1. Ensure /proc is mounted and accessible."
+    echo "2. Verify user session with loginctl."
+    echo "3. Fully disable AppArmor or SELinux."
+    echo "4. Check for container or VM restrictions."
+    exit 1
+else
+    print_status 0 "newuidmap test passed."
+fi
+
 # Create and install the AppArmor profile for the current user
 echo "Creating and installing the AppArmor profile for the current user..."
 
