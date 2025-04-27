@@ -9,9 +9,9 @@ print_status() {
     fi
 }
 
-# Check if the script is being run with sudo
+# Prevent running the script with sudo
 if [ "$EUID" -eq 0 ]; then
-    echo -e "\e[31m[FAIL]\e[0m Do not run this script with sudo. Exiting."
+    echo -e "\e[31m[FAIL]\e[0m Do not run this script with sudo or as root. Exiting."
     exit 1
 fi
 
@@ -29,20 +29,22 @@ print_status $? "uidmap is installed."
 echo "Testing login session type..."
 if [ -z "$XDG_SESSION_TYPE" ]; then
     print_status 1 "Not directly logged in. XDG_SESSION_TYPE is not set."
-    echo "Action needed: Install systemd-container and use machinectl."
-
-    # Check if systemd-container is installed
-    if ! dpkg -l | grep -q systemd-container; then
-        print_status 1 "systemd-container is not installed."
-        echo "Action needed: sudo apt-get install -y systemd-container"
-    else
-        print_status 0 "systemd-container is installed."
-    fi
-
-    echo "After installing systemd-container, use: sudo machinectl shell $USER@"
+    echo "Action needed: Use machinectl to create a proper user session."
+    echo "Run the following commands:"
+    echo "  sudo apt-get install -y systemd-container"
+    echo "  sudo machinectl shell $USER@"
     exit 1
 else
     print_status 0 "Directly logged in with session type: $XDG_SESSION_TYPE."
+fi
+
+# Check if systemd-container is installed
+if ! dpkg -l | grep -q systemd-container; then
+    echo "Installing systemd-container..."
+    sudo apt-get install -y systemd-container
+    print_status $? "systemd-container installed."
+else
+    print_status 0 "systemd-container is already installed."
 fi
 
 # Additional test: Check if systemd user services work
