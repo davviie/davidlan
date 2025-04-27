@@ -32,7 +32,7 @@ sudo apt-get update
 
 # Install Docker Engine and related components
 echo "Installing Docker Engine and related components..."
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose
 
 # Start and enable the Docker service
 echo "Starting and enabling the Docker service..."
