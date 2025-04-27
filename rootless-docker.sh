@@ -51,13 +51,27 @@ echo "To run Docker as a non-root user, you need to add your user to the 'docker
 echo "Adding the current user ($USER) to the 'docker' group..."
 sudo usermod -aG docker $USER
 
-# Prompt the user to log out and log back in
-echo "Step 2: Log Out and Log Back In"
-echo "Log out of your current session and log back in to apply the group changes."
-
 # Check Docker installation and AppArmor status
 echo "Verifying Docker installation and AppArmor status..."
 sudo aa-status
-systemctl status docker
+systemctl status docker --no-pager
 docker run hello-world
+
+# Prompt the user to log out and log back in
+echo "Step 2: Log Out and Log Back In"
+echo "Log out of your current session and log back in to apply the group changes."
+echo "You will be logged out automatically in 20 seconds."
+echo "Press Enter to log out now, or press 'c' to cancel."
+
+# Wait for user input or timeout
+read -t 20 -n 1 user_input
+
+if [[ "$user_input" == "c" || "$user_input" == "C" ]]; then
+    echo "Logout canceled. Please remember to log out and log back in manually to apply the changes."
+    exit 0
+else
+    echo "Logging out..."
+    # Log out the user
+    gnome-session-quit --logout --no-prompt || pkill -KILL -u "$USER"
+fi
 
