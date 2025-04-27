@@ -56,14 +56,31 @@ configure_subuid_subgid() {
     done
 }
 
-# Function to check and create the AppArmor profile for rootlesskit
-setup_apparmor_profile() {
-    echo "Setting up the AppArmor profile for rootlesskit..."
+# Function to reinstall AppArmor and create the Docker profile
+reinstall_apparmor_and_setup_profile() {
+    echo "Reinstalling AppArmor and setting up the Docker profile..."
+
+    # Reinstall AppArmor
+    echo "Reinstalling AppArmor..."
+    sudo apt-get update
+    sudo apt-get install --yes apparmor apparmor-utils
+    sudo systemctl enable apparmor.service
+    sudo systemctl start apparmor.service
+    print_status $? "AppArmor reinstalled successfully."
+
+    # Verify AppArmor status
+    if ! sudo aa-status >/dev/null 2>&1; then
+        print_status 1 "AppArmor is not running. Please check manually."
+        exit 1
+    else
+        print_status 0 "AppArmor is running."
+    fi
+
+    # Create the AppArmor profile for rootlesskit
+    echo "Creating the AppArmor profile for rootlesskit..."
     local filename=$(echo "$HOME/bin/rootlesskit" | sed -e 's@^/@@' -e 's@/@.@g')
 
-    if [ ! -f /etc/apparmor.d/${filename} ]; then
-        echo "Creating the AppArmor profile for rootlesskit..."
-        cat <<EOF > ~/${filename}
+    cat <<EOF > ~/${filename}
 abi <abi/4.0>,
 include <tunables/global>
 
@@ -73,16 +90,16 @@ include <tunables/global>
   include if exists <local/${filename}>
 }
 EOF
-        sudo mv ~/${filename} /etc/apparmor.d/${filename}
-        print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
-    else
-        print_status 0 "AppArmor profile for rootlesskit already exists."
-    fi
 
+    sudo mv ~/${filename} /etc/apparmor.d/${filename}
+    print_status $? "AppArmor profile created and moved to /etc/apparmor.d/${filename}."
+
+    # Restart AppArmor to apply the new profile
     echo "Restarting the AppArmor service..."
     sudo systemctl restart apparmor.service
     print_status $? "AppArmor service restarted successfully."
 
+    # Verify that the profile is loaded
     if sudo aa-status | grep -q rootlesskit; then
         print_status 0 "AppArmor profile for rootlesskit is loaded."
     else
@@ -242,7 +259,7 @@ start_rootless_docker() {
 # Main script execution
 install_dependencies
 configure_subuid_subgid
-setup_apparmor_profile
+reinstall_apparmor_and_setup_profile
 install_docker_rootless_extras
 verify_kernel_userns_support
 verify_unprivileged_userns_clone
