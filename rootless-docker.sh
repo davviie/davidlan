@@ -58,10 +58,9 @@ if groups $USER | grep -q "\bdocker\b"; then
 else
     echo "You have been added to the 'docker' group. Applying group changes with 'newgrp docker'..."
     echo "Starting a new shell session for the 'docker' group..."
-    newgrp docker <<EOF
+    newgrp docker
     echo "Testing Docker as a non-root user..."
     docker run hello-world
-    EOF
     exit 0
 fi
 
