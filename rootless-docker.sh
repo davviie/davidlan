@@ -606,6 +606,44 @@ fi
 # Start the rootless Docker service
 echo "Starting the rootless Docker service..."
 
+# Check logs for docker.service
+echo "Checking logs for docker.service..."
+journalctl --user -xeu docker.service | tail -n 20
+
+# Verify docker.service configuration
+echo "Verifying docker.service configuration..."
+if ! grep -q "/usr/bin/dockerd-rootless.sh" ~/.config/systemd/user/docker.service; then
+    print_status 1 "docker.service is misconfigured. Fixing the ExecStart path..."
+    sed -i 's|ExecStart=.*|ExecStart=/usr/bin/dockerd-rootless.sh|' ~/.config/systemd/user/docker.service
+    systemctl --user daemon-reload
+    print_status $? "docker.service configuration updated."
+else
+    print_status 0 "docker.service is correctly configured."
+fi
+
+# Check dependencies for dockerd-rootless.sh
+echo "Checking dependencies for dockerd-rootless.sh..."
+dependencies=("slirp4netns" "fuse-overlayfs" "uidmap")
+for dep in "${dependencies[@]}"; do
+    if ! dpkg -l | grep -q "$dep"; then
+        print_status 1 "$dep is missing. Installing..."
+        sudo apt-get install -y "$dep"
+        print_status $? "$dep installed."
+    else
+        print_status 0 "$dep is already installed."
+    fi
+done
+
+# Restart docker.service
+echo "Restarting docker.service..."
+if ! systemctl --user restart docker.service; then
+    print_status 1 "Failed to restart docker.service. Collecting logs..."
+    journalctl --user -xeu docker.service | tail -n 20
+    exit 1
+else
+    print_status 0 "docker.service restarted successfully."
+fi
+
 # Verify docker.service configuration
 echo "Verifying docker.service configuration..."
 if ! grep -q "/usr/bin/dockerd-rootless.sh" ~/.config/systemd/user/docker.service; then
@@ -655,3 +693,34 @@ export PATH=/home/$USER/bin:$PATH
 export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
 
 echo -e "\e[32mRootless Docker installation and configuration completed successfully!\e[0m"
+
+# Check for failed user services
+echo "Checking for failed user services..."
+failed_units=$(systemctl --user list-units --state=failed | grep -v "0 loaded units")
+if [ -n "$failed_units" ]; then
+    print_status 1 "User services are in a degraded state. Attempting to restart user@1000.service..."
+    systemctl --user restart user@1000.service
+    if [ $? -ne 0 ]; then
+        print_status 1 "Failed to restart user@1000.service. Please check the logs with: journalctl --user -xeu user@1000.service"
+        exit 1
+    else
+        print_status 0 "user@1000.service restarted successfully."
+    fi
+else
+    print_status 0 "No failed user services detected."
+fi
+
+# Verify dbus-user-session
+echo "Checking if dbus-user-session is installed..."
+sudo apt-get install -y dbus-user-session
+print_status $? "dbus-user-session is installed."
+
+# Verify /proc access
+echo "Checking /proc access..."
+if [ ! -d /proc ]; then
+    print_status 1 "/proc is not accessible. Attempting to remount..."
+    sudo mount -t proc proc /proc
+    print_status $? "/proc successfully remounted."
+else
+    print_status 0 "/proc is accessible."
+fi
