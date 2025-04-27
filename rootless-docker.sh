@@ -125,6 +125,44 @@ test_newuidmap_newgidmap() {
     fi
 }
 
+# Function to debug newuidmap
+debug_newuidmap() {
+    echo "Debugging newuidmap..."
+    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+        print_status 1 "newuidmap test failed. Collecting debugging information..."
+        strace -e openat newuidmap 1000 0 1000 1 1 100000 65536 2>&1 | tee newuidmap_debug.log
+        echo "Debugging information saved to newuidmap_debug.log"
+        exit 1
+    else
+        print_status 0 "newuidmap test passed."
+    fi
+}
+
+# Function to verify /proc accessibility
+verify_proc_access() {
+    echo "Verifying /proc accessibility..."
+    if ! mount | grep -q "proc on /proc"; then
+        print_status 1 "/proc is not mounted. Attempting to remount..."
+        sudo mount -t proc proc /proc
+        print_status $? "/proc successfully remounted."
+    else
+        print_status 0 "/proc is properly mounted."
+    fi
+}
+
+# Function to verify user session
+verify_user_session() {
+    echo "Verifying user session..."
+    if ! loginctl show-user $USER | grep -q "Linger=yes"; then
+        print_status 1 "User session is not properly configured. Enabling lingering..."
+        sudo loginctl enable-linger $USER
+        print_status $? "Linger enabled for $USER. Please reboot and re-run the script."
+        exit 1
+    else
+        print_status 0 "User session is properly configured."
+    fi
+}
+
 # Function to start the rootless Docker service
 start_rootless_docker() {
     echo "Starting the rootless Docker service..."
@@ -153,7 +191,9 @@ install_dependencies
 configure_subuid_subgid
 setup_apparmor_profile
 install_docker_rootless_extras
-test_newuidmap_newgidmap
+verify_proc_access
+verify_user_session
+debug_newuidmap
 start_rootless_docker
 
 echo -e "\e[32mRootless Docker installation and configuration completed successfully!\e[0m"
