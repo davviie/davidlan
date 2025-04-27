@@ -5,13 +5,14 @@ services:
     image: traefik:latest
     container_name: traefik_test
     command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:8080"
+      - "--api.insecure=true" # Enable the Traefik dashboard
+      - "--providers.docker=true" # Enable Docker provider
+      - "--entrypoints.web.address=:80" # HTTP entrypoint
+      - "--entrypoints.websecure.address=:443" # HTTPS entrypoint
     ports:
-      - "8080:80" # HTTP port
-      - "8443:443" # HTTPS port
-      - "8081:8080" # Traefik dashboard
+      - "8080:80" # Map HTTP traffic to port 8080 on the host
+      - "8443:443" # Map HTTPS traffic to port 8443 on the host
+      - "8081:8080" # Map Traefik dashboard to port 8081 on the host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/config/traefik.yaml:/traefik.yaml:ro
