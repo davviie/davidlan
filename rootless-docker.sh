@@ -184,6 +184,30 @@ for dep in "${dependencies[@]}"; do
     fi
 done
 
+# Check /proc access
+echo "Checking /proc access..."
+if [ ! -d /proc ]; then
+    print_status 1 "/proc is not accessible. Attempting to remount..."
+    sudo mount -t proc proc /proc
+    if [ $? -eq 0 ]; then
+        print_status 0 "/proc successfully remounted."
+    else
+        print_status 1 "Failed to remount /proc. Please check your system configuration."
+        exit 1
+    fi
+else
+    print_status 0 "/proc is accessible."
+fi
+
+# Check kernel support for user namespaces
+echo "Checking kernel support for user namespaces..."
+if zgrep -q CONFIG_USER_NS /proc/config.gz; then
+    print_status 0 "Kernel supports user namespaces."
+else
+    print_status 1 "Kernel does not support user namespaces. Please enable CONFIG_USER_NS in your kernel configuration."
+    exit 1
+fi
+
 # Test newuidmap and newgidmap
 echo "Testing newuidmap and newgidmap..."
 if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
@@ -222,10 +246,20 @@ if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
     sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
     print_status $? "Permissions for newuidmap and newgidmap are correctly set."
 
-    # Retry newuidmap test
-    echo "Retrying newuidmap test..."
+    # Retry newuidmap test with debugging
+    echo "Retrying newuidmap test with debugging..."
     if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-        print_status 1 "newuidmap test failed after fixing. Please manually check /etc/subuid and permissions."
+        print_status 1 "newuidmap test failed after fixing. Collecting debugging information..."
+        echo "=== Debugging Information ==="
+        echo "Contents of /etc/subuid:"
+        cat /etc/subuid
+        echo "Contents of /etc/subgid:"
+        cat /etc/subgid
+        echo "Permissions of newuidmap and newgidmap:"
+        ls -l /usr/bin/newuidmap /usr/bin/newgidmap
+        echo "Kernel user namespace support:"
+        zgrep CONFIG_USER_NS /proc/config.gz || echo "Kernel config not available."
+        echo "=============================="
         exit 1
     else
         print_status 0 "newuidmap test passed after fixing."
