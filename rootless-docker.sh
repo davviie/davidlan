@@ -187,15 +187,64 @@ done
 # Test newuidmap and newgidmap
 echo "Testing newuidmap and newgidmap..."
 if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newuidmap test failed. Please check /etc/subuid configuration."
-    exit 1
+    print_status 1 "newuidmap test failed. Attempting to fix /etc/subuid configuration..."
+    
+    # Fix /etc/subuid
+    if ! grep -q "^$USER:" /etc/subuid; then
+        echo "$USER:100000:65536" | sudo tee -a /etc/subuid
+        print_status $? "/etc/subuid configured for $USER."
+    else
+        CURRENT_SUBUID=$(grep "^$USER:" /etc/subuid | awk -F: '{print $2":"$3}')
+        if [ "$CURRENT_SUBUID" != "100000:65536" ]; then
+            echo "$USER:100000:65536" | sudo tee /etc/subuid
+            print_status $? "/etc/subuid updated for $USER."
+        else
+            print_status 0 "/etc/subuid is already correctly configured for $USER."
+        fi
+    fi
+
+    # Fix /etc/subgid
+    if ! grep -q "^$USER:" /etc/subgid; then
+        echo "$USER:100000:65536" | sudo tee -a /etc/subgid
+        print_status $? "/etc/subgid configured for $USER."
+    else
+        CURRENT_SUBGID=$(grep "^$USER:" /etc/subgid | awk -F: '{print $2":"$3}')
+        if [ "$CURRENT_SUBGID" != "100000:65536" ]; then
+            echo "$USER:100000:65536" | sudo tee /etc/subgid
+            print_status $? "/etc/subgid updated for $USER."
+        else
+            print_status 0 "/etc/subgid is already correctly configured for $USER."
+        fi
+    fi
+
+    # Ensure permissions for newuidmap and newgidmap
+    echo "Checking permissions for newuidmap and newgidmap..."
+    sudo chmod u+s /usr/bin/newuidmap /usr/bin/newgidmap
+    print_status $? "Permissions for newuidmap and newgidmap are correctly set."
+
+    # Retry newuidmap test
+    echo "Retrying newuidmap test..."
+    if ! newuidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+        print_status 1 "newuidmap test failed after fixing. Please manually check /etc/subuid and permissions."
+        exit 1
+    else
+        print_status 0 "newuidmap test passed after fixing."
+    fi
 else
     print_status 0 "newuidmap test passed."
 fi
 
 if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
-    print_status 1 "newgidmap test failed. Please check /etc/subgid configuration."
-    exit 1
+    print_status 1 "newgidmap test failed. Attempting to fix /etc/subgid configuration..."
+    
+    # Retry newgidmap test
+    echo "Retrying newgidmap test..."
+    if ! newgidmap 1000 0 1000 1 1 100000 65536 >/dev/null 2>&1; then
+        print_status 1 "newgidmap test failed after fixing. Please manually check /etc/subgid and permissions."
+        exit 1
+    else
+        print_status 0 "newgidmap test passed after fixing."
+    fi
 else
     print_status 0 "newgidmap test passed."
 fi
