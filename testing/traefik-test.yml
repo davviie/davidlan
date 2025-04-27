@@ -7,11 +7,11 @@ services:
     command:
       - "--api.insecure=true"
       - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web.address=:8080"
     ports:
-      - "80:80"
-      - "443:443" # HTTPS port
-      - "8080:8080" # Traefik dashboard
+      - "8080:8080" # HTTP port
+      - "8443:443" # HTTPS port
+      - "8081:8080" # Traefik dashboard
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/config/traefik.yaml:/traefik.yaml:ro
