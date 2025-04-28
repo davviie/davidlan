@@ -15,3 +15,17 @@ providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
+
+http:
+  routers:
+    wildcard-router:
+      rule: "Host(`*.david.lan`)"
+      service: wildcard-service
+      entryPoints:
+        - web
+        - websecure
+  services:
+    wildcard-service:
+      loadBalancer:
+        servers:
+          - url: "http://localhost:8080"  # Adjust with your app's internal URL
