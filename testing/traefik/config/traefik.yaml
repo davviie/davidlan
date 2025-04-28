@@ -1,16 +1,20 @@
 global:
   checkNewVersion: false
   sendAnonymousUsage: false
+
 log:
   level: DEBUG
+
 api:
   dashboard: true
   insecure: true
+
 entryPoints:
   web:
-    address: :8080
+    address: ":80"  # Traefik listens on port 80 for HTTP
   websecure:
-    address: :8443
+    address: ":443"  # Traefik listens on port 443 for HTTPS
+
 providers:
   docker:
     endpoint: "unix:///var/run/docker.sock"
@@ -19,13 +23,9 @@ providers:
 http:
   routers:
     wildcard-router:
-      rule: "Host(`*.david.lan`)"
+      rule: "HostRegexp(`{subdomain:[a-z0-9-]+}.david.lan`)"  # Wildcard matching for any subdomain
       service: wildcard-service
       entryPoints:
         - web
         - websecure
-  services:
-    wildcard-service:
-      loadBalancer:
-        servers:
-          - url: "http://localhost:8080"  # Adjust with your app's internal URL
+  
