@@ -20,12 +20,4 @@ providers:
     endpoint: "unix:///var/run/docker.sock"
     exposedByDefault: false
 
-http:
-  routers:
-    wildcard-router:
-      rule: "HostRegexp(`{subdomain:[a-z0-9-]+}.david.lan`)"  # Wildcard matching for any subdomain
-      service: wildcard-service
-      entryPoints:
-        - web
-        - websecure
   
