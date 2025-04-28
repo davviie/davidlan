@@ -5,6 +5,7 @@ traefik/                  # Ignore the entire traefik directory
 *.log                        # Log files
 *.pid                        # PID files
 *.sock                       # Socket files
+*.env                        # Environment Variables (to be created w/ script) 
 
 # Ignore environment files
 .env                         # Environment variables file
