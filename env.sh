@@ -5,8 +5,8 @@ cat <<EOF > .env
 PUID=$(id -u)                  # Get the current user's UID
 PGID=$(id -g)                  # Get the current user's GID
 TZ=$(cat /etc/timezone 2>/dev/null || echo "Etc/UTC") # Get the system timezone
-DOMAIN=$(hostname -f)               # Custom domain name for Traefik routing
-HOSTNAME=$(hostname)           # System hostname for local network identification
+DOMAIN=$(nslookup $(hostname -I | awk '{print $1}') 2>/dev/null | awk '/name =/ {print $4}' | sed 's/\.$//') # Get the local domain name via nslookup
+HOSTNAME=$(hostname -f)           # System hostname for local network identification
 DOCKER_SOCK=/var/run/docker.sock
 DOCKERDATA=./dockerdata
 MEDIA=./media
