@@ -17,7 +17,7 @@ VAULTWARDEN_ADMIN_TOKEN=your_secure_admin_token
 TRAEFIK_ACME_EMAIL=mail@davidlan.xyz
 PLEX_CLAIM=mraYUbL2QPo7onDyhrok
 PLEX_PASS=true
-ADVERTISE_IP=http://$(hostname -I | awk '{print $1}'):32400 # Automatically set local IP
+ADVERTISE_IP=http://$(hostname -I | awk '{print $1}'):33300 # Automatically set local IP
 
 # Ports
 
