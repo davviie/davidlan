@@ -12,8 +12,10 @@ git init
 
 git config --global --add safe.directory /docker
 
+
 # Add the remote repository
 git remote add origin https://github.com/davviie/davidlan.git
+git remote set-url origin git@github.com:davviie/davidlan.git
 
 # Fetch the latest changes from the remote repository
 git fetch origin main
@@ -28,13 +30,6 @@ git checkout -b main --track origin/main
 git pull origin main
 
 # Make your changes and add them to staging
-git add .
-
-# Commit your changes with a message
-git commit -m "Your commit message here"
-
-# Push your changes to the remote repository
-git push origin main
-
+ch
 ```
 
