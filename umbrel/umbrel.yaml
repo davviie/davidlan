@@ -1,0 +1,65 @@
+version: 1.4.0
+apps:
+  - plex
+  - cloudflared
+  - home-assistant
+  - excalidraw
+  - transmission
+  - radarr
+  - prowlarr
+  - portainer
+  - overseerr
+  - node-red-standalone
+  - qbittorrent
+  - metube
+  - tautulli
+  - jackett
+  - audiobookshelf
+  - nextcloud
+  - romm
+  - immich
+  - bazarr
+  - duplicati
+  - syncthing
+  - vaultwarden
+  - vikunja
+  - samba
+  - mqttx-web
+  - sabnzbd
+  - mosquitto
+  - ntfy
+  - firefly-iii
+  - gitea
+  - uptime-kuma
+  - stirling-pdf
+  - code-server
+  - dockge
+  - paperless
+appRepositories:
+  - https://github.com/getumbrel/umbrel-apps.git
+torEnabled: false
+recentlyOpenedApps:
+  - dockge
+  - duplicati
+  - portainer
+  - samba
+  - transmission
+files:
+  favorites:
+    - /Home/Documents
+    - /Home/Downloads
+    - /Home/Photos
+    - /Home/Videos
+  recents:
+    - /Home/Downloads/metube/.metube/pending
+    - /Home/Downloads/metube/.metube/queue
+    - /Home/Downloads/metube/.metube/completed
+user:
+  name: davidlan
+  hashedPassword: $2b$12$iZSBj3Z6neNmod16lSkuGuJhW9tqZqIqHCfsNBaopasjRVwebepUy
+  wallpaper: '4'
+  temperatureUnit: c
+widgets:
+  - umbrel:storage
+  - umbrel:memory
+  - umbrel:system-stats

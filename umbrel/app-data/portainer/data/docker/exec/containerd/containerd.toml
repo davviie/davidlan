@@ -1,0 +1,47 @@
+disabled_plugins = ["io.containerd.grpc.v1.cri"]
+imports = []
+oom_score = 0
+plugin_dir = ""
+required_plugins = []
+root = "/data/data/containerd/daemon"
+state = "/data/exec/containerd/daemon"
+temp = ""
+version = 2
+
+[cgroup]
+  path = ""
+
+[debug]
+  address = "/data/exec/containerd/containerd-debug.sock"
+  format = "text"
+  gid = 0
+  level = ""
+  uid = 0
+
+[grpc]
+  address = "/data/exec/containerd/containerd.sock"
+  gid = 0
+  max_recv_message_size = 16777216
+  max_send_message_size = 16777216
+  tcp_address = ""
+  tcp_tls_ca = ""
+  tcp_tls_cert = ""
+  tcp_tls_key = ""
+  uid = 0
+
+[metrics]
+  address = ""
+  grpc_histogram = false
+
+[plugins]
+
+[proxy_plugins]
+
+[stream_processors]
+
+[timeouts]
+
+[ttrpc]
+  address = ""
+  gid = 0
+  uid = 0

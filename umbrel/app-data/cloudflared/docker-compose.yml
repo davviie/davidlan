@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: cloudflared-web
+      APP_PORT: 3000
+    container_name: cloudflared_app_proxy_1
+  web:
+    image: >-
+      ghcr.io/radiokot/umbrel-cloudflared:1.0.2@sha256:9660fb4e90317036d2b418f1c9437cc2cdb7f7bdd8d820084237a0c37bb94f5b
+    hostname: cloudflared-web
+    restart: on-failure
+    stop_grace_period: 1s
+    depends_on:
+      - connector
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/data
+    environment:
+      CLOUDFLARED_HOSTNAME: cloudflared-connector
+      CLOUDFLARED_METRICS_PORT: ${APP_CLOUDFLARED_METRICS_PORT}
+      CLOUDFLARED_TOKEN_FILE: /app/data/token
+    container_name: cloudflared_web_1
+  connector:
+    image: >-
+      ghcr.io/radiokot/umbrel-cloudflared-connector:1.0.0-cf.2025.2.0@sha256:9a126ccfd01e93e447a98f246cc948b55b4822455beb7dda995dfb216c1b3eab
+    hostname: cloudflared-connector
+    restart: on-failure
+    stop_grace_period: 5s
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    environment:
+      CLOUDFLARED_METRICS_PORT: ${APP_CLOUDFLARED_METRICS_PORT}
+      CLOUDFLARED_TOKEN_FILE: ./data/token
+    extra_hosts:
+      - host.docker.internal:host-gateway
+      - ${APP_DOMAIN}:host-gateway
+    container_name: cloudflared_connector_1

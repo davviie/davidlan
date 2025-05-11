@@ -1,0 +1,64 @@
+May 10, 2025 17:18:00.057 [140473199168312] INFO - Plex Media Server v1.41.6.9685-d301f511a - Docker Docker Container (LinuxServer.io) x86_64 - build: linux-x86_64 debian - GMT 00:00
+May 10, 2025 17:18:00.057 [140473199168312] INFO - Linux version: 6.1.0-34-amd64, language: en-US
+May 10, 2025 17:18:00.058 [140473199168312] INFO - Processor: 2-core Intel(R) Core(TM) i5-7500T CPU @ 2.70GHz
+May 10, 2025 17:18:00.058 [140473199168312] INFO - Compiler is - Clang 11.0.1 (https://plex.tv 9b997da8e5b47bdb4a9425b3a3b290be393b4b1f)
+May 10, 2025 17:18:00.058 [140473199168312] INFO - /usr/lib/plexmediaserver/Plex Media Server
+May 10, 2025 17:18:00.057 [140473201703568] DEBUG - BPQ: [Idle] -> [Starting]
+May 10, 2025 17:18:00.065 [140473201703568] DEBUG - FeatureManager: Using cached data for features list
+May 10, 2025 17:18:00.094 [140473201703568] DEBUG - MyPlex: mapping state set to 'Unknown'.
+May 10, 2025 17:18:00.094 [140473201703568] DEBUG - Relay: read 0 cached entries from hosts file
+May 10, 2025 17:18:00.098 [140473201703568] DEBUG - Opening 20 database sessions to library (com.plexapp.plugins.library), SQLite 3.39.4, threadsafe=1
+May 10, 2025 17:18:00.450 [140473201703568] DEBUG - MyPlex: no cached data to load for request for https://plex.tv/api/v2/server/users/features
+May 10, 2025 17:18:00.723 [140473201703568] DEBUG - HttpServer: Listening on IPv6 as well as IPv4.
+May 10, 2025 17:18:00.727 [140473201703568] DEBUG - HttpServer: Listening on port 32400.
+May 10, 2025 17:18:00.727 [140473201703568] DEBUG - HttpServer: Listening on port 32401.
+May 10, 2025 17:18:00.727 [140473201703568] DEBUG - Running server...
+May 10, 2025 17:18:00.728 [140473201703568] INFO - Running migrations. (EPG 0)
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 0.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 1.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 2.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 3.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 4.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 5.
+May 10, 2025 17:18:00.728 [140473201703568] DEBUG - Captured session 6.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 7.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 8.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 9.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 10.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 11.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 12.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 13.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 14.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 15.
+May 10, 2025 17:18:00.729 [140473201703568] DEBUG - Captured session 16.
+May 10, 2025 17:18:00.750 [140473201703568] DEBUG - Captured session 17.
+May 10, 2025 17:18:00.750 [140473201703568] DEBUG - Captured session 18.
+May 10, 2025 17:18:00.750 [140473201703568] DEBUG - Captured session 19.
+May 10, 2025 17:18:00.807 [140473184594744] DEBUG - Request: didn't get any data from [::1]:38044: End of file
+May 10, 2025 17:18:00.808 [140473181330232] DEBUG - HttpServer: Set up a thread pool with 2 threads.
+May 10, 2025 17:18:00.808 [140473201703568] DEBUG - ChangestampAllocator: initialized to 0
+May 10, 2025 17:18:00.809 [140473201703568] DEBUG - Opening 2 database sessions to library (com.plexapp.plugins.library.blobs), SQLite 3.39.4, threadsafe=1
+May 10, 2025 17:18:00.961 [140473201703568] INFO - Running migrations. (EPG 0)
+May 10, 2025 17:18:00.981 [140473201703568] DEBUG - Captured session 0.
+May 10, 2025 17:18:00.981 [140473201703568] DEBUG - Captured session 1.
+May 10, 2025 17:18:01.042 [140473194494776] DEBUG - [GPU] Cuda library was not found on the system
+May 10, 2025 17:18:01.248 [140473194494776] DEBUG - Grabber: Cleaning up orphaned grabs.
+May 10, 2025 17:18:01.248 [140473194494776] DEBUG - Grabber: Cleaned up 0 decrepit directories in 0.0 sec.
+May 10, 2025 17:18:01.248 [140473201703568] DEBUG - Media Provider: Registering provider com.plexapp.plugins.library
+May 10, 2025 17:18:01.249 [140473201703568] DEBUG - Auth: Refreshing tokens inside the token-based authentication filter.
+May 10, 2025 17:18:01.249 [140473201703568] DEBUG - Opening 1 database sessions to library (), SQLite 3.39.4, threadsafe=1
+May 10, 2025 17:18:01.275 [140473177361208] DEBUG - Auth: Refreshing tokens inside the token-based authentication filter.
+May 10, 2025 17:18:01.293 [140473170823992] DEBUG - File "/usr/lib/plexmediaserver/Resources/Plug-ins-d301f511a" changed: -1 => 2025-04-28 10:54:40 (1745837680).
+May 10, 2025 17:18:01.293 [140473170823992] DEBUG - File "/config/Library/Application Support/Plex Media Server/Plug-ins" changed: -1 => 2025-05-10 16:46:20 (1746895580).
+May 10, 2025 17:18:01.293 [140473170823992] DEBUG - Scanning for plug-ins in "/usr/lib/plexmediaserver/Resources/Plug-ins-d301f511a"
+May 10, 2025 17:18:01.381 [140473170823992] DEBUG - Scanning for plug-ins in "/config/Library/Application Support/Plex Media Server/Plug-ins"
+May 10, 2025 17:18:01.381 [140473170823992] DEBUG - PluginRepository::setStartState: 1, startingSystem
+May 10, 2025 17:18:01.381 [140473170823992] DEBUG - Starting plug-in /usr/lib/plexmediaserver/Resources/Plug-ins-d301f511a/System.bundle.
+May 10, 2025 17:18:01.382 [140473170823992] DEBUG - [com.plexapp.system] Setting plug-in to always running (daemon mode).
+May 10, 2025 17:18:01.387 [140473170823992] DEBUG - Starting file watcher for com.plexapp.system
+May 10, 2025 17:18:01.387 [140473170823992] DEBUG - Plugin: setting environment variable: 'PYTHONHOME=/usr/lib/plexmediaserver/Resources/Python'
+May 10, 2025 17:18:01.387 [140473170823992] DEBUG - Plugin: setting environment variable: 'PYTHONPATH=/usr/lib/plexmediaserver/Resources/Python/python27.zip:/usr/lib/plexmediaserver/Resources/Python/lib/python2.7/site-packages'
+May 10, 2025 17:18:01.401 [140473170823992] DEBUG - Spawned plug-in com.plexapp.system with PID 229
+May 10, 2025 17:18:01.401 [140473170823992] DEBUG - [com.plexapp.system] Sending command: GET /:/prefixes
+May 10, 2025 17:18:02.056 [140473177361208] DEBUG - [JobRunner] Job running: /usr/lib/plexmediaserver/CrashUploader "--directory=/config/Library/Application Support/Plex Media Server/Crash Reports/1.41.6.9685-d301f511a" --version=1.41.6.9685-d301f511a --platform=Linux --platformVersion=6.1.0-34-amd64 --serverUuid=f62e01309709a98fbf66a0c71b26a5bf06b86c90 --userId=NOUSERID --sentryUrl=https://o17675.ingest.sentry.io/api/1233455/ --sentryKey=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --vendor=Docker --model=x86_64 "--device=Docker Container (LinuxServer.io)"
+May 10, 2025 17:18:02.058 [140473177361208] DEBUG - [JobRunner] Jobs: Starting child process with pid 232

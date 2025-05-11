@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: prowlarr_server_1
+      APP_PORT: 9696
+      PROXY_AUTH_WHITELIST: /api/*
+    container_name: prowlarr_app_proxy_1
+  server:
+    image: >-
+      linuxserver/prowlarr:1.35.1@sha256:126ead562b0fb1716e5c07db1df81f96351ae4de07b0101423cbc9317ccf012d
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    restart: on-failure
+    container_name: prowlarr_server_1
+  indexer_proxy:
+    image: >-
+      flaresolverr/flaresolverr:v3.3.17@sha256:5f5661db1e69a6f80ac24d47d9fa5580f6f741ee5ec967818396ae0dacecd7ea
+    restart: on-failure
+    container_name: prowlarr_indexer_proxy_1
+  mac:
+    image: >-
+      getumbrel/media-app-configurator:v1.3.0@sha256:67e75dd9f5a14402b7816119a8e20189bc2465484cea077909d164687e59742b
+    user: '1000:1000'
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+    environment:
+      APP_ID: prowlarr
+      APP_URL: http://prowlarr_server_1:9696
+      FLARESOLVERR_URL: http://prowlarr_indexer_proxy_1:8191
+      TRANSMISSION_HOST: transmission_server_1
+      TRANSMISSION_PORT: 9091
+      RADARR_URL: http://radarr_server_1:7878
+      RADARR_CONFIG_XML: ${APP_PROWLARR_RADARR_CONFIG_XML}
+      LIDARR_URL: http://lidarr_server_1:8686
+      LIDARR_CONFIG_XML: ${APP_PROWLARR_LIDARR_CONFIG_XML}
+      SONARR_URL: http://sonarr_server_1:8989
+      SONARR_CONFIG_XML: ${APP_PROWLARR_SONARR_CONFIG_XML}
+      READARR_URL: http://readarr_server_1:8787
+      READARR_CONFIG_XML: ${APP_PROWLARR_READARR_CONFIG_XML}
+      QBITTORRENT_INSTALLED: ${APP_PROWLARR_QBITTORRENT_INSTALLED:-"false"}
+      QBITTORRENT_HOST: qbittorrent_server_1
+      QBITTORRENT_PORT: 8080
+      SABNZBD_INSTALLED: ${APP_PROWLARR_SABNZBD_INSTALLED:-"false"}
+      SABNZBD_HOST: sabnzbd_web_1
+      SABNZBD_PORT: 8080
+      SABNZBD_API_KEY: ${APP_PROWLARR_SABNZBD_API_KEY:-""}
+    container_name: prowlarr_mac_1

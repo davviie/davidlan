@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: radarr_server_1
+      APP_PORT: 7878
+      PROXY_AUTH_WHITELIST: /api/*
+    container_name: radarr_app_proxy_1
+  server:
+    image: >-
+      linuxserver/radarr:5.22.4@sha256:01233b9ea9435fd00eab51891f133d86c9b6293f5adb8c3bf44e7a314c9c3423
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    restart: on-failure
+    container_name: radarr_server_1
+  mac:
+    image: >-
+      getumbrel/media-app-configurator:v1.3.0@sha256:67e75dd9f5a14402b7816119a8e20189bc2465484cea077909d164687e59742b
+    user: '1000:1000'
+    restart: on-failure
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    environment:
+      APP_ID: radarr
+      APP_URL: http://radarr_server_1:7878
+      TRANSMISSION_HOST: transmission_server_1
+      TRANSMISSION_PORT: 9091
+      ROOT_FOLDER: /downloads/movies
+      QBITTORRENT_INSTALLED: ${APP_RADARR_QBITTORRENT_INSTALLED:-"false"}
+      QBITTORRENT_HOST: qbittorrent_server_1
+      QBITTORRENT_PORT: 8080
+      SABNZBD_INSTALLED: ${APP_RADARR_SABNZBD_INSTALLED:-"false"}
+      SABNZBD_HOST: sabnzbd_web_1
+      SABNZBD_PORT: 8080
+      SABNZBD_API_KEY: ${APP_RADARR_SABNZBD_API_KEY:-""}
+    container_name: radarr_mac_1

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "minor_version": 5,
+  "key": "core.config_entries",
+  "data": {
+    "entries": [
+      {"created_at":"2025-05-10T16:47:04.502824+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"sun","entry_id":"01JTXHFP9PQT2WVPYQQ90J40B4","minor_version":1,"modified_at":"2025-05-10T16:47:04.502827+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"import","subentries":[],"title":"Sun","unique_id":null,"version":1},
+      {"created_at":"2025-05-10T16:47:04.753679+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"go2rtc","entry_id":"01JTXHFPHHMYG4TEDXRZV4V7MM","minor_version":1,"modified_at":"2025-05-10T16:47:04.753681+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"go2rtc","unique_id":null,"version":1},
+      {"created_at":"2025-05-10T16:47:05.468264+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"backup","entry_id":"01JTXHFQ7W0GTN552H4ETG82HV","minor_version":1,"modified_at":"2025-05-10T16:47:05.468267+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"Backup","unique_id":null,"version":1},
+      {"created_at":"2025-05-10T16:47:09.335702+00:00","data":{"ignore_cec":[],"known_hosts":[],"user_id":"e37878594c7f40d6aa4968528ffc1d40","uuid":[]},"disabled_by":null,"discovery_keys":{"zeroconf":[{"domain":"zeroconf","key":["_googlecast._tcp.local.","Chromecast-HD-bf760fb6de09dc3d7de0b75e284afc7d._googlecast._tcp.local."],"version":1}]},"domain":"cast","entry_id":"01JTXHFV0Q4QF5S0EWWPBHV2C1","minor_version":1,"modified_at":"2025-05-10T16:47:09.336607+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"zeroconf","subentries":[],"title":"Google Cast","unique_id":"cast","version":1}
+    ]
+  }
+}

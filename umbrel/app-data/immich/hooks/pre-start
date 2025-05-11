@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script sets up necessary directories/permissions that have changed in the app since the initial release. 
+
+set -euo pipefail
+
+APP_DATA_DIR="$(readlink -f $(dirname "${BASH_SOURCE[0]}")/..)/data"
+
+# Create model-cache directory if it doesn't exist
+MODEL_CACHE_DIR="${APP_DATA_DIR}/model-cache"
+[ ! -d "${MODEL_CACHE_DIR}" ] && mkdir -p "${MODEL_CACHE_DIR}" && chown 1000:1000 "${MODEL_CACHE_DIR}"
+
+# delete tsdata directory if it exists
+TYPESENSE_DIR="${APP_DATA_DIR}/tsdata"
+[ -d "${TYPESENSE_DIR}" ] && rm -rf "${TYPESENSE_DIR}"
+
+# delete old post-update script if it exists
+POST_UPDATE_SCRIPT="$(readlink -f $(dirname "${BASH_SOURCE[0]}"))/post-update"
+[ -f "${POST_UPDATE_SCRIPT}" ] && rm -f "${POST_UPDATE_SCRIPT}"
+  

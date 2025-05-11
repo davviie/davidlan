@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "core.restore_state",
+  "data": [
+    {
+      "state": {"entity_id":"conversation.home_assistant","state":"unknown","attributes":{"friendly_name":"Home Assistant","supported_features":1},"last_changed":"2025-05-10T17:28:42.707224+00:00","last_reported":"2025-05-10T17:28:42.707224+00:00","last_updated":"2025-05-10T17:28:42.707224+00:00","context":{"id":"01JTXKVXYKVX8G6KQ9H03WP0YR","parent_id":null,"user_id":null}},
+      "extra_data": null,
+      "last_seen": "2025-05-10T18:22:42.747803+00:00"
+    }
+  ]
+}

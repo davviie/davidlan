@@ -1,0 +1,54 @@
+manifestVersion: 1.1
+id: home-assistant
+category: automation
+name: Home Assistant
+version: "2025.5.0"
+tagline: Home automation that puts local control & privacy first
+description: >-
+  Open source home automation that puts local control and privacy
+  first. Powered by a worldwide community of tinkerers and DIY enthusiasts.
+  Once started, Home Assistant will automatically scan your network for known devices and allow you to easily set them up.
+  Home Assistant integrates with over a thousand different devices and services.
+
+
+  Once you have integrated all your devices at home, you can unleash Home Assistant's
+  advanced automation engine to make your home work for you. Do things like: 
+
+  - Turn on the light when the sun sets or when coming home 
+
+  - Get an alert when you leave your garage door open 
+
+
+  Home Assistant keeps your data local, no need for a cloud. Home Assistant communicates with your devices locally, and will fallback to pulling in data from the cloud if there is no other option. No data is stored in the cloud, and everything is processed locally.
+
+
+  Note: The USB adapter discovery feature (e.g., for Zigbee dongles connected directly to the device running Umbrel) may not work reliably for Umbrel users on Raspberry Pi.
+developer: Home Assistant
+website: https://home-assistant.io
+dependencies: []
+repo: https://github.com/home-assistant/core
+support: https://community.home-assistant.io
+port: 8123 
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+torOnly: false
+permissions:
+  - STORAGE_DOWNLOADS
+releaseNotes: >-
+  This release comes packed with new features and improvements, focusing on backups and user experience.
+
+
+  Backups get a big upgrade with per-location retention policies, while Home Assistant Cloud adds new text-to-speech voice variants, so your announcements can sound happy, sad, and more.
+
+
+  Plus: Z-Wave Long Range support, copy-paste YAML snippets in the automation UI, a new tool to monitor device discovery, and a smoother experience when picking entities.
+
+
+  Full release notes are available at https://www.home-assistant.io/blog/2025/05/07/release-20255/
+submitter: Umbrel
+submission: https://github.com/getumbrel/umbrel/commit/9d79cffae608c6a6ab077f859c1c531a581cf926

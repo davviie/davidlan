@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  server:
+    image: >-
+      linuxserver/plex:1.41.6@sha256:53e6a94b2649b3c817757bbdf28d7970bc10e036ec0868b0704f3f51aa612742
+    restart: on-failure
+    hostname: ${DEVICE_HOSTNAME}
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - VERSION=docker
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/transcode:/transcode
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    container_name: plex_server_1

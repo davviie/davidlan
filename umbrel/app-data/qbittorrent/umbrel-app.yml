@@ -1,0 +1,58 @@
+manifestVersion: 1.1
+id: qbittorrent
+category: networking
+name: qBittorrent
+version: "5.1.0"
+tagline: Free and reliable P2P Bittorrent client
+description: >-
+  qBittorrent is an open-source software alternative to µTorrent. It's designed to meet the needs of most users while using as little CPU and memory as possible.
+
+
+  🛠️ SET-UP INSTRUCTIONS
+
+
+  qBittorrent on umbrelOS is set up to work without any additional configuration needed. It will automatically be connected to dependent apps like Radarr, Sonarr, Lidarr, Readarr, and Prowlarr. Simply install additional media apps from the Umbrel App Store, and everything will work seamlessly together.
+
+
+  Some additional tips:
+
+
+  - Please make sure that you do not change the default download path in the app settings. It should remain set to "/app/qBittorrent/downloads" to ensure that your downloads show up in your main Umbrel downloads folder.
+
+  - It is recommended to change the default password for the app after installation.
+
+  - This app comes bundled with two alternative Web UI's: VueTorrent and Nightwalker. To enable them, navigate to tools --> options --> Web UI and select "Use alternative Web UI". In the "Files location" field, enter "/app/vuetorrent" for VueTorrent or "/app/nightwalker" for Nightwalker and then click "Save". 
+
+
+  ⚠️ qBittorrent downloads torrents over the Clearnet, not Tor.
+releaseNotes: >-
+  This update includes several new features, bug fixes and improvements:
+    - Added customizable statistics interval and drag support in torrent widget
+    - Displayed external IP and improved random number generation for security
+    - Enhanced magnet URI and tracker handling including announce_port support
+    - Fixed upload/download limits, UI tab order, crashes, and corrupted resume data
+    - Major WebUI upgrades: accessibility, autocompletion, styling, filtering, and context menus
+    - Improved RSS handling, tracker display, and torrent management in WebUI
+    - Extended WebAPI with webseeds, tags, and tracker list options
+    - Search improvements: history, simultaneous searches, and updated dependencies
+
+
+  Full release notes for qBittorrent are available at https://www.qbittorrent.org/news
+developer: qBittorrent
+website: https://qbittorrent.org/
+dependencies: []
+repo: https://github.com/qBittorrent/qBittorrent
+support: https://github.com/qBittorrent/qBittorrent/issues
+port: 8094
+gallery:
+  - 1.jpg
+  - 2.jpg
+  - 3.jpg
+path: ""
+defaultUsername: "admin"
+defaultPassword: "adminadmin"
+torOnly: false
+permissions:
+  - STORAGE_DOWNLOADS
+submitter: ASOwnerYT
+submission: https://github.com/getumbrel/umbrel-apps/pull/468

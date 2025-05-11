@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  app_proxy:
+    environment:
+      APP_HOST: transmission_server_1
+      APP_PORT: 9091
+    container_name: transmission_app_proxy_1
+  server:
+    image: >-
+      linuxserver/transmission:4.0.6@sha256:17b10956b1711c989140023cbd8a71d3683f6bbb1b5d1ee0c8cdac45b028fffc
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${UMBREL_ROOT}/home/Downloads:/downloads
+    ports:
+      - '51413:51413'
+      - 51413:51413/udp
+    restart: on-failure
+    container_name: transmission_server_1
+  widget-server:
+    image: >-
+      getumbrel/umbrel-transmission-widget-server:v1.0.0@sha256:0ee30f1eecbf6f4f3f62e3f6d5c1626bd31d15ace7e97cacff5fc091836650cf
+    environment:
+      - TRANSMISSION_URL=http://transmission_server_1
+      - TRANSMISSION_PORT=9091
+    restart: on-failure
+    container_name: transmission_widget-server_1

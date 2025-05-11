@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "minor_version": 9,
+  "key": "core.device_registry",
+  "data": {
+    "devices": [
+      {"area_id":null,"config_entries":["01JTXHFP9PQT2WVPYQQ90J40B4"],"config_entries_subentries":{"01JTXHFP9PQT2WVPYQQ90J40B4":[null]},"configuration_url":null,"connections":[],"created_at":"2025-05-10T16:47:04.504471+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"6c1bee5cb7ac3aca8c1d8e3c0a1bf4bf","identifiers":[["sun","01JTXHFP9PQT2WVPYQQ90J40B4"]],"labels":[],"manufacturer":null,"model":null,"model_id":null,"modified_at":"2025-05-10T16:47:04.504504+00:00","name_by_user":null,"name":"Sun","primary_config_entry":"01JTXHFP9PQT2WVPYQQ90J40B4","serial_number":null,"sw_version":null,"via_device_id":null},
+      {"area_id":null,"config_entries":["01JTXHFQ7W0GTN552H4ETG82HV"],"config_entries_subentries":{"01JTXHFQ7W0GTN552H4ETG82HV":[null]},"configuration_url":"homeassistant://config/backup","connections":[],"created_at":"2025-05-10T16:47:08.101020+00:00","disabled_by":null,"entry_type":"service","hw_version":null,"id":"02baf7824ad330f55668c46693bff924","identifiers":[["backup","backup_manager"]],"labels":[],"manufacturer":"Home Assistant","model":"Home Assistant Backup","model_id":null,"modified_at":"2025-05-10T16:47:08.101054+00:00","name_by_user":null,"name":"Backup","primary_config_entry":"01JTXHFQ7W0GTN552H4ETG82HV","serial_number":null,"sw_version":"2025.5.0","via_device_id":null},
+      {"area_id":null,"config_entries":["01JTXHFV0Q4QF5S0EWWPBHV2C1"],"config_entries_subentries":{"01JTXHFV0Q4QF5S0EWWPBHV2C1":[null]},"configuration_url":null,"connections":[],"created_at":"2025-05-10T16:47:09.424116+00:00","disabled_by":null,"entry_type":null,"hw_version":null,"id":"f9d684001f55f148b906ad87248540f1","identifiers":[["cast","bf760fb6de09dc3d7de0b75e284afc7d"]],"labels":[],"manufacturer":"Google Inc.","model":"Chromecast HD","model_id":null,"modified_at":"2025-05-10T16:47:09.424147+00:00","name_by_user":null,"name":"TV","primary_config_entry":"01JTXHFV0Q4QF5S0EWWPBHV2C1","serial_number":null,"sw_version":null,"via_device_id":null}
+    ],
+    "deleted_devices": []
+  }
+}
